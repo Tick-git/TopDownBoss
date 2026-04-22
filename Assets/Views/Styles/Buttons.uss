@@ -1,0 +1,34 @@
+:root {
+}
+
+.button {
+    width: 300px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.button-focus-mode {
+}
+
+.button-focus-mode:focus {
+    background-color: rgb(25, 25, 25);
+    scale: 1.05 1.05;
+    transition-property: scale;
+    transition-duration: 0.125s;
+}
+
+.button-hover-mode {
+}
+
+.button-hover-mode:hover {
+    background-color: rgb(25, 25, 25);
+    scale: 1.05 1.05;
+    transition-property: scale;
+    transition-duration: 0.125s;
+}
+
+

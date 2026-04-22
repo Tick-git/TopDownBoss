@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Views/Styles/Buttons.uss?fileID=7433441132597879392&amp;guid=f7e8d4e1a0b8501439975c6fb6169495&amp;type=3#Buttons"/>
+    <Style src="project://database/Assets/Views/Styles/Animation.uss?fileID=7433441132597879392&amp;guid=8d2330a3c35d3dd46989a0e3450695cf&amp;type=3#Animation"/>
+    <Style src="project://database/Assets/Views/Styles/Typography.uss?fileID=7433441132597879392&amp;guid=6c7c6de22c85aed4692067f0b334d5b2&amp;type=3#Typography"/>
+    <Style src="project://database/Assets/Views/Styles/Color.uss?fileID=7433441132597879392&amp;guid=e085b0bb4833dc44cbc13c689f568195&amp;type=3#Color"/>
+    <ui:VisualElement name="MainView" class="menu-background-color" style="flex-grow: 1; padding-top: 200px; padding-bottom: 100px; padding-right: 400px; padding-left: 400px;">
+        <ui:Label text="Title" name="GameNameLabel" class="h1 text-white-color" style="-unity-text-align: middle-center; height: 350px;"/>
+        <ui:Label text="&lt; Press Any Button &gt;" name="PressAnyButtonLabel" class="h3 text-white-color button-text" style="-unity-text-align: upper-center; position: absolute; top: 738px; left: 749px;"/>
+        <ui:VisualElement name="ButtonContainer" style="align-items: center; justify-content: space-evenly; flex-grow: 1;">
+            <ui:Button name="PlayButton" text="Play&#10;" class="button button-text text-white-color"/>
+            <ui:Button text="Settings" name="SettingButton" class="button button-text text-white-color"/>
+            <ui:Button text="Exit" name="ExitButton" class="button button-text text-white-color" style="transition-timing-function: ease-in;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

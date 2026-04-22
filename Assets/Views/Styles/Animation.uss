@@ -1,0 +1,9 @@
+.transparent {
+    opacity: 0;
+}
+
+.fade-in {
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+}

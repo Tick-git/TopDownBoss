@@ -1,0 +1,22 @@
+.h1 {
+    font-size: 120px;
+    -unity-font-style: bold;
+}
+
+.h2 {
+    font-size: 90px;
+}
+
+.h3 {
+    font-size: 60px;
+}
+
+.body {
+    font-size: 20px;
+    -unity-font-style: normal;
+}
+
+.button-text {
+    font-size: 36px;
+    -unity-font-style: bold;
+}

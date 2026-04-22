@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Views/Styles/SliderStyle.uss?fileID=7433441132597879392&amp;guid=0cf1a88e4e3b9ed45b2854cef986c828&amp;type=3#SliderStyle"/>
+    <Style src="project://database/Assets/Views/Styles/Buttons.uss?fileID=7433441132597879392&amp;guid=f7e8d4e1a0b8501439975c6fb6169495&amp;type=3#Buttons"/>
+    <Style src="project://database/Assets/Views/Styles/Typography.uss?fileID=7433441132597879392&amp;guid=6c7c6de22c85aed4692067f0b334d5b2&amp;type=3#Typography"/>
+    <Style src="project://database/Assets/Views/Styles/Color.uss?fileID=7433441132597879392&amp;guid=e085b0bb4833dc44cbc13c689f568195&amp;type=3#Color"/>
+    <ui:VisualElement name="SettingView" class="menu-background-color" style="flex-grow: 1; justify-content: flex-end; align-items: center; padding-top: 200px; padding-right: 300px; padding-bottom: 90px; padding-left: 300px;">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.88); padding-top: 60px; padding-right: 60px; padding-bottom: 60px; padding-left: 60px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px;">
+            <ui:VisualElement style="flex-grow: 1; font-size: 20px; justify-content: space-evenly;">
+                <ui:SliderInt label="Master" value="42" high-value="100" show-input-field="true" fill="true" name="MasterSlider" class="slider-drag-container slider-dragger-border slider-tracker slider-dragger slider-text-input slider-label unity-text-field slider slider-tracker-fill"/>
+                <ui:SliderInt label="Music" value="42" high-value="100" show-input-field="true" fill="true" name="MusicSlider" class="slider-drag-container slider-dragger-border slider-tracker slider-dragger slider-text-input slider-label unity-text-field slider slider-tracker-fill"/>
+                <ui:SliderInt label="SFX" value="42" high-value="100" show-input-field="true" fill="true" name="SFXSlider" class="slider-drag-container slider-dragger-border slider-tracker slider-dragger slider-text-input slider-label unity-text-field slider slider-tracker-fill"/>
+                <ui:SliderInt label="UI" value="42" high-value="100" show-input-field="true" fill="true" name="UISlider" class="slider-drag-container slider-dragger-border slider-tracker slider-dragger slider-text-input slider-label unity-text-field slider slider-tracker-fill"/>
+            </ui:VisualElement>
+            <ui:Button text="Back" name="BackButton" class="button button-text text-white-color" style="align-self: center;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

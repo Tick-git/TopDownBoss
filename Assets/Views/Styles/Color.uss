@@ -1,0 +1,7 @@
+.menu-background-color {
+    background-color: rgb(0, 0, 0);
+}
+
+.text-white-color {
+    color: rgb(200, 200, 200);
+}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f0726e72b8880489880bec3a783692, type: 3}
+  m_Name: UIClick
+  m_EditorClassIdentifier: Scripts::AudioData
+  _clips:
+  - {fileID: 8300000, guid: da76d3c826a17784b9589695c5f6c3d7, type: 3}
+  _volume: 1
+  _pitch: 1
+  _mixerGroup: {fileID: 848165472825668710, guid: 19c80ff22cd3f56409211437318db1c1, type: 2}
