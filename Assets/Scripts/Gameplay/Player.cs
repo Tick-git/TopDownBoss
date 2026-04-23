@@ -11,11 +11,19 @@ public class Player : MonoBehaviour
     
     private Camera _cam;
     private InputAction _moveAction;
+    private InputAction _attackAction;
 
     private void Awake()
     {
         _cam = Camera.main;
         _moveAction = InputSystem.actions.FindAction("Move");
+        _attackAction = InputSystem.actions.FindAction("Attack");
+        _attackAction.performed += Attack;
+    }
+
+    private void Attack(InputAction.CallbackContext obj)
+    {
+        _assaultRifle.Shoot();
     }
 
     private void Update()

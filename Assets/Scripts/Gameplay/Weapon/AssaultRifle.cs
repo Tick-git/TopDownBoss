@@ -3,7 +3,9 @@ using UnityEngine;
 public class AssaultRifle : MonoBehaviour
 {
     [SerializeField] private float _radius;
-    [SerializeField] Transform _weaponCenter;
+    [SerializeField] private Transform _weaponCenter;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private Magazine _magazine;
     
     private SpriteRenderer _weaponSpriteRenderer;
     private Vector2 CenterPosition => _weaponCenter.position;
@@ -23,5 +25,13 @@ public class AssaultRifle : MonoBehaviour
         transform.right = aimDirection;
         
         _weaponSpriteRenderer.flipY = aimingLeft;
+    }
+
+    public void Shoot()
+    {
+        _magazine.TryGetBullet(out Bullet bullet);
+        
+        bullet.transform.position = _firePoint.position;
+        bullet.StartFlight(transform.right);
     }
 }
