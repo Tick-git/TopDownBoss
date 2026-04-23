@@ -2,23 +2,23 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioPoolable : MonoBehaviour, IPoolable<AudioPoolable>
+public class AudioPoolable : MonoBehaviour, IPoolable<AudioPoolable>, IPoolReturner<AudioPoolable>
 {
     private ObjectPool<AudioPoolable> _pool;
     private Coroutine _playRoutine;
     private bool _isReturned = true;
 
     private AudioSource _audioSource;
-
-    public void Initialize(ObjectPool<AudioPoolable> pool)
-    {
-        _pool = pool;
-        _audioSource = GetComponent<AudioSource>();
-    }
-
+    
     public void OnGetFromPool()
     {
         _isReturned = false;
+    }
+    
+    public void SetPool(ObjectPool<AudioPoolable> pool)
+    {
+        _pool = pool;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void OnReturnToPool()

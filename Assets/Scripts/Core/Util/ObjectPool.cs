@@ -65,8 +65,9 @@ public class ObjectPool<T> where T : MonoBehaviour,  IPoolable<T>
         var obj = Object.Instantiate(_prefab, _parent, true);
 
         T pooledBehaviour = obj.GetComponent<T>();
-        
-        pooledBehaviour.Initialize(this);
+
+        if (pooledBehaviour is IPoolReturner<T> returner)
+            returner.SetPool(this);
         
         obj.gameObject.SetActive(false);
         
