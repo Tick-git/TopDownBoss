@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPoolable<Bullet>
 {
-    [SerializeField]  private float _speed;
 
+    private bool _isFlying = false;
     public event Action<Bullet> Hit;
     
-    private bool _isFlying = false;
     private Vector2 _direction;
+    private float _damage;
+    private float _speed;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -18,14 +19,26 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void StartFlight(Vector2 direction)
+    public void StartFlight(Vector2 direction, float damage, float speed)
     {
         if (_isFlying) return;
         
         _isFlying = true;
+        
         _direction = direction;
+        _damage = damage;
+        _speed = speed;
 
         StartCoroutine(DestroyBullet());
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.ApplyDamage(_damage);
+            Hit?.Invoke(this);
+        }
     }
 
     private IEnumerator DestroyBullet()

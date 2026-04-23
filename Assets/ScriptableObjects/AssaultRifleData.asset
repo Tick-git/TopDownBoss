@@ -16,3 +16,4 @@ MonoBehaviour:
   _damage: 10
   _fireRate: 1
   _range: 10
+  _bulletVelocity: 10

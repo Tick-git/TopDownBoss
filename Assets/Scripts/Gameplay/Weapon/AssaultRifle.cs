@@ -32,6 +32,6 @@ public class AssaultRifle : MonoBehaviour
         _magazine.TryGetBullet(out Bullet bullet);
         
         bullet.transform.position = _firePoint.position;
-        bullet.StartFlight(transform.right);
+        bullet.StartFlight(transform.right, _data.Damage, _data.BulletVelocity);
     }
 }
