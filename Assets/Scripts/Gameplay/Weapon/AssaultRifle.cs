@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AssaultRifle : MonoBehaviour
 {
-    [SerializeField] private float _radius;
+    [SerializeField] private AssaultRifleData _data;
     [SerializeField] private Transform _weaponCenter;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Magazine _magazine;
@@ -21,7 +21,7 @@ public class AssaultRifle : MonoBehaviour
         
         bool aimingLeft = aimDirection.x < 0;
         
-        transform.position = CenterPosition + aimDirection * _radius;
+        transform.position = CenterPosition + aimDirection * _data.OrbitRadius;
         transform.right = aimDirection;
         
         _weaponSpriteRenderer.flipY = aimingLeft;
