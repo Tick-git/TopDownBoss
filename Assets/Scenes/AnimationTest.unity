@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _healthData: {fileID: 11400000, guid: 5da71740b8623774cb5fea09659ae3b5, type: 2}
 --- !u!114 &481089910
 MonoBehaviour:
   m_ObjectHideFlags: 0
