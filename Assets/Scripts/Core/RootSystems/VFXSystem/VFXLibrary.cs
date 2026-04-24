@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;using PlasticPipe.Server;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Vfx/Library")]
+[CreateAssetMenu(menuName = DataPaths.CoreData.Vfx + "Library")]
 public class VFXLibrary : ScriptableObject
 {
     [SerializeField] private List<VFXData> _vfxDataCollection;

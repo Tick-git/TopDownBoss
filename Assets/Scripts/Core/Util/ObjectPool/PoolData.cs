@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Util/Pool")]
+[CreateAssetMenu(menuName = DataPaths.CoreData.Pool + "Pool")]
 public class PoolData : ScriptableObject
 {
     [SerializeField] private GameObject _prefab;

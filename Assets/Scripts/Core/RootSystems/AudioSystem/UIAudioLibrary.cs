@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "audio/UILibrary")]
+[CreateAssetMenu(menuName = DataPaths.CoreData.AudioPath + "UILibrary")]
 public class UIAudioLibrary : ScriptableObject
 {
     [SerializeField] private AudioData _hoverAudioData;

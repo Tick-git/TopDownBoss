@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Audio/Audio Library")]
+[CreateAssetMenu(menuName = DataPaths.CoreData.AudioPath + "AudioLibrary")]
 public class AudioLibrary : ScriptableObject
 {
     

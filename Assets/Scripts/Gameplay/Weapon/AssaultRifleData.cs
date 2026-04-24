@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Weapons/AssaultRifle")]
+[CreateAssetMenu(menuName = DataPaths.GameplayData.PlayerPaths + "AssaultRifle")]
 public class AssaultRifleData : ScriptableObject
 {
     [SerializeField] private float _orbitRadius = 0.3f;

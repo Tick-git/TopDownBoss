@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Input/Binding Icons")]
-public class InputBindingIconsSO : ScriptableObject
+[CreateAssetMenu(menuName = DataPaths.CoreData.Input + "BindingIcons")]
+public class InputBindingIconsData : ScriptableObject
 {
     [SerializeField] Texture keyboardMouse;
     [SerializeField] Texture xInput;

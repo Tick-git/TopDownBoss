@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Input/Binding Icons Database")]
-public class InputBindingIconDatabaseSO : ScriptableObject
+[CreateAssetMenu(menuName = DataPaths.CoreData.Input + "Binding Icons Database")]
+public class InputBindingIconLibrary : ScriptableObject
 {
-    [SerializeField] private InputBindingIconsSO interact;
+    [SerializeField] private InputBindingIconsData interact;
 
-    public InputBindingIconsSO Interact => interact;
+    public InputBindingIconsData Interact => interact;
 
-    private readonly Dictionary<string, InputBindingIconsSO> lookup = new();
+    private readonly Dictionary<string, InputBindingIconsData> lookup = new();
 
 
     public void OnEnable()

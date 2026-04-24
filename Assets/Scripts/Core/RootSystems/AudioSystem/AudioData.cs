@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-[CreateAssetMenu(menuName = "Audio/Sound")]
+[CreateAssetMenu(menuName = DataPaths.CoreData.AudioPath + "AudioData")]
 public class AudioData : ScriptableObject
 {
     [SerializeField] private AudioClip[] _clips;

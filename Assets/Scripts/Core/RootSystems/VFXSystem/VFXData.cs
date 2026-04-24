@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Vfx/Data")]
+[CreateAssetMenu(menuName = DataPaths.CoreData.Vfx + "Vfx Data")]
 public class VFXData : ScriptableObject
 {
     [SerializeField] private GameObject _vfxPrefab;
