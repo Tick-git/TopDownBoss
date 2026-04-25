@@ -40,7 +40,7 @@ public class StateMachineTests
 
         bool condition = true;
 
-        _sm.AddTransition(a, b, new TestPredicate(() => condition));
+        _sm.AddTransition(a, b, new FuncPredicate(() => condition));
 
         _sm.SetState(a);
 
@@ -58,7 +58,7 @@ public class StateMachineTests
 
         bool condition = false;
 
-        _sm.AddTransition(a, b, new TestPredicate(() => condition));
+        _sm.AddTransition(a, b, new FuncPredicate(() => condition));
 
         _sm.SetState(a);
 
@@ -75,8 +75,8 @@ public class StateMachineTests
         var b = new TestStateB();
         var c = new TestStateC();
 
-        _sm.AddTransition(a, b, new TestPredicate(() => true));
-        _sm.AddAnyTransition(c, new TestPredicate(() => true));
+        _sm.AddTransition(a, b, new FuncPredicate(() => true));
+        _sm.AddAnyTransition(c, new FuncPredicate(() => true));
 
         _sm.SetState(a);
 
@@ -92,7 +92,7 @@ public class StateMachineTests
     {
         var a = new TestStateA();
 
-        _sm.AddTransition(a, a, new TestPredicate(() => true));
+        _sm.AddTransition(a, a, new FuncPredicate(() => true));
 
         _sm.SetState(a);
 
@@ -119,15 +119,3 @@ public abstract class TestBaseState : IState
 public class TestStateA : TestBaseState {}
 public class TestStateB : TestBaseState {}
 public class TestStateC : TestBaseState {}
-
-public class TestPredicate : IPredicate
-{
-    private readonly Func<bool> _condition;
-
-    public TestPredicate(Func<bool> condition)
-    {
-        _condition = condition;
-    }
-
-    public bool Evaluate() => _condition();
-}
