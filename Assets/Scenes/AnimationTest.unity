@@ -119,6 +119,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &103915076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1898054918886240235, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+  m_PrefabInstance: {fileID: 1844441602615647218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1dab60d51bd384e8cc22597fb936e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::NewMonoBehaviourScript
+--- !u!1 &414629494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5225750973115319834, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+  m_PrefabInstance: {fileID: 1844441602615647218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &481089908
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,28 +632,53 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6620165309540836398, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 55c2e89d547b3e2479d6b1a618dcbe93, type: 2}
+    - target: {fileID: 6620165309540836398, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 1844441602615647227}
+    - target: {fileID: 6620165309540836398, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
       propertyPath: _animator
       value: 
-      objectReference: {fileID: 1844441602615647221}
+      objectReference: {fileID: 1844441602615647224}
+    - target: {fileID: 6620165309540836398, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      propertyPath: _movement
+      value: 
+      objectReference: {fileID: 1844441602615647226}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1844441602615647221}
+      addedObject: {fileID: 1844441602615647226}
+    - targetCorrespondingSourceObject: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1844441602615647227}
+    - targetCorrespondingSourceObject: {fileID: 5225750973115319834, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1844441602615647224}
   m_SourcePrefab: {fileID: 100100000, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
 --- !u!1 &1844441602615647219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
   m_PrefabInstance: {fileID: 1844441602615647218}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1844441602615647220 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2805715604144453035, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-  m_PrefabInstance: {fileID: 1844441602615647218}
+--- !u!114 &1844441602615647224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1844441602615647221
+  m_GameObject: {fileID: 414629494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2635de5364746a4badd98f19875c809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PlayerAnimator
+--- !u!114 &1844441602615647226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,10 +687,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844441602615647219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2635de5364746a4badd98f19875c809, type: 3}
+  m_Script: {fileID: 11500000, guid: 286a527dc41847cba6622a418ae60d5b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Scripts::PlayerAnimator
-  _animator: {fileID: 1844441602615647220}
+  m_EditorClassIdentifier: Scripts::PlayerMovement
+--- !u!114 &1844441602615647227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844441602615647219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0a90761750407387661f28d2fdac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PlayerWeapon
+  _assaultRifle: {fileID: 103915076}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

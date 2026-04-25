@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void PlayIdle()
     {
@@ -14,5 +20,10 @@ public class PlayerAnimator : MonoBehaviour
     public void PlayWalk()
     {
         _animator.Play("Walk");
+    }
+
+    public void SetLookDirection(bool looksLeft)
+    {
+        _spriteRenderer.flipX = looksLeft;
     }
 }

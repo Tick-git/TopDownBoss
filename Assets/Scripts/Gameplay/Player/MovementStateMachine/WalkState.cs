@@ -9,6 +9,6 @@
 
     public override void Update()
     {
-        Context.Movement.Move(Context.Input.MoveInput);
+        Context.Movement.Move(Context.Input.MoveDirection);
     }
 }

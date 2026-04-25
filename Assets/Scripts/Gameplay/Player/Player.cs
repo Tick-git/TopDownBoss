@@ -6,10 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private PlayerMovement _movement;
-    [SerializeField] private AssaultRifle _assaultRifle;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private PlayerWeapon _weapon;
     
-    private Camera _cam;
     private InputAction _attackAction;
     private StateMachine _movementSm;
     
@@ -19,17 +17,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _cam = Camera.main;
-        _attackAction = InputSystem.actions.FindAction("Attack");
-        _attackAction.performed += Attack;
-
         _movementSm = new StateMachine();
         
         var idleState = new IdleState(this);
         var walkState = new WalkState(this);
         
-        AtMovement(idleState, walkState, new FuncPredicate(() => _input.MoveInput != Vector2.zero));
-        AtMovement(walkState, idleState, new FuncPredicate(() => _input.MoveInput == Vector2.zero));
+        AtMovement(idleState, walkState, new FuncPredicate(() => _input.MoveDirection != Vector2.zero));
+        AtMovement(walkState, idleState, new FuncPredicate(() => _input.MoveDirection == Vector2.zero));
         
         _movementSm.SetState(idleState);
     }
@@ -38,20 +32,15 @@ public class Player : MonoBehaviour
     {
         _movementSm.AddTransition(from, to, condition);
     }
-
-    private void Attack(InputAction.CallbackContext obj)
-    {
-        _assaultRifle.Shoot();
-    }
-
+    
     private void Update()
     {
-        Vector3 target = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        target.z = 0;
+        _weapon.Aim(Input.AimPosition);
+
+        if (_input.AttackPressed)
+            _weapon.Shoot();
         
-        _assaultRifle.ApplyAim(target);
-        
-        _spriteRenderer.flipX = target.x < transform.position.x;
+        _animator.SetLookDirection(Input.AimPosition.x < transform.position.x);
         
         _movementSm.Update();
     }

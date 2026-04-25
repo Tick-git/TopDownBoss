@@ -5,11 +5,18 @@ using UnityEngine.InputSystem;
 public class InputReader : ScriptableObject
 {
     private InputAction _moveAction;
+    private InputAction _attackAction;
+    
+    private Camera _cam;
 
     private void OnEnable()
     {
+        _cam = Camera.main;
         _moveAction = InputSystem.actions.FindAction("Move");
+        _attackAction = InputSystem.actions.FindAction("Attack");
     }
-    
-    public Vector2 MoveInput =>  _moveAction.ReadValue<Vector2>();
+
+    public bool AttackPressed => _attackAction.WasPressedThisFrame();
+    public Vector2 MoveDirection =>  _moveAction.ReadValue<Vector2>();
+    public Vector2 AimPosition => _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 }
