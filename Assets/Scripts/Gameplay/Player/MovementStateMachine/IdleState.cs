@@ -1,6 +1,6 @@
-﻿public class IdleState : BaseState<Player>
+﻿public class IdleState : BaseState<PlayerController>
 {
-    public IdleState(Player context) : base(context) {}
+    public IdleState(PlayerController context) : base(context) {}
 
     public override void Enter()
     {

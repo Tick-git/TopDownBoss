@@ -1,6 +1,6 @@
-﻿public class WalkState : BaseState<Player>
+﻿public class WalkState : BaseState<PlayerController>
 {
-    public WalkState(Player context) : base(context) {}
+    public WalkState(PlayerController context) : base(context) {}
 
     public override void Enter()
     {
