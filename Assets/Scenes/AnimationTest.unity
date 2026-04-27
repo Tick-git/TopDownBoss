@@ -611,13 +611,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3842608618261528294, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f651f89812f32cb438fa0cd30ef9a081, type: 3}
-    - target: {fileID: 3842608618261528294, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
+    - target: {fileID: 3526794035898506111, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526794035898506111, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
       propertyPath: m_Name
