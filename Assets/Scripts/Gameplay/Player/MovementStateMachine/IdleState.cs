@@ -4,6 +4,5 @@
 
     public override void Enter()
     {
-        Context.Animator.PlayIdle();
     }
 }
