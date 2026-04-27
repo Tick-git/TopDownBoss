@@ -15,6 +15,6 @@ public class EquippedState : BaseState<PlayerController>
     {
         base.Update();
 
-        Context.Weapon.Aim(Context.Input.AimPosition);
+        Context.Weapon.Aim(Context.Input.AimDirection);
     }
 }
