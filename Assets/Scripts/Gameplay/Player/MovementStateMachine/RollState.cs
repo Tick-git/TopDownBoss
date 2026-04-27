@@ -1,4 +1,6 @@
-﻿public class RollState : BaseState<PlayerController>
+﻿using UnityEngine;
+
+public class RollState : BaseState<PlayerController>
 {
     public RollState(PlayerController context) : base(context)
     {
@@ -11,12 +13,11 @@
         Context.PlayerAnimator.SetRollTrigger();
         Context.HolsterWeapon();
     }
-
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         
-        Context.Movement.Roll(Context.Input.MoveDirection);
+        Context.Movement.Roll(Context.Input.MoveDirection, Time.fixedDeltaTime);
     }
 
     public override void Exit()

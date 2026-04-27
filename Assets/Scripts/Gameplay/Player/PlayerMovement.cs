@@ -4,17 +4,24 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerMovementData _playerMovementData;
     
-    public void Move(Vector2 direction)
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
     {
-        direction.Normalize();
-        
-        transform.position += (Vector3) direction * (Time.deltaTime * _playerMovementData.MoveSpeed);
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void Roll(Vector2 direction)
+    public void Move(Vector2 direction, float deltaTime)
     {
         direction.Normalize();
         
-        transform.position += (Vector3) direction * (Time.deltaTime * _playerMovementData.RollSpeed);
+        _rigidbody.MovePosition(_rigidbody.position + direction * (deltaTime * _playerMovementData.MoveSpeed));
+    }
+
+    public void Roll(Vector2 direction, float deltaTime)
+    {
+        direction.Normalize();
+        
+        _rigidbody.MovePosition(_rigidbody.position + direction * (deltaTime * _playerMovementData.RollSpeed));
     }
 }

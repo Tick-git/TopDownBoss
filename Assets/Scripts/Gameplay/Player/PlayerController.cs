@@ -40,6 +40,12 @@ public class PlayerController : MonoBehaviour
         _movementSm.Update();
         _weaponSm.Update();
     }
+
+    private void FixedUpdate()
+    {
+        _movementSm.FixedUpdate();
+        _weaponSm.FixedUpdate();
+    }
     
     private void InitMovementStateMachine()
     {

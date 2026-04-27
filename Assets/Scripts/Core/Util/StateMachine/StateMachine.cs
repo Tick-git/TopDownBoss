@@ -17,6 +17,11 @@ public class StateMachine
         
         _current?.State.Update();
     }
+    
+    public void FixedUpdate()
+    {
+        _current?.State.FixedUpdate();
+    }
 
     public void AddTransition(IState from, IState to, IPredicate condition)
     {

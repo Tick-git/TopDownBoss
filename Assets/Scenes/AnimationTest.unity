@@ -571,10 +571,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1929541158366781160, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-      propertyPath: _playerMovementData
-      value: 
-      objectReference: {fileID: 11400000, guid: 326b8b00624802943b2271bacd65bf50, type: 2}
     - target: {fileID: 2359513098666288967, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -613,14 +609,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2359513098666288967, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2805715604144453035, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842608618261528294, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
