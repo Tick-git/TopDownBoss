@@ -8,7 +8,8 @@
     {
         base.Enter();
 
-        Context.Animator.SetRollTrigger();
+        Context.PlayerAnimator.SetRollTrigger();
+        Context.HolsterWeapon();
     }
 
     public override void Update()
@@ -16,5 +17,12 @@
         base.Update();
         
         Context.Movement.Roll(Context.Input.MoveDirection);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        
+        Context.EquipWeapon();
     }
 }
