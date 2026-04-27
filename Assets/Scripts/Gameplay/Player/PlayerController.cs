@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public InputReader Input => _input;
 
     public WeaponAnimator WeaponAnimator => _weaponAnimator;
+    public Weapon Weapon => _weapon;
 
 
     private void Awake()
@@ -29,11 +30,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _weapon.Aim(Input.AimPosition);
-
-        if (_input.AttackPressed)
-            _weapon.Shoot();
-
         _playerAnimator.SetLookDirection(Input.AimPosition.x < transform.position.x);
         _playerAnimator.SetIsMoving(IsMoving);
 
@@ -56,10 +52,10 @@ public class PlayerController : MonoBehaviour
         var rollState = new RollState(this);
 
         AtMovement(idleState, walkState, new FuncPredicate(() => IsMoving));
-        AtMovement(idleState, rollState, new FuncPredicate(() => _input.RollPressed));
+        AtMovement(idleState, rollState, new FuncPredicate(() => _input.RollWasPressed));
 
         AtMovement(walkState, idleState, new FuncPredicate(() => !IsMoving));
-        AtMovement(walkState, rollState, new FuncPredicate(() => _input.RollPressed));
+        AtMovement(walkState, rollState, new FuncPredicate(() => _input.RollWasPressed));
 
         AtMovement(rollState, idleState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && !IsMoving));
         AtMovement(rollState, walkState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && IsMoving));
@@ -73,9 +69,15 @@ public class PlayerController : MonoBehaviour
 
         var equippedState = new EquippedState(this);
         var holsteredState = new HolsteredState(this);
+        var shootingState = new ShootingState(this);
         
         AtWeapon(equippedState, holsteredState, new FuncPredicate(() => !_weaponEquipped));
+        AtWeapon(equippedState, shootingState, new FuncPredicate(() => Input.AttackIsPressed));
+        
         AtWeapon(holsteredState, equippedState, new FuncPredicate(() => _weaponEquipped));
+        
+        AtWeapon(shootingState, equippedState, new FuncPredicate(() => !Input.AttackIsPressed));
+        AtWeapon(shootingState, holsteredState, new FuncPredicate(() => !_weaponEquipped));
 
         _weaponSm.SetState(equippedState);
     }

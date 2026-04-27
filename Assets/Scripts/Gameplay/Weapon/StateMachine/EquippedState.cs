@@ -1,4 +1,6 @@
-﻿public class EquippedState : BaseState<PlayerController>
+﻿using UnityEngine;
+
+public class EquippedState : BaseState<PlayerController>
 {
     public EquippedState(PlayerController context) : base(context) {}
 
@@ -7,5 +9,12 @@
         base.Enter();
         
         Context.WeaponAnimator.SetEquipped();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        Context.Weapon.Aim(Context.Input.AimPosition);
     }
 }

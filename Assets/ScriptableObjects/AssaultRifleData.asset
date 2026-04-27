@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::AssaultRifleData
   _orbitRadius: 0.3
   _damage: 55
-  _fireRate: 1
+  _fireRatePerSecond: 4
   _range: 10
-  _bulletVelocity: 10
+  _bulletVelocity: 15

@@ -7,12 +7,15 @@ public class AssaultRifle : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Magazine _magazine;
     
+    private float _lastShotTime;
+    
     private SpriteRenderer _weaponSpriteRenderer;
     private Vector2 CenterPosition => _weaponCenter.position;
     
     private void Awake()
     {
         _weaponSpriteRenderer = GetComponent<SpriteRenderer>();
+        _lastShotTime = -float.MaxValue;
     }
 
     public void ApplyAim(Vector2 target)
@@ -27,9 +30,13 @@ public class AssaultRifle : MonoBehaviour
         _weaponSpriteRenderer.flipY = aimingLeft;
     }
 
-    public void Shoot()
+    public void TryShoot()
     {
+        if (Time.time < _lastShotTime + (1 / _data.FireRatePerSecond))
+            return;
+        
         _magazine.TryGetBullet(out Bullet bullet);
+        _lastShotTime = Time.time;
         
         bullet.transform.position = _firePoint.position;
         bullet.StartFlight(transform.right, _data.Damage, _data.BulletVelocity);

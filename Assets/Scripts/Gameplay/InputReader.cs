@@ -18,8 +18,8 @@ public class InputReader : ScriptableObject
         _rollAction = InputSystem.actions.FindAction("Roll");
     }
 
-    public bool AttackPressed => _attackAction.WasPressedThisFrame();
-    public bool RollPressed => _rollAction.WasPressedThisFrame();
+    public bool AttackIsPressed => _attackAction.IsPressed();
+    public bool RollWasPressed => _rollAction.WasPressedThisFrame();
     public Vector2 MoveDirection =>  _moveAction.ReadValue<Vector2>();
     public Vector2 AimPosition => _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 }

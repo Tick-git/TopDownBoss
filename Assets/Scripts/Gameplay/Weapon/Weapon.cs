@@ -4,9 +4,9 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField]  private AssaultRifle _assaultRifle;
     
-    public void Shoot()
+    public void TryShoot()
     {
-        _assaultRifle.Shoot();
+        _assaultRifle.TryShoot();
     }
 
     public void Aim(Vector2 target)
