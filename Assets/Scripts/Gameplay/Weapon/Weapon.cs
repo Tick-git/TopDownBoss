@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerWeapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [SerializeField]  private AssaultRifle _assaultRifle;
     
