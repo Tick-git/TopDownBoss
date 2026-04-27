@@ -8,15 +8,34 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private PlayerWeapon _weapon;
 
-    private InputAction _attackAction;
     private StateMachine _movementSm;
+    
     private bool IsMoving => _input.MoveDirection != Vector2.zero;
 
     public PlayerAnimator Animator => _animator;
     public PlayerMovement Movement => _movement;
     public InputReader Input => _input;
+        
 
     private void Awake()
+    {
+        InitMovementStateMachine();
+    }
+
+    private void Update()
+    {
+        _weapon.Aim(Input.AimPosition);
+
+        if (_input.AttackPressed)
+            _weapon.Shoot();
+
+        _animator.SetLookDirection(Input.AimPosition.x < transform.position.x);
+        _animator.SetIsMoving(IsMoving);
+
+        _movementSm.Update();
+    }
+    
+    private void InitMovementStateMachine()
     {
         _movementSm = new StateMachine();
 
@@ -40,18 +59,5 @@ public class PlayerController : MonoBehaviour
     private void AtMovement(IState from, IState to, IPredicate condition)
     {
         _movementSm.AddTransition(from, to, condition);
-    }
-
-    private void Update()
-    {
-        _weapon.Aim(Input.AimPosition);
-
-        if (_input.AttackPressed)
-            _weapon.Shoot();
-
-        _animator.SetLookDirection(Input.AimPosition.x < transform.position.x);
-        _animator.SetIsMoving(IsMoving);
-
-        _movementSm.Update();
     }
 }
