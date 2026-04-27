@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _playerAnimator.SetLookDirection(Input.AimPosition.x < transform.position.x);
+        _playerAnimator.SetAimDirection(Input.AimPosition);
         _playerAnimator.SetIsMoving(IsMoving);
 
         _movementSm.Update();

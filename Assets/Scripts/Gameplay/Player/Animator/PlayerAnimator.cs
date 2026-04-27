@@ -11,6 +11,8 @@ public class PlayerAnimator : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private RollStateBehaviour _rollState;
 
+    private Vector2 _lastAimDirection;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -41,8 +43,11 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetTrigger(Roll);
     }
 
-    public void SetLookDirection(bool looksLeft)
+    public void SetAimDirection(Vector2 aimDirection)
     {
-        _spriteRenderer.flipX = looksLeft;
+        if (aimDirection == Vector2.zero)
+            return;
+        
+        _spriteRenderer.flipX  = aimDirection.x < 0;
     }
 }

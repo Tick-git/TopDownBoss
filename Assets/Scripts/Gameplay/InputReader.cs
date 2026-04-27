@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject
     
     private Camera _cam;
     private InputAction _rollAction;
+    private InputAction _lookAction;
 
     private void OnEnable()
     {
@@ -16,10 +17,11 @@ public class InputReader : ScriptableObject
         _moveAction = InputSystem.actions.FindAction("Move");
         _attackAction = InputSystem.actions.FindAction("Attack");
         _rollAction = InputSystem.actions.FindAction("Roll");
+        _lookAction = InputSystem.actions.FindAction("Look");
     }
 
     public bool AttackIsPressed => _attackAction.IsPressed();
     public bool RollWasPressed => _rollAction.WasPressedThisFrame();
     public Vector2 MoveDirection =>  _moveAction.ReadValue<Vector2>();
-    public Vector2 AimPosition => _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    public Vector2 AimPosition => _lookAction.ReadValue<Vector2>().normalized;
 }
