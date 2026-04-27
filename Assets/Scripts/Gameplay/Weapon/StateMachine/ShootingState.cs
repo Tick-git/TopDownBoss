@@ -8,7 +8,7 @@
     {
         base.Update();
 
-        Context.Weapon.Aim(Context.Input.AimDirection);
+        Context.Weapon.ApplyAim(Context.Input.AimDirection);
         Context.Weapon.TryShoot();
     }
 }

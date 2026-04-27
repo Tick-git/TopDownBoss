@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;using PlasticPipe.Server;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = DataPaths.CoreData.Vfx + "Library")]

@@ -6,7 +6,7 @@ public class WeaponAnimator : MonoBehaviour
     
     private static readonly int Equipped = Animator.StringToHash("Equipped");
     
-    private void Awake()
+    public void Initialize()
     {
         _animator = GetComponent<Animator>();
     }

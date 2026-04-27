@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerAnimator _playerAnimator;
     [SerializeField] private PlayerMovement _movement;
-    [SerializeField] private Weapon _weapon;
+    [SerializeField] private AssaultRifle _weapon;
     [SerializeField] private WeaponAnimator _weaponAnimator;
     
     private StateMachine _movementSm;
@@ -19,11 +19,16 @@ public class PlayerController : MonoBehaviour
     public InputReader Input => _input;
 
     public WeaponAnimator WeaponAnimator => _weaponAnimator;
-    public Weapon Weapon => _weapon;
+    public AssaultRifle Weapon => _weapon;
 
 
     private void Awake()
     {
+        _playerAnimator.Initialize();
+        _movement.Initialize();
+        _weapon.Initialize();
+        _weaponAnimator.Initialize();
+        
         InitMovementStateMachine();
         InitWeaponStateMachine();
     }

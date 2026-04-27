@@ -13,7 +13,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private Vector2 _lastAimDirection;
 
-    private void Awake()
+    public void Initialize()
     {
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

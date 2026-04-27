@@ -12,7 +12,7 @@ public class AssaultRifle : MonoBehaviour
     private SpriteRenderer _weaponSpriteRenderer;
     private Vector2 CenterPosition => _weaponCenter.position;
     
-    private void Awake()
+    public void Initialize()
     {
         _weaponSpriteRenderer = GetComponent<SpriteRenderer>();
         _lastShotTime = -float.MaxValue;

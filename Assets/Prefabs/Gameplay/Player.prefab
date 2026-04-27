@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2359513098666288967}
   - component: {fileID: 6620165309540836398}
   - component: {fileID: 1929541158366781160}
-  - component: {fileID: 7735729415812809208}
   - component: {fileID: 7666506039258470409}
   m_Layer: 0
   m_Name: Player
@@ -52,7 +51,7 @@ MonoBehaviour:
   _input: {fileID: 11400000, guid: 55c2e89d547b3e2479d6b1a618dcbe93, type: 2}
   _playerAnimator: {fileID: 2751328546615226703}
   _movement: {fileID: 1929541158366781160}
-  _weapon: {fileID: 7735729415812809208}
+  _weapon: {fileID: 1898054918886240235}
   _weaponAnimator: {fileID: 7360406256935177974}
 --- !u!114 &1929541158366781160
 MonoBehaviour:
@@ -67,19 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::PlayerMovement
   _playerMovementData: {fileID: 11400000, guid: 326b8b00624802943b2271bacd65bf50, type: 2}
---- !u!114 &7735729415812809208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4594669592065292467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0a90761750407387661f28d2fdac59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::PlayerWeapon
-  _assaultRifle: {fileID: 1898054918886240235}
 --- !u!50 &7666506039258470409
 Rigidbody2D:
   serializedVersion: 5
