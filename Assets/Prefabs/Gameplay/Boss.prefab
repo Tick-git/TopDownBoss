@@ -626,8 +626,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3770434238370709630}
   - component: {fileID: 3754632420856483821}
-  - component: {fileID: 4680123778016847766}
+  - component: {fileID: 844885654616230305}
   - component: {fileID: 7465731787159749018}
+  - component: {fileID: 4680123778016847766}
   - component: {fileID: 5965320094635387262}
   - component: {fileID: 3825441669576616186}
   m_Layer: 0
@@ -666,6 +667,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _visuals: {fileID: 1499608734543776298}
+  _animator: {fileID: 0}
+--- !u!114 &844885654616230305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c7fd8fe954fc2b7dbe06618a88c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Target
+  _target: {fileID: 0}
+--- !u!114 &7465731787159749018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Health
+  _healthData: {fileID: 11400000, guid: 5da71740b8623774cb5fea09659ae3b5, type: 2}
 --- !u!50 &4680123778016847766
 Rigidbody2D:
   serializedVersion: 5
@@ -693,19 +721,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &7465731787159749018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3737609244628997734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::Health
-  _healthData: {fileID: 11400000, guid: 5da71740b8623774cb5fea09659ae3b5, type: 2}
 --- !u!58 &5965320094635387262
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -791,6 +806,7 @@ GameObject:
   - component: {fileID: 3844184909614700151}
   - component: {fileID: 1122890562315532522}
   - component: {fileID: 1499608734543776298}
+  - component: {fileID: 2382058574239483312}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -864,6 +880,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30742d196a4aa9a409973d480b49e04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &2382058574239483312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172364736327432499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633c531a20014f59bf7239dbe5c6268a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::BossAnimator
 --- !u!1 &6397396914006407894
 GameObject:
   m_ObjectHideFlags: 0
