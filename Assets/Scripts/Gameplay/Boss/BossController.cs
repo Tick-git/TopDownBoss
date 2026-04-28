@@ -1,24 +1,18 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BossController : MonoBehaviour
 {
     [SerializeField] private BossVisuals _visuals;
-
-    private InputAction _testAction;
-    private bool _testIsRotated = true;
     
+    private TargetTracker _targetTracker;
+
     private void Awake()
     {
-        _testAction = InputSystem.actions.FindAction("Interact");
+        _targetTracker = GetComponent<TargetTracker>();
     }
 
     private void Update()
     {
-        if (_testAction.WasPressedThisFrame())
-        {
-            _testIsRotated = !_testIsRotated;
-            _visuals.Rotate(_testIsRotated);
-        }
+        _visuals.Rotate(_targetTracker.IsRightSideOf(transform.position));
     }
 }
