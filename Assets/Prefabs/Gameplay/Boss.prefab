@@ -627,7 +627,9 @@ GameObject:
   - component: {fileID: 3770434238370709630}
   - component: {fileID: 3754632420856483821}
   - component: {fileID: 4680123778016847766}
-  - component: {fileID: 8100224305561551185}
+  - component: {fileID: 7465731787159749018}
+  - component: {fileID: 5965320094635387262}
+  - component: {fileID: 3825441669576616186}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -691,7 +693,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!70 &8100224305561551185
+--- !u!114 &7465731787159749018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Health
+  _healthData: {fileID: 11400000, guid: 5da71740b8623774cb5fea09659ae3b5, type: 2}
+--- !u!58 &5965320094635387262
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.012959795, y: 1.7132531}
+  m_Radius: 1.7304626
+--- !u!70 &3825441669576616186
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -721,12 +772,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.006668091, y: 0.8801863}
-  m_Size: {x: 3.4739628, y: 5.0275197}
+  m_Offset: {x: -0.01295495, y: -0.50539815}
+  m_Size: {x: 1.3554322, y: 2.1915789}
   m_Direction: 0
 --- !u!1 &6172364736327432499
 GameObject:
