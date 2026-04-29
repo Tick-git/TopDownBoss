@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7884dbde61e43188409230a95f6ed6b, type: 3}
-  m_Name: BulletPoolData
+  m_Name: PlayerBulletPool
   m_EditorClassIdentifier: Scripts::PoolData
   _prefab: {fileID: 790971976264682230, guid: a8680e3201e453b4583dcb6b8e6cfc62, type: 3}
   _poolSize: 20

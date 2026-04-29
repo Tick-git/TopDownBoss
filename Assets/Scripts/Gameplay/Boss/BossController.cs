@@ -17,7 +17,6 @@ namespace Gameplay.Boss
             TargetTracker = GetComponent<TargetTracker>();
             Weapon = GetComponent<BossWeapon>();
             
-            Weapon.Initialize();
             _animator.Initialize();
             
             _bossStateMachine = new StateMachine();
@@ -30,7 +29,7 @@ namespace Gameplay.Boss
             
             _bossStateMachine.SetState(attackState);
         }
-
+        
         private void Update()
         {
             _visuals.Rotate(TargetTracker.IsRightSideOf(transform.position));
@@ -58,7 +57,7 @@ namespace Gameplay.Boss
         
         public AttackState(BossController context) : base(context) { }
 
-        public override void Enter()  => _currentState = State.None;
+        public override void Enter() => _currentState = State.None;
 
         public override void Exit()
         {
@@ -68,11 +67,12 @@ namespace Gameplay.Boss
         public override void Update()
         {
             TryChangeState();
-
+            
+            Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
+            
             switch (_currentState)
             {
                 case State.Aim:
-                    Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
                     break;
                 case State.Shoot:
                     break;
@@ -91,6 +91,7 @@ namespace Gameplay.Boss
             else if (_currentState == State.Aim && !Context.Animator.AimingRunning)
             {
                 _currentState = State.Shoot;
+                Context.Weapon.Shoot(Context.TargetTracker.GetTargetPosition());
             } 
             else if (_currentState == State.Shoot && !Context.Animator.ShootRunning)
             {
