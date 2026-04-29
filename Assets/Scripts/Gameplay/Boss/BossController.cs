@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Gameplay.Boss
@@ -18,6 +17,7 @@ namespace Gameplay.Boss
             TargetTracker = GetComponent<TargetTracker>();
             Weapon = GetComponent<BossWeapon>();
             
+            Weapon.Initialize();
             _animator.Initialize();
             
             _bossStateMachine = new StateMachine();
@@ -25,6 +25,9 @@ namespace Gameplay.Boss
             var attackState = new AttackState(this);
             var idleState = new IdleState(this);
         
+            _bossStateMachine.AddTransition(idleState, attackState, new FuncPredicate(() => true));
+            _bossStateMachine.AddTransition(attackState, idleState, new FuncPredicate(() => !Animator.AttackRunning));
+            
             _bossStateMachine.SetState(attackState);
         }
 
@@ -43,45 +46,56 @@ namespace Gameplay.Boss
 
     public class AttackState : BaseState<BossController>
     {
-        private readonly StateMachine _attackSm;
-        private readonly AimState _aimState;
-
-        public AttackState(BossController context) : base(context)
+        private State _currentState; 
+        
+        enum State
         {
-            _attackSm =  new StateMachine();
-            
-            _aimState = new AimState(context);
-            var shootState = new ShootState(context);
-            
-            _attackSm.AddTransition(_aimState, shootState, new FuncPredicate(() => !Context.Animator.AimingRunning));
+            None,
+            Aim,
+            Shoot,
+            Holster
         }
+        
+        public AttackState(BossController context) : base(context) { }
 
-        public override void Enter()
+        public override void Enter()  => _currentState = State.None;
+
+        public override void Exit()
         {
-            _attackSm.SetState(_aimState);
+            _currentState = State.None;
         }
 
         public override void Update()
         {
-            _attackSm.Update();
+            TryChangeState();
+
+            switch (_currentState)
+            {
+                case State.Aim:
+                    Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
+                    break;
+                case State.Shoot:
+                    break;
+                case State.Holster:
+                    break;
+            }
         }
 
-        class AimState : BaseState<BossController>
+        private void TryChangeState()
         {
-            public AimState(BossController context) : base(context) {}
-
-            public override void Enter() => Context.Animator.SetAimTrigger();
-
-            public override void Update() => Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
-        }
-        
-        class ShootState : BaseState<BossController>
-        {
-            public ShootState(BossController context) : base(context) {}
-
-            public override void Enter() => Debug.Log("Entered");
-            //
-            // public override void Update() => Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
+            if (_currentState == State.None)
+            {
+                _currentState = State.Aim;
+                Context.Animator.SetAimTrigger();
+            }
+            else if (_currentState == State.Aim && !Context.Animator.AimingRunning)
+            {
+                _currentState = State.Shoot;
+            } 
+            else if (_currentState == State.Shoot && !Context.Animator.ShootRunning)
+            {
+                _currentState = State.Holster;
+            }
         }
     }
 

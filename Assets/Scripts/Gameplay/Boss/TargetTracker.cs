@@ -13,4 +13,9 @@ public class TargetTracker : MonoBehaviour
     {
         return _target.position;
     }
+    
+    public Vector2 GetTargetDirection()
+    {
+        return (_target.position - transform.position).normalized;
+    }
 }

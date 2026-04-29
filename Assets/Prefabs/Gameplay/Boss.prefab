@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 3754632420856483821}
   - component: {fileID: 844885654616230305}
   - component: {fileID: 7465731787159749018}
+  - component: {fileID: 8218433025993125145}
   - component: {fileID: 4680123778016847766}
   - component: {fileID: 5965320094635387262}
   - component: {fileID: 3825441669576616186}
@@ -667,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _visuals: {fileID: 1499608734543776298}
-  _animator: {fileID: 0}
+  _animator: {fileID: 2382058574239483312}
 --- !u!114 &844885654616230305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +695,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::Health
   _healthData: {fileID: 11400000, guid: 5da71740b8623774cb5fea09659ae3b5, type: 2}
+--- !u!114 &8218433025993125145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca1a7fd6019447a9f970cc1f592267a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::BossWeapon
+  _weapon: {fileID: 336917314009645459}
+  _renderer: {fileID: 7452390580852661348}
 --- !u!50 &4680123778016847766
 Rigidbody2D:
   serializedVersion: 5

@@ -5,13 +5,15 @@ public class BossWeapon : MonoBehaviour
     [SerializeField] private Transform _weapon;
     [SerializeField] private SpriteRenderer _renderer;
     
-    public void ApplyAim(Vector2 targetPosition)
+    private WeaponRotator _weaponRotator;
+
+    public void Initialize()
     {
-        Vector2 direction = (targetPosition - (Vector2) transform.position).normalized;
-        
-        _renderer.flipY = targetPosition.x < transform.position.x;
-        
-        float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _weapon.rotation = Quaternion.Euler(0, 0, rotationAngle);
+        _weaponRotator = new WeaponRotator(_renderer, _weapon);
+    }
+    
+    public void ApplyAim(Vector2 target)
+    {
+        _weaponRotator.Rotate((target - (Vector2) _weapon.transform.position).normalized);
     }
 }

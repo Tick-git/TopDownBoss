@@ -124,17 +124,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2359513098666288967, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
   m_PrefabInstance: {fileID: 1844441602615647218}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &916026864 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2382058574239483312, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 1454931504210112939}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633c531a20014f59bf7239dbe5c6268a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::BossAnimator
 --- !u!1 &1175783183
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,11 +352,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1964210881 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 336917314009645459, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 1454931504210112939}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1454931504210112939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,10 +368,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 3754632420856483821, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 916026864}
     - target: {fileID: 3770434238370709630, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.85
@@ -431,29 +411,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3737609244628997734, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1454931504210112949}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
---- !u!1 &1454931504210112940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3737609244628997734, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 1454931504210112939}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1454931504210112949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454931504210112940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cca1a7fd6019447a9f970cc1f592267a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::BossWeapon
-  _weapon: {fileID: 1964210881}
 --- !u!1001 &1844441602615647218
 PrefabInstance:
   m_ObjectHideFlags: 0
