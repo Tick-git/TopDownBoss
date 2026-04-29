@@ -14,7 +14,7 @@ public class BossAnimator : MonoBehaviour
     public bool AimingRunning => _animationsRunning[Aim];
     public bool ShootRunning => _animationsRunning[Shoot];
     public bool HolsterRunning => _animationsRunning[Holster];
-    public bool AttackRunning  => !AimingRunning && !ShootRunning && !HolsterRunning;
+    public bool AttackRunning  => AimingRunning || ShootRunning || HolsterRunning;
 
     public void Initialize()
     {
@@ -47,7 +47,7 @@ public class BossAnimator : MonoBehaviour
 
     private void OnStateEnter(int shortNameHash)
     {
-        SetAnimationRunningEntry(shortNameHash, false);
+        SetAnimationRunningEntry(shortNameHash, true);
     }
 
     private void SetAnimationRunningEntry(int shortNameHash, bool running)
@@ -58,7 +58,7 @@ public class BossAnimator : MonoBehaviour
             return;
         }
         
-        _animationsRunning[shortNameHash] = true;
+        _animationsRunning[shortNameHash] = running;
     }
 
     public void SetAimTrigger()
