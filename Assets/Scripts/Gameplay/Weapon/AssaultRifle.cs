@@ -8,13 +8,12 @@ public class AssaultRifle : MonoBehaviour
     [SerializeField] private Magazine _magazine;
     
     private float _lastShotTime;
-    
-    private SpriteRenderer _weaponSpriteRenderer;
+    private WeaponRotator _weaponRotator;
     private Vector2 CenterPosition => _weaponCenter.position;
     
     public void Initialize()
     {
-        _weaponSpriteRenderer = GetComponent<SpriteRenderer>();
+        _weaponRotator = new WeaponRotator(GetComponent<SpriteRenderer>(), transform);
         _lastShotTime = -float.MaxValue;
         
         SetWeaponTransform(Vector2.right);
@@ -24,18 +23,15 @@ public class AssaultRifle : MonoBehaviour
     {
         if (direction.magnitude <= 0.001f)
             return;
-        
-        bool aimingLeft = direction.x < 0;
-        _weaponSpriteRenderer.flipY = aimingLeft;
-        
-        SetWeaponTransform(direction);
+
+        _weaponRotator.Rotate(direction);
+        transform.position = CenterPosition + direction * _data.OrbitRadius;
     }
 
     private void SetWeaponTransform(Vector2 direction)
     {
         float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
-        transform.position = CenterPosition + direction * _data.OrbitRadius;
         transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
     }
 
