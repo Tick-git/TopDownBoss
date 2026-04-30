@@ -2,6 +2,6 @@
     <ui:Template name="Healthbar" src="project://database/Assets/Views/HUD/Templates/Healthbar.uxml?fileID=9197481963319205126&amp;guid=95f546badc693424787582a85030105f&amp;type=3#Healthbar"/>
     <Style src="project://database/Assets/Views/Styles/Color.uss?fileID=7433441132597879392&amp;guid=e085b0bb4833dc44cbc13c689f568195&amp;type=3#Color"/>
     <ui:VisualElement style="flex-grow: 1; margin-right: 70%; margin-left: 20px; margin-top: 20px;">
-        <ui:Instance template="Healthbar" class="border-white-color" style="height: 21px;"/>
+        <ui:Instance template="Healthbar" name="TemplateContainer" class="border-white-color" style="height: 7px;"/>
     </ui:VisualElement>
 </ui:UXML>
