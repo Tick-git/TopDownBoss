@@ -16,7 +16,7 @@ public class AssaultRifle : MonoBehaviour
         _weaponRotator = new WeaponRotator(GetComponent<SpriteRenderer>(), transform);
         _lastShotTime = -float.MaxValue;
         
-        SetWeaponTransform(Vector2.right);
+        ApplyAim(Vector2.right);
     }
 
     public void ApplyAim(Vector2 direction)
@@ -26,13 +26,6 @@ public class AssaultRifle : MonoBehaviour
 
         _weaponRotator.Rotate(direction);
         transform.position = CenterPosition + direction * _data.OrbitRadius;
-    }
-
-    private void SetWeaponTransform(Vector2 direction)
-    {
-        float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        
-        transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
     }
 
     public void TryShoot()
