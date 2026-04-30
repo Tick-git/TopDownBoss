@@ -5,3 +5,10 @@
 .text-white-color {
     color: rgb(200, 200, 200);
 }
+
+.border-white-color {
+    border-left-color: rgb(200, 200, 200);
+    border-right-color: rgb(200, 200, 200);
+    border-top-color: rgb(200, 200, 200);
+    border-bottom-color: rgb(200, 200, 200);
+}

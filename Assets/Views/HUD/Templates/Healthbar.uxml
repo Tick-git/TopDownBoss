@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Views/Styles/SliderStyle.uss?fileID=7433441132597879392&amp;guid=0cf1a88e4e3b9ed45b2854cef986c828&amp;type=3#SliderStyle"/>
+    <Style src="project://database/Assets/Views/Styles/Healthbar.uss?fileID=7433441132597879392&amp;guid=c7b28f21997aabc428de0c536e31650d&amp;type=3#Healthbar"/>
+    <ui:Slider label="" value="100" high-value="100" fill="true" show-input-field="false" name="Healthbar" class="slider-drag-container slider-dragger-border slider-tracker slider-tracker-fill slider-dragger slider-text-input unity-text-field slider-label" style="flex-grow: 1; width: 100%; height: 100%; flex-shrink: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; min-height: 0;"/>
+</ui:UXML>

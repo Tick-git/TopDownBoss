@@ -11,6 +11,10 @@
     font-size: 60px;
 }
 
+.h6 {
+    font-size: 24px;
+}
+
 .body {
     font-size: 20px;
     -unity-font-style: normal;
