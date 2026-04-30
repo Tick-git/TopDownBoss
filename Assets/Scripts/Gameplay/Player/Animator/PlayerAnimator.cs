@@ -6,7 +6,8 @@ public class PlayerAnimator : MonoBehaviour
     
     private static readonly int MoveInput = Animator.StringToHash("MoveInput");
     private static readonly int Roll = Animator.StringToHash("Roll");
-    
+    private static readonly int MoveSpeedMultiplier = Animator.StringToHash("MoveSpeedMultiplier");
+
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private RollStateBehaviour _rollState;
@@ -49,5 +50,10 @@ public class PlayerAnimator : MonoBehaviour
             return;
         
         _spriteRenderer.flipX  = aimDirection.x < 0;
+    }
+
+    public void SetMoveSpeedMultiplier(float value)
+    {
+        _animator.SetFloat(MoveSpeedMultiplier, value);
     }
 }

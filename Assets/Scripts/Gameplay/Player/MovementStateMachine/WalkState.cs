@@ -9,5 +9,6 @@ public class WalkState : BaseState<PlayerController>
         base.FixedUpdate();
         
         Context.Movement.Move(Context.Input.MoveDirection, Time.fixedDeltaTime);
+        Context.PlayerAnimator.SetMoveSpeedMultiplier(Context.Movement.MoveSpeedMultiplier);
     }
 }
