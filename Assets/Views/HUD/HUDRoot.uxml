@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="BossHealthWidget" src="project://database/Assets/Views/HUD/BossHealthWidget.uxml?fileID=9197481963319205126&amp;guid=8c7e722ca890ee54cb83f1b155035125&amp;type=3#BossHealthWidget"/>
-    <ui:Template name="PlayerHealthWidget" src="project://database/Assets/Views/HUD/PlayerHealthWidget.uxml?fileID=9197481963319205126&amp;guid=ed481fae3bdc4304cbf7d6d6728b3ef6&amp;type=3#PlayerHealthWidget"/>
-    <ui:Instance template="PlayerHealthWidget" name="PlayerHealthWidget" style="position: absolute; flex-grow: 1; width: 100%; height: 100%;"/>
-    <ui:Instance template="BossHealthWidget" name="BossHealthWidge" style="flex-grow: 1; position: absolute; width: 100%; height: 100%;"/>
+    <ui:Template name="BossHealthWidget" src="project://database/Assets/Views/HUD/Widgets/BossHealthWidget.uxml?fileID=9197481963319205126&amp;guid=8c7e722ca890ee54cb83f1b155035125&amp;type=3#BossHealthWidget"/>
+    <ui:Template name="PlayerHealthWidget" src="project://database/Assets/Views/HUD/Widgets/PlayerHealthWidget.uxml?fileID=9197481963319205126&amp;guid=ed481fae3bdc4304cbf7d6d6728b3ef6&amp;type=3#PlayerHealthWidget"/>
+    <ui:Instance template="PlayerHealthWidget" name="PlayerHealthWidget" enabled="true" style="position: absolute; flex-grow: 1; width: 100%; height: 100%; display: none;"/>
+    <ui:Instance template="BossHealthWidget" name="BossHealthWidget" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; display: none;"/>
 </ui:UXML>

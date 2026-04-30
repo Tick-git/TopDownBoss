@@ -9,6 +9,8 @@ public class Health : MonoBehaviour, IDamageable
     public event Action<float> HealthChanged;
     public event Action Died;
 
+    public float MaxHealth => _healthData.MaxHealth;
+    
     private void Awake()
     {
         _currentHealth = _healthData.MaxHealth;

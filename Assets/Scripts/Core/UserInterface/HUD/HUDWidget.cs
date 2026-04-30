@@ -1,21 +1,27 @@
-﻿using UnityEngine.UIElements;
+﻿using System;
+using UnityEngine.UIElements;
 
-public abstract class HUDWidget
+public abstract class HUDWidget : IDisposable
 {
-    private readonly VisualElement root;
+    private readonly VisualElement _root;
 
     protected HUDWidget(VisualElement root)
     {
-        this.root = root;
+        _root = root;
     }
 
     public void Show()
     {
-        root.style.display = DisplayStyle.Flex;
+        _root.style.display = DisplayStyle.Flex;
     }
 
     public void Hide()
     {
-        root.style.display = DisplayStyle.None;
+        _root.style.display = DisplayStyle.None;
+    }
+
+    public virtual void Dispose()
+    {
+        // NOOP
     }
 }

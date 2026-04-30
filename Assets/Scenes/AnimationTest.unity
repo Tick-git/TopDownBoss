@@ -142,6 +142,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::Health
   _healthData: {fileID: 11400000, guid: 17918fc4b4ddc304cae87b17cc26c739, type: 2}
+--- !u!114 &419185273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6898605991630515463, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+  m_PrefabInstance: {fileID: 1844441602615647218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118615630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Health
 --- !u!1 &548782130
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548782132}
   - component: {fileID: 548782131}
+  - component: {fileID: 548782134}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -197,6 +209,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &548782134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548782130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca9003cc485477479d94083513b579b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::HUDManager
+  _player: {fileID: 419185273}
+  _boss: {fileID: 753664303}
+--- !u!114 &753664303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7465731787159749018, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+  m_PrefabInstance: {fileID: 1454931504210112939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Health
 --- !u!1 &1175783183
 GameObject:
   m_ObjectHideFlags: 0
