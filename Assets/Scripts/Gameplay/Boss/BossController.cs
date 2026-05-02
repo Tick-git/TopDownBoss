@@ -8,6 +8,7 @@ namespace Gameplay.Boss
         [SerializeField] private BossAnimator _animator;
 
         private StateMachine _bossStateMachine;
+        private float _timer;
         public BossAnimator Animator => _animator;
         public BossWeapon Weapon { get; private set; }
         public TargetTracker TargetTracker { get; private set; }
@@ -24,8 +25,20 @@ namespace Gameplay.Boss
             var attackState = new AttackState(this);
             var idleState = new IdleState(this);
         
-            _bossStateMachine.AddTransition(idleState, attackState, new FuncPredicate(() => true));
-            _bossStateMachine.AddTransition(attackState, idleState, new FuncPredicate(() => !Animator.AttackRunning));
+            _bossStateMachine.AddTransition(idleState, attackState, new FuncPredicate(() =>
+            {
+                _timer += Time.deltaTime;
+
+                if (_timer > 1)
+                {
+                    _timer = 0;
+                    return true;
+                }
+
+                return false;
+            }));
+            
+            _bossStateMachine.AddTransition(attackState, idleState, new FuncPredicate(() => !attackState.IsRunning));
             
             _bossStateMachine.SetState(attackState);
         }

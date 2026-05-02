@@ -8,7 +8,8 @@ public class BossWeapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
 
     private Vector3 _smoothedRotation;
-
+    private float _bulletSpeed = 20;
+    
     public void ApplyAim(Vector2 target)
     {
         var direction = (target - (Vector2)_weapon.position).normalized;
@@ -39,8 +40,8 @@ public class BossWeapon : MonoBehaviour
         bullet2.transform.position = _firePoint.position;
         bullet3.transform.position = _firePoint.position;
 
-        bullet1.StartFlight(Quaternion.Euler(0, 0, 20) * direction, 10, 10);
-        bullet2.StartFlight(direction, 10, 10);
-        bullet3.StartFlight(Quaternion.Euler(0, 0, -20) * direction, 10, 10);
+        bullet1.StartFlight(Quaternion.Euler(0, 0, 5f) * direction, 10, _bulletSpeed);
+        bullet2.StartFlight(direction, 10, _bulletSpeed);
+        bullet3.StartFlight(Quaternion.Euler(0, 0, -5f) * direction, 10, _bulletSpeed);
     }
 }

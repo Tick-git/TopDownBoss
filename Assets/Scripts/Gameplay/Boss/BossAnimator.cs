@@ -7,14 +7,13 @@ public class BossAnimator : MonoBehaviour
     private static readonly int Shoot = Animator.StringToHash("Shoot");
     private static readonly int Holster = Animator.StringToHash("Holster");
 
-    private readonly Dictionary<int, bool> _animationsRunning = new Dictionary<int, bool>();
+    private readonly Dictionary<int, bool> _animationsRunning = new();
     
     private Animator _animator;
 
     public bool AimingRunning => _animationsRunning[Aim];
     public bool ShootRunning => _animationsRunning[Shoot];
     public bool HolsterRunning => _animationsRunning[Holster];
-    public bool AttackRunning  => AimingRunning || ShootRunning || HolsterRunning;
 
     public void Initialize()
     {
@@ -64,5 +63,15 @@ public class BossAnimator : MonoBehaviour
     public void SetAimTrigger()
     {
         _animator.SetTrigger(Aim);
+    }
+
+    public void ResetSpeed()
+    {
+        _animator.speed = 1;
+    }
+
+    public void SetSpeed(float value)
+    {
+        _animator.speed = value;
     }
 }
