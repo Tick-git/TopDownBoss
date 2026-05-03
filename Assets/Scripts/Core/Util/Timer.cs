@@ -23,7 +23,7 @@ public class Timer
         IsRunning = false;
     }
 
-    public void Reset(float? newDuration = null, bool autoStart = false)
+    public void Reset(float? newDuration = null)
     {
         if (newDuration.HasValue)
         {
@@ -31,7 +31,6 @@ public class Timer
         }
 
         Elapsed = 0f;
-        IsRunning = autoStart;
     }
 
     public void Tick(float deltaTime)

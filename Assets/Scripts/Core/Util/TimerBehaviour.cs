@@ -6,7 +6,6 @@ namespace Core.Util
     public class TimerBehaviour : MonoBehaviour
     {
         [SerializeField] private float _duration = 1f;
-        [SerializeField] private bool _playOnAwake = true;
 
         private Timer _timer;
 
@@ -35,7 +34,7 @@ namespace Core.Util
 
         public void StartTimer(float? newDuration = null)
         {
-            _timer.Reset(newDuration, true);
+            _timer.Reset(newDuration);
         }
 
         public void StopTimer()
