@@ -15,8 +15,8 @@ public class Magazine : MonoBehaviour
 
     public bool TryGetBullet(out Bullet bullet)
     {
-        bullet = _bulletPool.Get();
-        bullet.Hit += OnBulletHit;
+        bullet = GetBullet();
+        
         return true;
     }
 
@@ -24,5 +24,12 @@ public class Magazine : MonoBehaviour
     {
         bullet.Hit -= OnBulletHit;
         _bulletPool.Return(bullet);
+    }
+    
+    public Bullet GetBullet()
+    {
+        var bullet = _bulletPool.Get();
+        bullet.Hit += OnBulletHit;
+        return bullet;
     }
 }

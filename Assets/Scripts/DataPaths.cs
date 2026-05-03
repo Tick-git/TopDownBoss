@@ -18,5 +18,6 @@ public static class DataPaths
     {
         public const string ComponentPath = GameplayPath + "Components/";
         public const string PlayerPaths = GameplayPath + "Player/";
+        public const string BossPaths = GameplayPath + "Boss/";
     }
 }

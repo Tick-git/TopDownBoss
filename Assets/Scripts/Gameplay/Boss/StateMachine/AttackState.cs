@@ -52,7 +52,7 @@ namespace Gameplay.Boss
             else if (_currentState == State.Aim && !Context.Animator.AimingRunning)
             {
                 _currentState = State.Shoot;
-                Context.Weapon.Shoot(GetTargetMoveDirection());
+                Context.Weapon.SpreadShot(GetTargetMoveDirection());
                 _shotsFiredCount++;
             }
             else if (_currentState == State.Shoot && !Context.Animator.ShootRunning)
