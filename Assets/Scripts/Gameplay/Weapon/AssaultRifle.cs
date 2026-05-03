@@ -12,7 +12,7 @@ public class AssaultRifle : MonoBehaviour
     SpriteRenderer _spriteRenderer;
     private Vector2 CenterPosition => _weaponCenter.position;
 
-    private const float DirectionSmoothFactor = 10;
+    private const float DirectionSmoothFactor = 5;
 
     public void Initialize()
     {
