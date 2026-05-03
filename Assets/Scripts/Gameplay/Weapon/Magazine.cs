@@ -3,7 +3,7 @@ using UnityEngine;
 public class Magazine : MonoBehaviour
 {
     [SerializeField] private PoolData _bulletPoolData;
-    
+
     private ObjectPool<Bullet> _bulletPool;
     private Transform _bulletParent;
 
@@ -16,7 +16,7 @@ public class Magazine : MonoBehaviour
     public bool TryGetBullet(out Bullet bullet)
     {
         bullet = GetBullet();
-        
+
         return true;
     }
 
@@ -25,7 +25,7 @@ public class Magazine : MonoBehaviour
         bullet.Hit -= OnBulletHit;
         _bulletPool.Return(bullet);
     }
-    
+
     public Bullet GetBullet()
     {
         var bullet = _bulletPool.Get();

@@ -9,11 +9,11 @@ public class SettingView : View, IInteractableView, IFocusableView
     private readonly ProjectButton _backButton;
 
     private IFocusableView _lastFocusedView;
-    
+
     private readonly SettingsManager _settingsManager;
 
     private readonly List<SliderSettingView> _sliderSettingViews = new();
-    
+
     public SettingView(VisualElement root, SettingsManager settingsManager, AudioEmitterUI audioEmitter) : base(root)
     {
         var masterVolumeSlider = new SliderSettingView(root.Q<SliderInt>("MasterSlider"), settingsManager.MasterVolume);
@@ -34,14 +34,14 @@ public class SettingView : View, IInteractableView, IFocusableView
         {
             sliderSettingView.OnFocusChanged += OnFocusChanged;
         }
-        
-        _settingsManager =  settingsManager;
+
+        _settingsManager = settingsManager;
     }
-    
+
     public override void Dispose()
     {
         base.Dispose();
-        
+
         _backButton.Clicked -= OnBackRequested;
         _backButton.FocusChanged -= OnFocusChanged;
         _backButton.Dispose();
@@ -52,7 +52,7 @@ public class SettingView : View, IInteractableView, IFocusableView
             sliderSettingView.Dispose();
         }
     }
-    
+
     private void OnFocusChanged(IFocusableView view)
     {
         _lastFocusedView = view;
@@ -86,7 +86,7 @@ public class SettingView : View, IInteractableView, IFocusableView
             _backButton.Focus();
         }
     }
-    
+
     private class SliderSettingView : IDisposable, IFocusableView
     {
         private readonly SliderInt _slider;

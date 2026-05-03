@@ -10,7 +10,7 @@ public class ViewStack
     public event Action<ActiveViewChangedArgs> ActiveViewChanged;
 
     private readonly VisualElement _rootVisualElement;
-    
+
     public ViewStack(VisualElement rootVisualElement)
     {
         _rootVisualElement = rootVisualElement;
@@ -25,7 +25,7 @@ public class ViewStack
             Debug.LogWarning("View already registered: " + type);
             return;
         }
-        
+
         view.Hide();
     }
 
@@ -47,13 +47,13 @@ public class ViewStack
     {
         var nextView = GetView<T>();
         View prevView = null;
-        
+
         if (_viewStack.Count > 0 && _viewStack.Peek() == nextView)
         {
             Debug.LogWarning($"You cannot push more than one {nextView.GetType()} on top of the stack at a time");
             return;
         }
-        
+
         if (_viewStack.Count > 0)
         {
             prevView = _viewStack.Peek();
@@ -77,7 +77,7 @@ public class ViewStack
         {
             ActiveView.Show();
         }
-        
+
         ActiveViewChanged?.Invoke(new ActiveViewChangedArgs(poppedView, ActiveView));
     }
 
@@ -88,7 +88,7 @@ public class ViewStack
             Pop();
         }
     }
-    
+
     public void HandleCancel()
     {
         if (_viewStack.Count == 0) return;
@@ -98,12 +98,12 @@ public class ViewStack
             Pop();
         }
     }
-    
+
     public VisualElement GetUIRoot()
     {
         return _rootVisualElement;
     }
-    
+
     private void RemoveFromStack(View target)
     {
         var temp = new Stack<View>();
@@ -125,7 +125,7 @@ public class ViewStack
         if (removedView != null)
             ActiveViewChanged?.Invoke(new ActiveViewChangedArgs(removedView, ActiveView));
     }
-    
+
     private View GetView<T>() where T : View
     {
         if (!_views.TryGetValue(typeof(T), out View view))

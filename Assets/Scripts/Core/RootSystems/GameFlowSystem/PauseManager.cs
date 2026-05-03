@@ -6,7 +6,7 @@ public class PauseManager
     public event Action<bool> OnPauseStateChanged;
 
     public bool IsPaused { get; private set; }
-    
+
     public void Pause()
     {
         Time.timeScale = 0f;

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPoolable<Bullet>
 {
-
     private bool _isFlying = false;
     public event Action<Bullet> Hit;
-    
+
     private Vector2 _direction;
     private float _damage;
     private float _speed;
@@ -22,9 +21,9 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
     public void StartFlight(Vector2 direction, float damage, float speed)
     {
         if (_isFlying) return;
-        
+
         _isFlying = true;
-        
+
         _direction = direction;
         _damage = damage;
         _speed = speed;
@@ -51,7 +50,7 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
     private IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(5);
-        
+
         _isFlying = false;
         Hit?.Invoke(this);
     }
@@ -62,12 +61,14 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
         _direction = Vector2.zero;
     }
 
-    public void OnGetFromPool() {}
+    public void OnGetFromPool()
+    {
+    }
 
     private void FixedUpdate()
     {
         if (!_isFlying) return;
-        
+
         _rigidbody2D.MovePosition(_rigidbody2D.position + _direction * (_speed * Time.fixedDeltaTime));
     }
 }

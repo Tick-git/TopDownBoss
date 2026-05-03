@@ -11,18 +11,19 @@ public class MainMenuView : View, IInteractableView, IFocusableView, IAnimatable
     private readonly ProjectButton _playButton;
     private readonly ProjectButton _settingButton;
     private readonly ProjectButton _exitButton;
-    
+
     private IFocusableView _lastFocusedElement;
 
     private readonly Label _pressAnyButtonLabel;
 
     private IVisualElementScheduledItem _pulsatingPressAnyButtonLabel;
     private readonly VisualElement _buttonContainer;
-    
+
     private bool _onAnyButtonLabelPulsing;
     private float _pulseTime;
 
     private static bool _onKeyPressedLabelShown = false;
+
     public MainMenuView(VisualElement root, AudioEmitterUI audioEmitter) : base(root)
     {
         _playButton = new(root.Q<Button>("PlayButton"), audioEmitter);
@@ -43,15 +44,15 @@ public class MainMenuView : View, IInteractableView, IFocusableView, IAnimatable
     public override void Dispose()
     {
         base.Dispose();
-        
+
         _playButton.Clicked -= OnPlayButtonClicked;
         _settingButton.Clicked -= OnSettingButtonClicked;
         _exitButton.Clicked -= OnExitButtonClicked;
-        
+
         _playButton.FocusChanged -= OnButtonFocusChanged;
         _settingButton.FocusChanged -= OnButtonFocusChanged;
         _exitButton.FocusChanged -= OnButtonFocusChanged;
-        
+
         _playButton.Dispose();
         _settingButton.Dispose();
         _exitButton.Dispose();
@@ -60,7 +61,7 @@ public class MainMenuView : View, IInteractableView, IFocusableView, IAnimatable
     public override void Show()
     {
         base.Show();
-        
+
         if (_onKeyPressedLabelShown)
             ShowButtons();
         else
@@ -80,13 +81,13 @@ public class MainMenuView : View, IInteractableView, IFocusableView, IAnimatable
         _playButton.Show();
         _settingButton.Show();
         _exitButton.Show();
-        
+
         _buttonContainer.AddToClassList("fade-in");
         _buttonContainer.RemoveFromClassList("transparent");
-        
+
         Focus();
     }
-    
+
     private void HideButtons()
     {
         _playButton.Hide();
@@ -96,7 +97,7 @@ public class MainMenuView : View, IInteractableView, IFocusableView, IAnimatable
 
         _buttonContainer.AddToClassList("transparent");
     }
-    
+
     private void OnButtonFocusChanged(IFocusableView button)
     {
         _lastFocusedElement = button;
@@ -120,11 +121,11 @@ public class MainMenuView : View, IInteractableView, IFocusableView, IAnimatable
         _settingButton.SetInteractMode(interactionMode);
         _exitButton.SetInteractMode(interactionMode);
     }
-    
+
     public void Update()
     {
         if (!_onAnyButtonLabelPulsing) return;
-        
+
         _pulseTime += Time.deltaTime * 3;
 
         float t = (Mathf.Sin(_pulseTime) + 1f) * 0.5f;

@@ -11,8 +11,9 @@ public class MainMenuFeature : IDisposable
 
     private MainMenuView _mainMenuView;
     private SettingView _settingsView;
-    
-    public MainMenuFeature(ViewStack viewStack, GameFlowService gameFlowService, SettingsManager settingsManager, InputManager inputManager, AudioEmitterUI audioEmitter)
+
+    public MainMenuFeature(ViewStack viewStack, GameFlowService gameFlowService, SettingsManager settingsManager,
+        InputManager inputManager, AudioEmitterUI audioEmitter)
     {
         _viewStack = viewStack;
         _gameFlowService = gameFlowService;
@@ -25,26 +26,26 @@ public class MainMenuFeature : IDisposable
     {
         _mainMenuView = CreateMainMenuView(_viewStack, _audioEmitter);
         SetMainMenuViewSubscriptions(true);
-        
+
         _settingsView = CreateSettingView(_viewStack, _settingsManager, _audioEmitter);
         SetSettingsViewSubscriptions(true);
-        
+
         _viewStack.Register(_mainMenuView);
         _viewStack.Register(_settingsView);
     }
-    
+
     public void Dispose()
     {
         SetMainMenuViewSubscriptions(false);
         SetSettingsViewSubscriptions(false);
-        
+
         _mainMenuView?.Dispose();
         _settingsView?.Dispose();
-        
+
         _viewStack.Unregister(_mainMenuView);
         _viewStack.Unregister(_settingsView);
     }
-    
+
     private MainMenuView CreateMainMenuView(ViewStack viewStack, AudioEmitterUI audioEmitter)
     {
         var root = viewStack.GetUIRoot().Q<VisualElement>("MainView");
@@ -53,14 +54,15 @@ public class MainMenuFeature : IDisposable
         return mainMenuView;
     }
 
-    private SettingView CreateSettingView(ViewStack viewStack, SettingsManager settingsManager, AudioEmitterUI audioEmitter)
+    private SettingView CreateSettingView(ViewStack viewStack, SettingsManager settingsManager,
+        AudioEmitterUI audioEmitter)
     {
         var root = viewStack.GetUIRoot().Q<VisualElement>("SettingView");
         var settingsView = new SettingView(root, settingsManager, audioEmitter);
 
         return settingsView;
     }
-    
+
     private void SetMainMenuViewSubscriptions(bool enable)
     {
         if (enable)

@@ -24,7 +24,7 @@ public class SceneController : Singleton<SceneController>
             _pendingPlans.Enqueue(plan);
             return;
         }
-        
+
         _isBusy = true;
         StartCoroutine(TransitionCoroutine(plan));
     }
@@ -40,15 +40,16 @@ public class SceneController : Singleton<SceneController>
         {
             yield return UnloadSceneRoutine(slotKey);
         }
-        
+
         if (plan.ClearUnusedAssets) yield return CleanupUnusedAssetsRoutine();
-        
+
         foreach (var kvp in plan.SceneToLoad)
         {
             if (_loadedSceneBySlot.ContainsKey(kvp.Key))
             {
                 yield return UnloadSceneRoutine(kvp.Key);
             }
+
             yield return LoadAdditiveSceneRoutine(kvp.Key, kvp.Value, plan.ActiveSceneName == kvp.Value);
         }
 
@@ -58,7 +59,7 @@ public class SceneController : Singleton<SceneController>
         }
 
         _isBusy = false;
-        
+
         if (_pendingPlans.Count > 0)
         {
             ExecuteTransition(_pendingPlans.Dequeue());
@@ -81,6 +82,7 @@ public class SceneController : Singleton<SceneController>
                 SceneManager.SetActiveScene(newScene);
             }
         }
+
         _loadedSceneBySlot[slotKey] = sceneName;
     }
 
@@ -93,6 +95,7 @@ public class SceneController : Singleton<SceneController>
         {
             while (!unloadOp.isDone) yield return null;
         }
+
         _loadedSceneBySlot.Remove(slotKey);
     }
 
@@ -119,21 +122,25 @@ public class SceneController : Singleton<SceneController>
             if (setActive) ActiveSceneName = sceneName;
             return this;
         }
+
         public SceneTransitionPlan Unload(string sceneName)
         {
             ScenesToUnload.Add(sceneName);
             return this;
         }
+
         public SceneTransitionPlan WithFade()
         {
             Overlay = true;
             return this;
         }
+
         public SceneTransitionPlan ClearAssets()
         {
             ClearUnusedAssets = true;
             return this;
         }
+
         public void Execute()
         {
             Instance.ExecuteTransition(this);

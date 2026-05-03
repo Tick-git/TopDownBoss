@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class StateMachine
 {
     private StateNode _current;
-    
+
     private readonly HashSet<Transition> _anyTransitions = new();
     private readonly Dictionary<Type, StateNode> _nodes = new();
 
@@ -14,10 +14,10 @@ public class StateMachine
         {
             ChangeState(transition.TargetState);
         }
-        
+
         _current?.State.Update();
     }
-    
+
     public void FixedUpdate()
     {
         _current?.State.FixedUpdate();
@@ -43,7 +43,7 @@ public class StateMachine
     {
         IState previousSate = _current.State;
         IState nextSate = state;
-        
+
         previousSate.Exit();
         nextSate.Enter();
 
@@ -73,17 +73,17 @@ public class StateMachine
         nextTransition = null;
         return false;
     }
-    
+
     private StateNode GetOrAddNode(IState state)
     {
         var type = state.GetType();
-        
+
         if (!_nodes.TryGetValue(type, out StateNode node))
         {
             node = new StateNode(state);
             _nodes[type] = node;
         }
-        
+
         return node;
     }
 
@@ -94,7 +94,7 @@ public class StateMachine
 
         public StateNode(IState state)
         {
-            State =  state;
+            State = state;
             Transitions = new HashSet<ITransition>();
         }
 

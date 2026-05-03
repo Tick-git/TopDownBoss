@@ -8,8 +8,8 @@ public class BossVisuals : MonoBehaviour
 
     private void Awake()
     {
-        _rightLocalScale =  transform.localScale;
-        _leftLocalScale =  new Vector3(-_rightLocalScale.x, _rightLocalScale.y, _rightLocalScale.z);
+        _rightLocalScale = transform.localScale;
+        _leftLocalScale = new Vector3(-_rightLocalScale.x, _rightLocalScale.y, _rightLocalScale.z);
     }
 
     public void Rotate(bool rotateRight)

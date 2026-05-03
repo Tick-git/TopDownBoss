@@ -6,20 +6,20 @@ public class VFXManager : Singleton<VFXManager>
     [SerializeField] private VFXLibrary _vfxLibrary;
 
     private readonly Dictionary<VFXType, ObjectPool<VFXSystem>> _vfxPools = new();
-    
+
     public void Initialize()
     {
         InstantiatePools();
     }
-    
+
     public VFXSystem SpawnVfx(VFXType type, Vector3 position)
     {
         VFXSystem vfxSystem = _vfxPools[type].Get();
         vfxSystem.Play(position);
-        
+
         return vfxSystem;
     }
-    
+
     private void InstantiatePools()
     {
         foreach (var data in _vfxLibrary.VFXDataCollection)
@@ -30,7 +30,7 @@ public class VFXManager : Singleton<VFXManager>
 
     public void SetVFXLibrary(VFXLibrary library)
     {
-        _vfxLibrary =  library;
+        _vfxLibrary = library;
     }
 }
 

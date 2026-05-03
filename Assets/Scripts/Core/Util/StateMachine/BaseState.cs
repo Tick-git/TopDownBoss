@@ -1,6 +1,6 @@
 ﻿public class BaseState<T> : IState
 {
-    protected T Context { get;}
+    protected T Context { get; }
 
     public BaseState(T context)
     {

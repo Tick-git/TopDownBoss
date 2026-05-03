@@ -4,34 +4,36 @@ using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager>, IAudioService
 {
-    [Header("Audio Mixer")]
-    [SerializeField] private AudioMixer _mainMixer;
+    [Header("Audio Mixer")] [SerializeField]
+    private AudioMixer _mainMixer;
+
     [SerializeField] private AudioMixerGroup _uiMixerGroup;
     [SerializeField] private AudioMixerGroup _sfxMixerGroup;
     [SerializeField] private AudioMixerGroup _musicMixerGroup;
 
-    [Header("Music Sources")]
-    [SerializeField] private AudioSource _musicSource1;
+    [Header("Music Sources")] [SerializeField]
+    private AudioSource _musicSource1;
+
     [SerializeField] private AudioSource _musicSource2;
     [SerializeField] private float _musicCrossfadeDuration = 1.5f;
 
-    [Header("SFX Pool")]
-    [SerializeField] private int _initialPoolSize = 10;
+    [Header("SFX Pool")] [SerializeField] private int _initialPoolSize = 10;
     [SerializeField] private GameObject _audioPoolablePrefab;
     private ObjectPool<AudioPoolable> _sfxPool;
-    
-    [Header("Audio Library")]
-    [SerializeField] private AudioLibrary _audioLibrary;
+
+    [Header("Audio Library")] [SerializeField]
+    private AudioLibrary _audioLibrary;
+
     public AudioLibrary Library => _audioLibrary;
 
     private bool _isMusicSource1Active = true;
-    
+
     protected override void Awake()
     {
-       base.Awake();
+        base.Awake();
         _sfxPool = new ObjectPool<AudioPoolable>(_audioPoolablePrefab, _initialPoolSize, transform);
     }
-    
+
     #region VolumeAPI
 
     public float GetMasterVolume() => GetVolume(AudioMixerParams.MasterVolume);
@@ -44,7 +46,7 @@ public class AudioManager : Singleton<AudioManager>, IAudioService
     public void SetUIVolume(float percent) => SetVolume(AudioMixerParams.UIVolume, percent);
 
     #endregion
-    
+
     private void PlaySound(AudioData audio)
     {
         if (audio == null || audio.GetClip() == null || audio.MixerGroup == null)
@@ -56,7 +58,7 @@ public class AudioManager : Singleton<AudioManager>, IAudioService
         AudioPoolable audioPoolable = _sfxPool.Get();
         audioPoolable.Play(audio);
     }
-    
+
     public void PlayMusic(AudioData audio)
     {
         if (audio == null || audio.GetClip() == null || audio.MixerGroup == null)
@@ -97,7 +99,7 @@ public class AudioManager : Singleton<AudioManager>, IAudioService
         oldSource.volume = 0;
         oldSource.Stop();
     }
-    
+
     private void SetVolume(string exposedParam, float linearValue)
     {
         float dB = linearValue > 0.0001f ? Mathf.Log10(linearValue) * 20f : -80f;

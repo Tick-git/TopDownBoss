@@ -8,7 +8,7 @@ public class BossAnimator : MonoBehaviour
     private static readonly int Holster = Animator.StringToHash("Holster");
 
     private readonly Dictionary<int, bool> _animationsRunning = new();
-    
+
     private Animator _animator;
 
     public bool AimingRunning => _animationsRunning[Aim];
@@ -18,13 +18,13 @@ public class BossAnimator : MonoBehaviour
     public void Initialize()
     {
         _animator = GetComponent<Animator>();
-        
+
         foreach (var behaviour in _animator.GetBehaviours<AnimatorStateEventBehaviour>())
         {
             behaviour.StateEnter += OnStateEnter;
             behaviour.StateExit += OnStateExit;
         }
-        
+
         _animationsRunning.Add(Aim, true);
         _animationsRunning.Add(Shoot, true);
         _animationsRunning.Add(Holster, true);
@@ -56,7 +56,7 @@ public class BossAnimator : MonoBehaviour
             Debug.LogError("Key Not Found: " + shortNameHash);
             return;
         }
-        
+
         _animationsRunning[shortNameHash] = running;
     }
 

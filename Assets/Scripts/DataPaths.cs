@@ -1,8 +1,7 @@
-﻿
-public static class DataPaths
+﻿public static class DataPaths
 {
     private const string DataPath = "Data/";
-    
+
     private const string CorePath = DataPath + "Core/";
     private const string GameplayPath = DataPath + "Gameplay/";
 
@@ -13,7 +12,7 @@ public static class DataPaths
         public const string Input = CorePath + "Input/";
         public const string Pool = CorePath + "Pool/";
     }
-    
+
     public static class GameplayData
     {
         public const string ComponentPath = GameplayPath + "Components/";

@@ -21,7 +21,7 @@ namespace Core.Util
         {
             _timer.Completed -= OnTimerComplete;
         }
-        
+
         private void OnTimerComplete()
         {
             Completed?.Invoke();
@@ -41,6 +41,5 @@ namespace Core.Util
         {
             _timer.Stop();
         }
-
     }
 }

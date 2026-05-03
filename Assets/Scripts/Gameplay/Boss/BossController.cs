@@ -18,14 +18,14 @@ namespace Gameplay.Boss
         {
             TargetTracker = GetComponent<TargetTracker>();
             Weapon = GetComponent<BossWeapon>();
-            
+
             _animator.Initialize();
-            
+
             _bossStateMachine = new StateMachine();
 
             var attackState = new AttackState(this);
             var idleState = new IdleState(this);
-        
+
             _bossStateMachine.AddTransition(idleState, attackState, new FuncPredicate(() =>
             {
                 _timer += Time.deltaTime;
@@ -39,16 +39,16 @@ namespace Gameplay.Boss
 
                 return false;
             }));
-            
+
             _bossStateMachine.AddTransition(attackState, idleState, new FuncPredicate(() => !attackState.IsRunning));
-            
+
             _bossStateMachine.SetState(attackState);
         }
-        
+
         private void Update()
         {
             _visuals.Rotate(TargetTracker.IsRightSideOf(transform.position));
-        
+
             _bossStateMachine.Update();
         }
 

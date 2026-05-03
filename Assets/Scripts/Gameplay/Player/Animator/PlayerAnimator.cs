@@ -3,7 +3,7 @@
 public class PlayerAnimator : MonoBehaviour
 {
     public bool RollAnimationRunning = false;
-    
+
     private static readonly int MoveInput = Animator.StringToHash("MoveInput");
     private static readonly int Roll = Animator.StringToHash("Roll");
     private static readonly int MoveSpeedMultiplier = Animator.StringToHash("MoveSpeedMultiplier");
@@ -18,7 +18,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        
+
         _rollState = _animator.GetBehaviour<RollStateBehaviour>();
         _rollState.RollEnter += OnRollEnter;
         _rollState.RollExit += OnRollExit;
@@ -29,7 +29,7 @@ public class PlayerAnimator : MonoBehaviour
         _rollState.RollEnter -= OnRollEnter;
         _rollState.RollExit -= OnRollExit;
     }
-    
+
     private void OnRollExit() => RollAnimationRunning = false;
 
     private void OnRollEnter() => RollAnimationRunning = true;
@@ -48,8 +48,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (aimDirection == Vector2.zero)
             return;
-        
-        _spriteRenderer.flipX  = aimDirection.x < 0;
+
+        _spriteRenderer.flipX = aimDirection.x < 0;
     }
 
     public void SetMoveSpeedMultiplier(float value)

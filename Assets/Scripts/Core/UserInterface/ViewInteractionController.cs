@@ -8,7 +8,7 @@ public class ViewInteractionController : IDisposable
     private InteractionModeUI _interactionMode;
 
     public InteractionModeUI InteractionMode => _interactionMode;
-    
+
     public event Action<InteractionModeUI> InteractionModeChanged;
 
     public ViewInteractionController(ViewStack viewStack, InputManager inputManager)
@@ -16,11 +16,11 @@ public class ViewInteractionController : IDisposable
         _viewStack = viewStack;
         _inputManager = inputManager;
         _interactionMode = InteractionModeUI.None;
-        
+
         _viewStack.ActiveViewChanged += OnActiveViewChanged;
         _inputManager.DeviceChanged += OnDeviceChanged;
     }
-    
+
     public void Dispose()
     {
         _viewStack.ActiveViewChanged -= OnActiveViewChanged;
@@ -38,20 +38,20 @@ public class ViewInteractionController : IDisposable
 
         InteractionModeChanged?.Invoke(InteractionMode);
     }
-    
+
     private void OnActiveViewChanged(ActiveViewChangedArgs viewChangedArgs)
     {
         if (viewChangedArgs.PreviousActiveView is IInteractableView previousActiveView)
         {
             previousActiveView.SetInteractMode(InteractionModeUI.Locked);
         }
-        
+
         if (viewChangedArgs.CurrentActiveView is IInteractableView currentActiveView)
         {
             currentActiveView.SetInteractMode(InteractionMode);
         }
     }
-    
+
 
     public void LockInteraction()
     {

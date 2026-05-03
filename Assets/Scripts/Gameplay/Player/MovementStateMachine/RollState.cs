@@ -14,17 +14,18 @@ public class RollState : BaseState<PlayerController>
         Context.HolsterWeapon();
         Context.Hitbox.SetRolling();
     }
+
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        
+
         Context.Movement.Roll(Context.Input.MoveDirection, Time.fixedDeltaTime);
     }
 
     public override void Exit()
     {
         base.Exit();
-        
+
         Context.EquipWeapon();
         Context.Hitbox.SetStanding();
     }

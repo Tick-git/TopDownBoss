@@ -1,5 +1,4 @@
-﻿
-public class AudioMixerParams
+﻿public class AudioMixerParams
 {
     public const string MasterVolume = "MasterVol";
     public const string MusicVolume = "MusicVol";

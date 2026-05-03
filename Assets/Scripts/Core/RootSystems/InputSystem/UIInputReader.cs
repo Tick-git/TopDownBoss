@@ -10,12 +10,12 @@ public class UIInputReader : IDisposable
 
     public event Action CancelPerformed;
     public event Action PausePerformed;
-    
+
     public UIInputReader(ViewStack viewStack)
     {
         _viewStack = viewStack;
         _cancelAction = InputSystem.actions.FindAction("Cancel");
-        
+
         _cancelAction.performed += OnCancelPerformed;
     }
 
@@ -24,7 +24,7 @@ public class UIInputReader : IDisposable
         _cancelAction.performed -= OnCancelPerformed;
         _cancelAction?.Dispose();
     }
-    
+
     private void OnCancelPerformed(InputAction.CallbackContext ctx)
     {
         bool isKeyboard = ctx.control.device is Keyboard;
@@ -32,7 +32,7 @@ public class UIInputReader : IDisposable
         if (_viewStack.HasActiveView)
         {
             CancelPerformed?.Invoke();
-        } 
+        }
         else if (isKeyboard)
         {
             PausePerformed?.Invoke();

@@ -32,15 +32,15 @@ public class BossWeapon : MonoBehaviour
     public void SpreadShot(Vector2 target)
     {
         var direction = (target - (Vector2)_firePoint.position).normalized;
-        
+
         for (int i = 0; i < _spreadShotData.BulletCount; i++)
         {
             var bulletSpreadSpacing = (_spreadShotData.SpreadAngle * 2) / (_spreadShotData.BulletCount - 1);
             var curSpreadAngle = _spreadShotData.SpreadAngle - (bulletSpreadSpacing * i);
             var curDirection = Quaternion.Euler(0, 0, curSpreadAngle) * direction;
-            
+
             var bullet = _magazine.GetBullet();
-            
+
             bullet.transform.position = _firePoint.position;
             bullet.StartFlight(curDirection, _spreadShotData.Damage, _spreadShotData.Speed);
         }

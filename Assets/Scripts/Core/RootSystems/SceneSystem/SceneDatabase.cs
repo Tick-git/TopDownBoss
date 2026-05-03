@@ -4,6 +4,7 @@ public class SceneDatabase
     {
         public const string Content = "SessionContent";
     }
+
     public class Scenes
     {
         public const string MainMenu = "MainMenu";

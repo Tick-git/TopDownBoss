@@ -34,7 +34,7 @@ public class PauseView : View, IInteractableView, IFocusableView
 
     private void OnFocusChanged(IFocusableView view)
     {
-        _lastFocusedView =  view;
+        _lastFocusedView = view;
     }
 
     public override bool TryHandleCancel()
@@ -46,17 +46,17 @@ public class PauseView : View, IInteractableView, IFocusableView
     public override void Dispose()
     {
         base.Dispose();
-        
+
         _resumeButton.Clicked -= OnResumeRequested;
         _settingsButton.Clicked -= OnSettingsRequested;
         _mainMenuButton.Clicked -= OnMainMenuRequested;
         _exitButton.Clicked -= OnExitRequested;
-        
+
         _resumeButton.FocusChanged -= OnFocusChanged;
         _settingsButton.FocusChanged -= OnFocusChanged;
         _mainMenuButton.FocusChanged -= OnFocusChanged;
         _exitButton.FocusChanged -= OnFocusChanged;
-        
+
         _resumeButton.Dispose();
         _settingsButton.Dispose();
         _mainMenuButton.Dispose();

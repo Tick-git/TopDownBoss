@@ -7,25 +7,25 @@ public class ProjectButton : IInteractableView, IFocusableView, IDisposable
     private readonly AudioEmitterUI _audioEmitter;
 
     public event Action Clicked;
-    public event Action<IFocusableView> FocusChanged; 
-    
+    public event Action<IFocusableView> FocusChanged;
+
     private const string FocusMode = "button-focus-mode";
     private const string HoverMode = "button-hover-mode";
-    
+
     public ProjectButton(Button button, AudioEmitterUI audioEmitter)
     {
         _button = button;
-        _audioEmitter =  audioEmitter;
-        
+        _audioEmitter = audioEmitter;
+
         _button.clicked += OnClicked;
     }
-    
+
     public void Dispose()
     {
         UnregisterHighlightEvents();
         _button.clicked -= OnClicked;
     }
-    
+
     public void SetInteractMode(InteractionModeUI interactionMode)
     {
         switch (interactionMode)
@@ -43,7 +43,7 @@ public class ProjectButton : IInteractableView, IFocusableView, IDisposable
                 break;
         }
     }
-    
+
     private void SetMode(string modeToAdd, string modeToRemove, bool focusable)
     {
         _button.RemoveFromClassList(modeToRemove);
@@ -51,7 +51,7 @@ public class ProjectButton : IInteractableView, IFocusableView, IDisposable
         _button.focusable = focusable;
 
         UnregisterHighlightEvents();
-        
+
         if (focusable)
         {
             _button.RegisterCallback<FocusEvent>(OnFocus);
@@ -72,7 +72,7 @@ public class ProjectButton : IInteractableView, IFocusableView, IDisposable
     {
         _button.style.display = DisplayStyle.None;
     }
-    
+
     private void SetInteractable(bool interactable)
     {
         _button.SetEnabled(interactable);
@@ -83,7 +83,7 @@ public class ProjectButton : IInteractableView, IFocusableView, IDisposable
         _button.UnregisterCallback<MouseOverEvent>(OnMouseOver);
         _button.UnregisterCallback<FocusEvent>(OnFocus);
     }
-    
+
     private void OnFocus(FocusEvent evt)
     {
         _audioEmitter?.PlayHoverSound();

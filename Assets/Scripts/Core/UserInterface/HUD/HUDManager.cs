@@ -4,19 +4,19 @@ using UnityEngine.UIElements;
 
 public class HUDManager : MonoBehaviour
 {
-    private readonly List<HUDWidget> _widgets  = new();
+    private readonly List<HUDWidget> _widgets = new();
 
     // =====================
     // TODO: Put this into gameplaySetup
-    
+
     [SerializeField] private Health _player;
     [SerializeField] private Health _boss;
-    
+
     private HUD _hud;
-    
+
     private void Awake()
     {
-        _hud = new HUD(this, _player,  _boss);
+        _hud = new HUD(this, _player, _boss);
         ShowHUD();
     }
 
@@ -25,7 +25,7 @@ public class HUDManager : MonoBehaviour
         _hud.Dispose();
     }
     // =====================
-    
+
     public void Register(HUDWidget widget)
     {
         _widgets.Add(widget);

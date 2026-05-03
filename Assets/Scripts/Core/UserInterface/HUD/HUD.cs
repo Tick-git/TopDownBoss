@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 public class HUD : IDisposable
 {
     private readonly HUDManager _hudManager;
-    
+
     private readonly HealthWidget _playerHealthWidget;
     private readonly HealthWidget _bossHealthWidget;
 
@@ -16,7 +16,7 @@ public class HUD : IDisposable
 
         _playerHealthWidget = new HealthWidget(root.Q("PlayerHealthWidget"), playerHealth);
         _bossHealthWidget = new HealthWidget(root.Q("BossHealthWidget"), bossHealth);
-        
+
         _hudManager.Register(_playerHealthWidget);
         _hudManager.Register(_bossHealthWidget);
     }
@@ -26,7 +26,7 @@ public class HUD : IDisposable
     {
         _hudManager.Unregister(_playerHealthWidget);
         _hudManager.Unregister(_bossHealthWidget);
-        
+
         _bossHealthWidget.Dispose();
         _playerHealthWidget.Dispose();
     }

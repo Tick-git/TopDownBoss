@@ -3,9 +3,9 @@
 public class WeaponAnimator : MonoBehaviour
 {
     private Animator _animator;
-    
+
     private static readonly int Equipped = Animator.StringToHash("Equipped");
-    
+
     public void Initialize()
     {
         _animator = GetComponent<Animator>();

@@ -2,7 +2,7 @@
 {
     private readonly IAudioService _audioService;
     private readonly UIAudioLibrary _uiAudioLibrary;
-    
+
     public AudioEmitterUI(IAudioService audioService, UIAudioLibrary uiAudioLibrary)
     {
         _audioService = audioService;

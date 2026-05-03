@@ -4,7 +4,7 @@ public class ViewAnimationController : MonoBehaviour
 {
     private ViewStack _viewStack;
     private IAnimatableView _animatableView;
-    
+
     public void Initialize(ViewStack viewStack)
     {
         _viewStack = viewStack;

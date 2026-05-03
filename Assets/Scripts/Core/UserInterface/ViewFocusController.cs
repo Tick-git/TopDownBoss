@@ -30,11 +30,11 @@ public class ViewFocusController : IDisposable
             focusableView.Focus();
         }
     }
-    
+
     private void OnActiveViewChanged(ActiveViewChangedArgs activeViewChangedArgs)
     {
         if (_viewInteractionController.InteractionMode != InteractionModeUI.Focus) return;
-        
+
         if (activeViewChangedArgs.CurrentActiveView is IFocusableView currentView)
         {
             currentView.Focus();

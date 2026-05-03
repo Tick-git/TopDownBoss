@@ -10,21 +10,21 @@ public class InputManager : MonoBehaviour
     public event Action<InputDeviceType> DeviceChanged;
     public event Action CancelPerformed;
     public event Action ContinueCanceled;
-    
+
     private InputDevice _currentDevice;
     public InputDeviceType CurrentDeviceType { get; private set; }
-    
+
     private IDisposable _onAnyButtonSubscription;
 
     private InputAction _cancelAction;
-    
+
     private void OnEnable()
     {
         _cancelAction = InputSystem.actions.FindAction(InputActionName.UI.Cancel);
         _cancelAction.Enable();
         _cancelAction.performed += OnCancelPerformed;
         InputSystem.actions.FindAction("Continue").canceled += OnContinueCanceled;
-        
+
         _onAnyButtonSubscription = InputSystem.onAnyButtonPress.Call(OnAnyInput);
     }
 
@@ -44,7 +44,7 @@ public class InputManager : MonoBehaviour
     {
         CancelPerformed?.Invoke();
     }
-    
+
     private void Update()
     {
         DetectMouseMovement();
@@ -59,10 +59,10 @@ public class InputManager : MonoBehaviour
     private void InvokeDeviceChanged(InputDevice device)
     {
         if (_currentDevice == device) return;
-        
+
         _currentDevice = device;
         CurrentDeviceType = GetDeviceType(device);
-        
+
         DeviceChanged?.Invoke(CurrentDeviceType);
     }
 
@@ -78,7 +78,7 @@ public class InputManager : MonoBehaviour
             InvokeDeviceChanged(mouse);
         }
     }
-    
+
     private void DetectGamepadMovement()
     {
         var gamepad = Gamepad.current;
@@ -91,7 +91,7 @@ public class InputManager : MonoBehaviour
             InvokeDeviceChanged(gamepad);
         }
     }
-    
+
     private InputDeviceType GetDeviceType(InputDevice device)
     {
         if (device is Mouse)
@@ -102,7 +102,7 @@ public class InputManager : MonoBehaviour
             return InputDeviceType.XInput;
         if (device is DualShockGamepad)
             return InputDeviceType.DualShock;
-        
+
         return InputDeviceType.None;
     }
 }

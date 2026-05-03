@@ -5,7 +5,7 @@ public class TargetTracker : MonoBehaviour
     [SerializeField] private Transform _target;
 
     private Vector3 _lastTargetPosition;
-    
+
     public bool IsRightSideOf(Vector2 position)
     {
         return (GetTargetPosition() - position).x > 0;
@@ -15,7 +15,7 @@ public class TargetTracker : MonoBehaviour
     {
         return _target.position;
     }
-    
+
     public Vector2 GetTargetDirection()
     {
         return (_target.position - transform.position).normalized;

@@ -38,7 +38,7 @@ namespace Gameplay.Boss
         public override void Update()
         {
             TryChangeState();
-            
+
             Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
         }
 
@@ -63,7 +63,7 @@ namespace Gameplay.Boss
             else if (_currentState == State.Holster && !Context.Animator.HolsterRunning)
             {
                 _currentState = State.None;
-                
+
                 if (_shotsFiredCount >= ShotsTotal)
                 {
                     IsRunning = false;

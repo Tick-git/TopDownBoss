@@ -5,7 +5,7 @@ public class MouseVisibilityController : IDisposable
 {
     private bool _usingMouse;
     private bool _uiVisible;
-    
+
     private readonly ViewStack _viewStack;
     private readonly InputManager _inputManager;
 
@@ -17,7 +17,7 @@ public class MouseVisibilityController : IDisposable
         _inputManager.DeviceChanged += OnDeviceChanged;
         _viewStack.ActiveViewChanged += OnViewStackChanged;
     }
-    
+
     public void Dispose()
     {
         _inputManager.DeviceChanged -= OnDeviceChanged;
@@ -27,21 +27,21 @@ public class MouseVisibilityController : IDisposable
     private void OnViewStackChanged(ActiveViewChangedArgs activeViewChangedArgs)
     {
         _uiVisible = activeViewChangedArgs.CurrentActiveView != null;
-        
+
         SetCursorVisibility();
     }
-    
+
     private void OnDeviceChanged(InputDeviceType deviceType)
     {
         _usingMouse = deviceType == InputDeviceType.Mouse;
-        
+
         SetCursorVisibility();
     }
-    
+
     private void SetCursorVisibility()
     {
         bool visible = _usingMouse && _uiVisible;
-        
+
         if (visible == Cursor.visible) return;
 
         Cursor.visible = visible;

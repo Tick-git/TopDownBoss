@@ -9,12 +9,12 @@ public class AudioPoolable : MonoBehaviour, IPoolable<AudioPoolable>, IPoolRetur
     private bool _isReturned = true;
 
     private AudioSource _audioSource;
-    
+
     public void OnGetFromPool()
     {
         _isReturned = false;
     }
-    
+
     public void SetPool(ObjectPool<AudioPoolable> pool)
     {
         _pool = pool;
@@ -41,7 +41,7 @@ public class AudioPoolable : MonoBehaviour, IPoolable<AudioPoolable>, IPoolRetur
         _audioSource.volume = audio.Volume;
         _audioSource.pitch = audio.Pitch;
         _audioSource.outputAudioMixerGroup = audio.MixerGroup;
-        
+
         _audioSource.Play();
 
         if (_playRoutine != null)

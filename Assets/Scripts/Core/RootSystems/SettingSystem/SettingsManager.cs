@@ -9,7 +9,7 @@ public class SettingsManager : IDisposable
     public Setting<float> UIVolume { get; } = new();
 
     private readonly AudioManager _audioManager;
-    
+
     public SettingsManager(AudioManager audioManager)
     {
         MasterVolume.ValueChanged += audioManager.SetMasterVolume;
@@ -18,10 +18,10 @@ public class SettingsManager : IDisposable
         UIVolume.ValueChanged += audioManager.SetUIVolume;
 
         LoadPlayerPrefs();
-        
+
         _audioManager = audioManager;
     }
-    
+
     public void Dispose()
     {
         MasterVolume.ValueChanged -= _audioManager.SetMasterVolume;
@@ -29,7 +29,7 @@ public class SettingsManager : IDisposable
         SfxVolume.ValueChanged -= _audioManager.SetSfxVolume;
         UIVolume.ValueChanged -= _audioManager.SetUIVolume;
     }
-    
+
     private void LoadPlayerPrefs()
     {
         MasterVolume.Value = PlayerPrefs.GetFloat("Master", 1f);
@@ -37,6 +37,7 @@ public class SettingsManager : IDisposable
         SfxVolume.Value = PlayerPrefs.GetFloat("Sfx", 0.8f);
         UIVolume.Value = PlayerPrefs.GetFloat("UI", 0.8f);
     }
+
     public void SavePlayerPrefs()
     {
         PlayerPrefs.SetFloat("Master", MasterVolume.Value);
