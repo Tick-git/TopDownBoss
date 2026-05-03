@@ -38,6 +38,13 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
         {
             damageable.ApplyDamage(_damage);
             Hit?.Invoke(this);
+            return;
+        }
+
+        if (other.TryGetComponent(out Wall wall))
+        {
+            Hit?.Invoke(this);
+            return;
         }
     }
 
