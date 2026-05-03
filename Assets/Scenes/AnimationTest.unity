@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &82191624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 244800082540759716, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+  m_PrefabInstance: {fileID: 1844441602615647218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Health
 --- !u!1 &143409387
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,17 +413,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2359513098666288967, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
   m_PrefabInstance: {fileID: 1844441602615647218}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &419185273 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6898605991630515463, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
-  m_PrefabInstance: {fileID: 1844441602615647218}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::Health
 --- !u!1 &427044690
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca9003cc485477479d94083513b579b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::HUDManager
-  _player: {fileID: 419185273}
+  _player: {fileID: 82191624}
   _boss: {fileID: 753664303}
 --- !u!1 &566581546
 GameObject:

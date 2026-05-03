@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private AssaultRifle _weapon;
     [SerializeField] private WeaponAnimator _weaponAnimator;
+    [SerializeField] private Hitbox _hitbox;
     
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAnimator PlayerAnimator => _playerAnimator;
     public PlayerMovement Movement => _movement;
     public InputReader Input => _input;
-
+    public Hitbox Hitbox => _hitbox;
     public WeaponAnimator WeaponAnimator => _weaponAnimator;
     public AssaultRifle Weapon => _weapon;
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         _movement.Initialize();
         _weapon.Initialize();
         _weaponAnimator.Initialize();
+        _hitbox.Initialize();
         
         InitMovementStateMachine();
         InitWeaponStateMachine();
