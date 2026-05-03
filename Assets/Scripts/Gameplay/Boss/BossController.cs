@@ -9,6 +9,7 @@ namespace Gameplay.Boss
 
         private StateMachine _bossStateMachine;
         private float _timer;
+        private float _maxTimer = 1;
         public BossAnimator Animator => _animator;
         public BossWeapon Weapon { get; private set; }
         public TargetTracker TargetTracker { get; private set; }
@@ -29,9 +30,10 @@ namespace Gameplay.Boss
             {
                 _timer += Time.deltaTime;
 
-                if (_timer > 1)
+                if (_timer > _maxTimer)
                 {
                     _timer = 0;
+                    _maxTimer = Random.Range(1, 3);
                     return true;
                 }
 
