@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
     public void EquipWeapon()
     {
         _weaponEquipped = true;
+        Weapon.PointInDirection(Input.AimDirection);
     }
 
     public void HolsterWeapon()

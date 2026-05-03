@@ -27,14 +27,22 @@ public class AssaultRifle : MonoBehaviour
         if (direction.magnitude <= 0.001f)
             return;
 
-        _currentDirection = SmoothDirection(direction.normalized, Time.deltaTime);
+        PointInDirection(SmoothDirection(direction.normalized, Time.deltaTime));
+    }
+
+    public void PointInDirection(Vector2 direction)
+    {
+        if (direction.magnitude <= 0.001f)
+            return;
 
         bool aimingLeft = direction.x < 0;
-        float rotationAngle = Mathf.Atan2(_currentDirection.y, _currentDirection.x) * Mathf.Rad2Deg;
+        float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         _spriteRenderer.flipY = aimingLeft;
         transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
-        transform.position = CenterPosition + _currentDirection * _data.OrbitRadius;
+        transform.position = CenterPosition + direction * _data.OrbitRadius;
+        
+        _currentDirection = direction;
     }
 
     private Vector2 SmoothDirection(Vector2 direction, float deltaTime)
