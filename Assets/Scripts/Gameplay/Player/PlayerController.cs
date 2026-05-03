@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
         AtMovement(rollState, idleState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && !IsMoving));
         AtMovement(rollState, walkState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && IsMoving));
+        AtMovement(rollState, rollState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && _rollBuffer.IsBuffered));
 
         _movementSm.SetState(idleState);
     }
