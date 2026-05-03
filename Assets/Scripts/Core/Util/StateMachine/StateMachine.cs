@@ -41,8 +41,6 @@ public class StateMachine
 
     private void ChangeState(IState state)
     {
-        if (state == _current.State) return;
-        
         IState previousSate = _current.State;
         IState nextSate = state;
         
