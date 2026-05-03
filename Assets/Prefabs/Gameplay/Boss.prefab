@@ -423,7 +423,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 13ce518b36b46d543aed9e00a1b71566, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -709,6 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca1a7fd6019447a9f970cc1f592267a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::BossWeapon
+  _spreadShotData: {fileID: 11400000, guid: bbd1c6740ecebe54cbb8d09ca6ddbfea, type: 2}
   _weapon: {fileID: 336917314009645459}
   _renderer: {fileID: 7452390580852661348}
   _magazine: {fileID: 8955259416580341456}
