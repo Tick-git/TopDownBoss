@@ -25,9 +25,9 @@ namespace Gameplay.Boss
         public override void Enter()
         {
             IsRunning = true;
-            Context.Animator.SetSpeed(1.5f);
             _currentState = State.None;
             _shotsFiredCount = 0;
+            Context.Animator.SetSpeed(0.75f);
         }
 
         public override void Exit()
@@ -51,6 +51,7 @@ namespace Gameplay.Boss
             }
             else if (_currentState == State.Aim && !Context.Animator.AimingRunning)
             {
+                Context.Animator.SetSpeed(1.5f);
                 _currentState = State.Shoot;
                 Context.Weapon.SpreadShot(GetTargetMoveDirection());
                 _shotsFiredCount++;
