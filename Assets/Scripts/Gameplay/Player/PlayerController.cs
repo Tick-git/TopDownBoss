@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
-
+    private RollBuffer _rollBuffer;
+    
     private bool IsMoving => _input.MoveDirection != Vector2.zero;
     private bool _weaponEquipped = true;
 
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
         _weapon.Initialize();
         _weaponAnimator.Initialize();
         _hitbox.Initialize();
+
+        _rollBuffer = new RollBuffer(0.125f);
         
         InitMovementStateMachine();
         InitWeaponStateMachine();
@@ -42,6 +45,11 @@ public class PlayerController : MonoBehaviour
 
         _movementSm.Update();
         _weaponSm.Update();
+        
+        if(_input.RollWasPressed)
+            _rollBuffer.Trigger();
+        
+        _rollBuffer.Tick(Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -59,10 +67,10 @@ public class PlayerController : MonoBehaviour
         var rollState = new RollState(this);
 
         AtMovement(idleState, walkState, new FuncPredicate(() => IsMoving));
-        AtMovement(idleState, rollState, new FuncPredicate(() => _input.RollWasPressed));
+        AtMovement(idleState, rollState, new FuncPredicate(() => _rollBuffer.IsBuffered));
 
         AtMovement(walkState, idleState, new FuncPredicate(() => !IsMoving));
-        AtMovement(walkState, rollState, new FuncPredicate(() => _input.RollWasPressed));
+        AtMovement(walkState, rollState, new FuncPredicate(() => _rollBuffer.IsBuffered));
 
         AtMovement(rollState, idleState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && !IsMoving));
         AtMovement(rollState, walkState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && IsMoving));
