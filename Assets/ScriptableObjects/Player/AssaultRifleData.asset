@@ -15,5 +15,5 @@ MonoBehaviour:
   _orbitRadius: 0.3
   _damage: 55
   _fireRatePerSecond: 4
-  _range: 10
-  _bulletVelocity: 15
+  _range: 12.5
+  _speed: 15

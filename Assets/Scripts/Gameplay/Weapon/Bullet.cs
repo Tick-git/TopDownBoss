@@ -5,60 +5,54 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IPoolable<Bullet>
 {
     private bool _isFlying = false;
-    public event Action<Bullet> Hit;
+    public event Action<Bullet> FlightEnded;
 
-    private Vector2 _direction;
-    private float _damage;
-    private float _speed;
+    private BulletFlightParams _bulletParams;
 
     private Rigidbody2D _rigidbody2D;
+
+    private static readonly Vector2 PooledPosition = new Vector2(100, 0);
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void StartFlight(Vector2 direction, float damage, float speed)
+    public void StartFlight(BulletFlightParams bulletFlightParams)
     {
         if (_isFlying) return;
 
         _isFlying = true;
-
-        _direction = direction;
-        _damage = damage;
-        _speed = speed;
-
-        StartCoroutine(DestroyBullet());
+        _bulletParams = bulletFlightParams;
+        _rigidbody2D.position = _bulletParams.StartPosition;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out IDamageable damageable))
         {
-            damageable.ApplyDamage(_damage);
-            Hit?.Invoke(this);
+            damageable.ApplyDamage(_bulletParams.Damage);
+            EndFlight();
             return;
         }
 
         if (other.TryGetComponent(out Wall wall))
         {
-            Hit?.Invoke(this);
+            EndFlight();
             return;
         }
     }
 
-    private IEnumerator DestroyBullet()
+    private void EndFlight()
     {
-        yield return new WaitForSeconds(5);
-
         _isFlying = false;
-        Hit?.Invoke(this);
+        FlightEnded?.Invoke(this);
     }
 
     public void OnReturnToPool()
     {
         _isFlying = false;
-        _direction = Vector2.zero;
+        transform.position = PooledPosition;
     }
 
     public void OnGetFromPool()
@@ -69,6 +63,13 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
     {
         if (!_isFlying) return;
 
-        _rigidbody2D.MovePosition(_rigidbody2D.position + _direction * (_speed * Time.fixedDeltaTime));
+        Vector2 moveDelta = _bulletParams.Direction * (_bulletParams.Speed * Time.fixedDeltaTime);
+
+        _rigidbody2D.MovePosition(_rigidbody2D.position + moveDelta);
+
+        if (Vector2.Distance(_bulletParams.StartPosition, _rigidbody2D.position) >= _bulletParams.Range)
+        {
+            EndFlight();
+        }
     }
 }

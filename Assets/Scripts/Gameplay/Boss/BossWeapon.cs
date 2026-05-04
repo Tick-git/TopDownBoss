@@ -39,10 +39,15 @@ public class BossWeapon : MonoBehaviour
             var curSpreadAngle = _spreadShotData.SpreadAngle - (bulletSpreadSpacing * i);
             var curDirection = Quaternion.Euler(0, 0, curSpreadAngle) * direction;
 
+            var bulletParams = new BulletFlightParams(
+                _firePoint.position, 
+                curDirection,
+                _spreadShotData.Damage,
+                _spreadShotData.Speed,
+                _spreadShotData.Range);
+            
             var bullet = _magazine.GetBullet();
-
-            bullet.transform.position = _firePoint.position;
-            bullet.StartFlight(curDirection, _spreadShotData.Damage, _spreadShotData.Speed);
+            bullet.StartFlight(bulletParams);
         }
     }
 }

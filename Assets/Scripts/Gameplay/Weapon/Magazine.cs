@@ -20,16 +20,16 @@ public class Magazine : MonoBehaviour
         return true;
     }
 
-    private void OnBulletHit(Bullet bullet)
+    private void OnBulletFlightEnded(Bullet bullet)
     {
-        bullet.Hit -= OnBulletHit;
+        bullet.FlightEnded -= OnBulletFlightEnded;
         _bulletPool.Return(bullet);
     }
 
     public Bullet GetBullet()
     {
         var bullet = _bulletPool.Get();
-        bullet.Hit += OnBulletHit;
+        bullet.FlightEnded += OnBulletFlightEnded;
         return bullet;
     }
 }

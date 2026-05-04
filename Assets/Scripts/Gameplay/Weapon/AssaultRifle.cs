@@ -41,7 +41,7 @@ public class AssaultRifle : MonoBehaviour
         _spriteRenderer.flipY = aimingLeft;
         transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
         transform.position = CenterPosition + direction * _data.OrbitRadius;
-        
+
         _currentDirection = direction;
     }
 
@@ -68,7 +68,13 @@ public class AssaultRifle : MonoBehaviour
         _magazine.TryGetBullet(out Bullet bullet);
         _lastShotTime = Time.time;
 
-        bullet.transform.position = _firePoint.position;
-        bullet.StartFlight(transform.right, _data.Damage, _data.BulletVelocity);
+        var bulletParams = new BulletFlightParams(
+            _firePoint.position,
+            transform.right,
+            _data.Damage,
+            _data.Speed,
+            _data.Range);
+
+        bullet.StartFlight(bulletParams);
     }
 }
