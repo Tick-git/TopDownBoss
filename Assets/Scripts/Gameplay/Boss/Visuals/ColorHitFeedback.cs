@@ -46,8 +46,7 @@ public class ColorHitFeedback : MonoBehaviour
     {
         _time = Mathf.Clamp01(_time + Time.deltaTime * _speed);
 
-        if (_time < FullyRecoveredTime)
-            LerpSpritesToDefaultColor(_time);
+        LerpSpritesToDefaultColor(_time);
     }
 
     private void SetSpriteRenderersColor(Color hitColor)
