@@ -1948,6 +1948,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!212 &1206970666 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4030684732884508960, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+  m_PrefabInstance: {fileID: 1454931504210112939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1500265658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2475,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!212 &1780650823 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7811258104499145676, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+  m_PrefabInstance: {fileID: 1454931504210112939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1785305923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,6 +2645,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8748995203296769332, guid: 22fadb4694ad51542b2f99327929b198, type: 3}
   m_PrefabInstance: {fileID: 1852627563}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2048606810 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4344504282861173593, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+  m_PrefabInstance: {fileID: 1454931504210112939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143152425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,6 +2796,46 @@ PrefabInstance:
     - target: {fileID: 3770434238370709630, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.433
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: _spriteRenderers.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: '_spriteRenderers.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1780650823}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: '_spriteRenderers.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1206970666}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: '_spriteRenderers.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2048606810}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: '_spriteRenderers.Array.data[7]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: '_spriteRenderers.Array.data[8]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817582025652543469, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: '_spriteRenderers.Array.data[9]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452390580852661348, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452390580852661348, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2629838
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452390580852661348, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4339623
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,7 +7,7 @@ public class ColorHitFeedback : MonoBehaviour
 
     private SpriteRendererData[] _spriteRendererData;
 
-    private readonly float _speed = 7.5f;
+    private readonly float _speed = 10f;
     private readonly Color _hitColor = Color.red;
     private float _time;
 
