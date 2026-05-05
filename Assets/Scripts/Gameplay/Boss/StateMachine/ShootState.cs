@@ -1,13 +1,11 @@
-﻿using UnityEngine;
-
-namespace Gameplay.Boss
+﻿namespace Gameplay.Boss
 {
-    public class AttackState : BaseState<BossController>
+    public class ShootState : BaseState<BossController>
     {
         private State _currentState;
         private int _shotsFiredCount;
-        private const int ShotsTotal = 3;
-
+        private readonly IShootBehaviour _shootBehaviour;
+        
         public bool IsRunning { get; private set; }
 
         enum State
@@ -18,8 +16,9 @@ namespace Gameplay.Boss
             Holster
         }
 
-        public AttackState(BossController context) : base(context)
+        public ShootState(BossController context, IShootBehaviour behaviour) : base(context)
         {
+            _shootBehaviour = behaviour;
         }
 
         public override void Enter()
@@ -27,7 +26,7 @@ namespace Gameplay.Boss
             IsRunning = true;
             _currentState = State.None;
             _shotsFiredCount = 0;
-            Context.Animator.SetSpeed(0.75f);
+            Context.Animator.SetSpeed(0.25f);
         }
 
         public override void Exit()
@@ -47,33 +46,28 @@ namespace Gameplay.Boss
             if (_currentState == State.None && IsRunning)
             {
                 _currentState = State.Aim;
-                Context.Animator.SetAimTrigger();
+                _shootBehaviour.TriggerAim(Context);
             }
-            else if (_currentState == State.Aim && !Context.Animator.AimingRunning)
+            else if (_currentState == State.Aim && !_shootBehaviour.AimRunning(Context))
             {
-                Context.Animator.SetSpeed(1.5f);
                 _currentState = State.Shoot;
-                Context.Weapon.SpreadShot(GetTargetMoveDirection());
+                Context.Animator.SetSpeed(1.5f);
+                _shootBehaviour.Shoot(Context);
                 _shotsFiredCount++;
             }
-            else if (_currentState == State.Shoot && !Context.Animator.ShootRunning)
+            else if (_currentState == State.Shoot && !_shootBehaviour.ShootRunning(Context))
             {
                 _currentState = State.Holster;
             }
-            else if (_currentState == State.Holster && !Context.Animator.HolsterRunning)
+            else if (_currentState == State.Holster && !_shootBehaviour.HolsterRunning(Context))
             {
                 _currentState = State.None;
 
-                if (_shotsFiredCount >= ShotsTotal)
+                if (_shotsFiredCount >= _shootBehaviour.ShotsCount)
                 {
                     IsRunning = false;
                 }
             }
-        }
-
-        private Vector2 GetTargetMoveDirection()
-        {
-            return Context.TargetTracker.GetTargetPosition() + Context.TargetTracker.GetTargetMoveDirection();
         }
     }
 }

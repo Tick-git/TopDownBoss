@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
-    [SerializeField] private BossSpreadShotData _spreadShotData;
+    [SerializeField] private BossSpreadShotData _smallSpreadShotData;
+    [SerializeField] private BossSpreadShotData _largeSpreadShotData;
     [SerializeField] private Transform _weapon;
-    [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Magazine _magazine;
     [SerializeField] private Transform _firePoint;
-
-    private Vector3 _smoothedRotation;
 
     public void ApplyAim(Vector2 target)
     {
@@ -29,23 +26,33 @@ public class BossWeapon : MonoBehaviour
         _weapon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
     }
 
-    public void SpreadShot(Vector2 target)
+    public void ShootSmallSpread(Vector2 target)
+    {
+        SpreadShot(target, _smallSpreadShotData);
+    }
+
+    public void ShootBigSpread(Vector2 target)
+    {
+        SpreadShot(target, _largeSpreadShotData);
+    }
+
+    private void SpreadShot(Vector2 target, BossSpreadShotData data)
     {
         var direction = (target - (Vector2)_firePoint.position).normalized;
 
-        for (int i = 0; i < _spreadShotData.BulletCount; i++)
+        for (int i = 0; i < data.BulletCount; i++)
         {
-            var bulletSpreadSpacing = (_spreadShotData.SpreadAngle * 2) / (_spreadShotData.BulletCount - 1);
-            var curSpreadAngle = _spreadShotData.SpreadAngle - (bulletSpreadSpacing * i);
+            var bulletSpreadSpacing = (data.SpreadAngle * 2) / (data.BulletCount - 1);
+            var curSpreadAngle = data.SpreadAngle - (bulletSpreadSpacing * i);
             var curDirection = Quaternion.Euler(0, 0, curSpreadAngle) * direction;
 
             var bulletParams = new BulletFlightParams(
-                _firePoint.position, 
+                _firePoint.position,
                 curDirection,
-                _spreadShotData.Damage,
-                _spreadShotData.Speed,
-                _spreadShotData.Range);
-            
+                data.Damage,
+                data.Speed,
+                data.Range);
+
             var bullet = _magazine.GetBullet();
             bullet.StartFlight(bulletParams);
         }
