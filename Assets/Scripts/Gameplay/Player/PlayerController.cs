@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerAnimator _playerAnimator;
-    [SerializeField] private PlayerMovement _movement;
+    [SerializeField] private Movement _movement;
     [SerializeField] private AssaultRifle _weapon;
     [SerializeField] private WeaponAnimator _weaponAnimator;
     [SerializeField] private Hitbox _hitbox;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool _weaponEquipped = true;
 
     public PlayerAnimator PlayerAnimator => _playerAnimator;
-    public PlayerMovement Movement => _movement;
+    public Movement Movement => _movement;
     public InputReader Input => _input;
     public Hitbox Hitbox => _hitbox;
     public WeaponAnimator WeaponAnimator => _weaponAnimator;

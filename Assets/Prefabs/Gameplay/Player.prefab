@@ -68,10 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286a527dc41847cba6622a418ae60d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::PlayerMovement
-  _playerMovementData: {fileID: 11400000, guid: 326b8b00624802943b2271bacd65bf50, type: 2}
-  _wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  _movementData: {fileID: 11400000, guid: 326b8b00624802943b2271bacd65bf50, type: 2}
 --- !u!50 &7666506039258470409
 Rigidbody2D:
   serializedVersion: 5

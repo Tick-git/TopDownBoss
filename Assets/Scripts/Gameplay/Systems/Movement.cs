@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    [SerializeField] private PlayerMovementData _playerMovementData;
-    [SerializeField] private LayerMask _wallLayer;
+    [SerializeField] private PlayerMovementData _movementData;
 
-    private BoxCollider2D _playerCollider;
+    private BoxCollider2D _collider;
     private Rigidbody2D _rigidbody;
 
     public float MoveSpeedMultiplier { get; private set; }
@@ -13,20 +12,23 @@ public class PlayerMovement : MonoBehaviour
     public void Initialize()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _playerCollider = GetComponent<BoxCollider2D>();
+        _collider = GetComponent<BoxCollider2D>();
+
+        MoveSpeedMultiplier = 1;
+
         ResetMoveSpeedMultiplicator();
     }
 
     public void Move(Vector2 direction, float deltaTime)
     {
-        float speed = _playerMovementData.MoveSpeed * MoveSpeedMultiplier;
+        float speed = _movementData.MoveSpeed * MoveSpeedMultiplier;
 
         MovePosition(direction, speed, deltaTime);
     }
 
     public void Roll(Vector2 direction, float deltaTime)
     {
-        MovePosition(direction, _playerMovementData.RollSpeed, deltaTime);
+        MovePosition(direction, _movementData.RollSpeed, deltaTime);
     }
 
     public void SetMoveSpeedMultiplicator(float value)
@@ -49,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 GetMoveDelta(Vector2 direction, float distance)
     {
         RaycastHit2D[] hits = new RaycastHit2D[8];
-        int count = _playerCollider.Cast(direction, hits, distance);
+        int count = _collider.Cast(direction, hits, distance);
 
         for (int i = 0; i < count; i++)
         {
