@@ -26,6 +26,11 @@ public class TargetTracker : MonoBehaviour
         return (_target.position - _lastTargetPosition).normalized;
     }
 
+    public Vector2 GetNextPositionPrediction()
+    {
+        return GetTargetPosition() + GetTargetMoveDirection();
+    }
+    
     private void LateUpdate()
     {
         _lastTargetPosition = GetTargetPosition();
