@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AssaultRifle _weapon;
     [SerializeField] private WeaponAnimator _weaponAnimator;
     [SerializeField] private Hitbox _hitbox;
+    [SerializeField] private Health _health;
 
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerAnimator.Initialize();
         _movement.Initialize();
-        _weapon.Initialize();
+        _weapon.Initialize(_health);
         _weaponAnimator.Initialize();
         _hitbox.Initialize();
 

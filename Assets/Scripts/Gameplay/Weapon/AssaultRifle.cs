@@ -10,14 +10,16 @@ public class AssaultRifle : MonoBehaviour
     private float _lastShotTime;
     private Vector2 _currentDirection;
     SpriteRenderer _spriteRenderer;
+    private IDamageable _owner;
     private Vector2 CenterPosition => _weaponCenter.position;
 
     private const float DirectionSmoothFactor = 5;
 
-    public void Initialize()
+    public void Initialize(IDamageable owner)
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _lastShotTime = -float.MaxValue;
+        _owner = owner;
 
         ApplyAim(Vector2.right);
     }
@@ -73,7 +75,8 @@ public class AssaultRifle : MonoBehaviour
             transform.right,
             _data.Damage,
             _data.Speed,
-            _data.Range);
+            _data.Range,
+            _owner);
 
         bullet.StartFlight(bulletParams);
     }

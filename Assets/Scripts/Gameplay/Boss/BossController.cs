@@ -7,6 +7,7 @@ namespace Gameplay.Boss
     {
         [SerializeField] private BossVisuals _visuals;
         [SerializeField] private BossAnimator _animator;
+        [SerializeField] private Health _health;
 
         private StateMachine _bossAttackSm;
         private StateMachine _bossMovementSm;
@@ -28,6 +29,7 @@ namespace Gameplay.Boss
             Movement = GetComponent<Movement>();
 
             Movement.Initialize();
+            Weapon.Initialize(_health);
             _animator.Initialize();
 
             _attackTimer = new Timer(2);

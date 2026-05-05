@@ -673,6 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _visuals: {fileID: 1499608734543776298}
   _animator: {fileID: 2382058574239483312}
+  _health: {fileID: 7465731787159749018}
 --- !u!114 &844885654616230305
 MonoBehaviour:
   m_ObjectHideFlags: 0

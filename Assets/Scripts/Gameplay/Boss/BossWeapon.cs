@@ -8,6 +8,13 @@ public class BossWeapon : MonoBehaviour
     [SerializeField] private Magazine _magazine;
     [SerializeField] private Transform _firePoint;
 
+    private IDamageable _owner;
+
+    public void Initialize(IDamageable owner)
+    {
+        _owner = owner;
+    }
+
     public void ApplyAim(Vector2 target)
     {
         var direction = (target - (Vector2)_weapon.position).normalized;
@@ -39,10 +46,10 @@ public class BossWeapon : MonoBehaviour
     private void SpreadShot(Vector2 target, BossSpreadShotData data)
     {
         var direction = (target - (Vector2)_firePoint.position).normalized;
+        var bulletSpreadSpacing = (data.SpreadAngle * 2) / (data.BulletCount - 1);
 
         for (int i = 0; i < data.BulletCount; i++)
         {
-            var bulletSpreadSpacing = (data.SpreadAngle * 2) / (data.BulletCount - 1);
             var curSpreadAngle = data.SpreadAngle - (bulletSpreadSpacing * i);
             var curDirection = Quaternion.Euler(0, 0, curSpreadAngle) * direction;
 
@@ -51,7 +58,8 @@ public class BossWeapon : MonoBehaviour
                 curDirection,
                 data.Damage,
                 data.Speed,
-                data.Range);
+                data.Range,
+                _owner);
 
             var bullet = _magazine.GetBullet();
             bullet.StartFlight(bulletParams);

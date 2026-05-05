@@ -56,6 +56,7 @@ MonoBehaviour:
   _weapon: {fileID: 1898054918886240235}
   _weaponAnimator: {fileID: 7360406256935177974}
   _hitbox: {fileID: 3652279118041857472}
+  _health: {fileID: 244800082540759716}
 --- !u!114 &1929541158366781160
 MonoBehaviour:
   m_ObjectHideFlags: 0

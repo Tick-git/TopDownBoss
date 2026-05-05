@@ -24,13 +24,15 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
 
         _isFlying = true;
         _bulletParams = bulletFlightParams;
-        _rigidbody2D.position = _bulletParams.StartPosition;
+        _rigidbody2D.position = _bulletParams.StartPos;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out IDamageable damageable))
         {
+            if (damageable == _bulletParams.Owner) return;
+
             damageable.ApplyDamage(_bulletParams.Damage);
             EndFlight();
             return;
@@ -67,7 +69,7 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
 
         _rigidbody2D.MovePosition(_rigidbody2D.position + moveDelta);
 
-        if (Vector2.Distance(_bulletParams.StartPosition, _rigidbody2D.position) >= _bulletParams.Range)
+        if (Vector2.Distance(_bulletParams.StartPos, _rigidbody2D.position) >= _bulletParams.Range)
         {
             EndFlight();
         }
