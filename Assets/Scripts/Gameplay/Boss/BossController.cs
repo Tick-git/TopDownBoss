@@ -8,7 +8,9 @@ namespace Gameplay.Boss
         [SerializeField] private BossVisuals _visuals;
         [SerializeField] private BossAnimator _animator;
 
-        private StateMachine _bossStateMachine;
+        private StateMachine _bossAttackSm;
+        private StateMachine _bossMovementSm;
+
         private Timer _attackTimer;
 
         private bool _attack;
@@ -25,23 +27,39 @@ namespace Gameplay.Boss
 
             _animator.Initialize();
 
-            _bossStateMachine = new StateMachine();
-
             _attackTimer = new Timer(2);
             _attackTimer.Completed += OnAttackTimerCompleted;
             _attackTimer.Start();
 
-            var attackState = new ShootState(this, new LargeSpreadShootBehaviour());
-            var attackState2 = new ShootState(this, new SmallSpreadShootBehaviour());
+            InitBossMovementStateMachine();
+            InitBossAttackStateMachine();
+        }
+
+        private void InitBossMovementStateMachine()
+        {
+            _bossMovementSm = new StateMachine();
+
             var idleState = new IdleState(this);
 
-            _bossStateMachine.AddTransition(idleState, attackState, new FuncPredicate(() => _attack));
-            _bossStateMachine.AddTransition(idleState, attackState2, new FuncPredicate(() => _attack2));
+            _bossMovementSm.SetState(idleState);
+        }
 
-            _bossStateMachine.AddTransition(attackState, idleState, new FuncPredicate(() => !attackState.IsRunning));
-            _bossStateMachine.AddTransition(attackState2, idleState, new FuncPredicate(() => !attackState2.IsRunning));
+        private void InitBossAttackStateMachine()
+        {
+            _bossAttackSm = new StateMachine();
 
-            _bossStateMachine.SetState(idleState);
+            var attackDecisionState = new AttackDecisionState(this);
+            var attackState = new ShootState(this, new LargeSpreadShootBehaviour());
+            var attackState2 = new ShootState(this, new SmallSpreadShootBehaviour());
+
+            _bossAttackSm.AddTransition(attackDecisionState, attackState, new FuncPredicate(() => _attack));
+            _bossAttackSm.AddTransition(attackDecisionState, attackState2, new FuncPredicate(() => _attack2));
+            _bossAttackSm.AddTransition(attackState, attackDecisionState,
+                new FuncPredicate(() => !attackState.IsRunning));
+            _bossAttackSm.AddTransition(attackState2, attackDecisionState,
+                new FuncPredicate(() => !attackState2.IsRunning));
+
+            _bossAttackSm.SetState(attackDecisionState);
         }
 
         private void OnAttackTimerCompleted()
@@ -67,13 +85,14 @@ namespace Gameplay.Boss
         {
             _visuals.Rotate(TargetTracker.IsRightSideOf(transform.position));
 
-            _bossStateMachine.Update();
+            _bossAttackSm.Update();
+            _bossMovementSm.Update();
             _attackTimer.Tick(Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
-            _bossStateMachine.FixedUpdate();
+            _bossAttackSm.FixedUpdate();
         }
 
         private void LateUpdate()
