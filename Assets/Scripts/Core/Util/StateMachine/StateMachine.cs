@@ -6,7 +6,7 @@ public class StateMachine
     private StateNode _current;
 
     private readonly HashSet<Transition> _anyTransitions = new();
-    private readonly Dictionary<Type, StateNode> _nodes = new();
+    private readonly Dictionary<IState, StateNode> _nodes = new();
 
     public void Update()
     {
@@ -47,7 +47,7 @@ public class StateMachine
         previousSate.Exit();
         nextSate.Enter();
 
-        _current = _nodes[state.GetType()];
+        _current = _nodes[state];
     }
 
     private bool TryGetTransition(out ITransition nextTransition)
@@ -76,12 +76,10 @@ public class StateMachine
 
     private StateNode GetOrAddNode(IState state)
     {
-        var type = state.GetType();
-
-        if (!_nodes.TryGetValue(type, out StateNode node))
+        if (!_nodes.TryGetValue(state, out StateNode node))
         {
             node = new StateNode(state);
-            _nodes[type] = node;
+            _nodes[state] = node;
         }
 
         return node;
