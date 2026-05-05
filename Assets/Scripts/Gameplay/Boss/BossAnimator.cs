@@ -10,6 +10,8 @@ public class BossAnimator : MonoBehaviour
     private static readonly int Aim2 = Animator.StringToHash("Aim2");
     private static readonly int Shoot2 = Animator.StringToHash("Shoot2");
     private static readonly int Holster2 = Animator.StringToHash("Holster2");
+    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+    private static readonly int AttackSpeed = Animator.StringToHash("AttackSpeed");
 
     private readonly Dictionary<int, bool> _animationsRunning = new();
 
@@ -84,11 +86,21 @@ public class BossAnimator : MonoBehaviour
 
     public void ResetSpeed()
     {
-        _animator.speed = 1;
+        _animator.SetFloat(AttackSpeed, 1);
     }
 
     public void SetSpeed(float value)
     {
-        _animator.speed = value;
+        _animator.SetFloat(AttackSpeed, value);
+    }
+
+    public void StartMoving()
+    {
+        _animator.SetBool(IsMoving, true);
+    }
+
+    public void StopMoving()
+    {
+        _animator.SetBool(IsMoving, false);
     }
 }

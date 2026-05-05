@@ -31,6 +31,11 @@ public class TargetTracker : MonoBehaviour
         return GetTargetPosition() + GetTargetMoveDirection();
     }
 
+    public float DistanceToTarget()
+    {
+        return Vector3.Distance(_target.position, transform.position);
+    }
+
     private void LateUpdate()
     {
         _lastTargetPosition = GetTargetPosition();

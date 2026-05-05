@@ -630,9 +630,11 @@ GameObject:
   - component: {fileID: 844885654616230305}
   - component: {fileID: 7465731787159749018}
   - component: {fileID: 8218433025993125145}
+  - component: {fileID: 3280221200995226428}
   - component: {fileID: 4680123778016847766}
   - component: {fileID: 5965320094635387262}
   - component: {fileID: 3825441669576616186}
+  - component: {fileID: 4455938371954767858}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -714,6 +716,19 @@ MonoBehaviour:
   _weapon: {fileID: 336917314009645459}
   _magazine: {fileID: 8955259416580341456}
   _firePoint: {fileID: 6286449038790378359}
+--- !u!114 &3280221200995226428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286a527dc41847cba6622a418ae60d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Movement
+  _movementData: {fileID: 11400000, guid: a98f9dabc35f2f24f8bff7a1cb57baa6, type: 2}
 --- !u!50 &4680123778016847766
 Rigidbody2D:
   serializedVersion: 5
@@ -814,6 +829,52 @@ CapsuleCollider2D:
   m_Offset: {x: -0.01295495, y: -0.50539815}
   m_Size: {x: 1.3554322, y: 2.1915789}
   m_Direction: 0
+--- !u!61 &4455938371954767858
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.02584529, y: 0.875361}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.4507465, y: 5.099034}
+  m_EdgeRadius: 0
 --- !u!1 &4576273525711495414
 GameObject:
   m_ObjectHideFlags: 0
