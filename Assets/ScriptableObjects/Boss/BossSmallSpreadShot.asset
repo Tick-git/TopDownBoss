@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BossSmallSpreadShot
   m_EditorClassIdentifier: Scripts::BossSpreadShotData
   _damage: 10
-  _spreadAngle: 7.5
+  _spreadAngle: 5
   _speed: 20
   _bulletCount: 3
+  _range: 50
