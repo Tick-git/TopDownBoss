@@ -7,7 +7,7 @@ public class AnimationHitFeedback : MonoBehaviour
     [SerializeField] Health _health;
 
     private static readonly int Hit = Animator.StringToHash("Hit");
-    
+
     private void OnEnable()
     {
         _health.HealthChanged += OnHealthChanged;

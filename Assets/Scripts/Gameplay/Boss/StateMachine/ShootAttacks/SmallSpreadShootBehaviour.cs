@@ -3,7 +3,7 @@
 public class SmallSpreadShootBehaviour : IShootBehaviour
 {
     public int ShotsCount => 3;
-    
+
     public void TriggerAim(BossController context)
     {
         context.Animator.SetAimTrigger();

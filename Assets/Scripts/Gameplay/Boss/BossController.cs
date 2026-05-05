@@ -10,7 +10,7 @@ namespace Gameplay.Boss
 
         private StateMachine _bossStateMachine;
         private Timer _attackTimer;
-        
+
         private bool _attack;
         private bool _attack2;
         private int _count;
@@ -30,7 +30,7 @@ namespace Gameplay.Boss
             _attackTimer = new Timer(2);
             _attackTimer.Completed += OnAttackTimerCompleted;
             _attackTimer.Start();
-            
+
             var attackState = new ShootState(this, new LargeSpreadShootBehaviour());
             var attackState2 = new ShootState(this, new SmallSpreadShootBehaviour());
             var idleState = new IdleState(this);
@@ -40,7 +40,7 @@ namespace Gameplay.Boss
 
             _bossStateMachine.AddTransition(attackState, idleState, new FuncPredicate(() => !attackState.IsRunning));
             _bossStateMachine.AddTransition(attackState2, idleState, new FuncPredicate(() => !attackState2.IsRunning));
-            
+
             _bossStateMachine.SetState(idleState);
         }
 
@@ -58,7 +58,7 @@ namespace Gameplay.Boss
                 _attack = false;
                 _attack2 = true;
             }
-            
+
             _attackTimer.Reset(Random.Range(1, 5));
             _attackTimer.Start();
         }

@@ -30,7 +30,7 @@ public class TargetTracker : MonoBehaviour
     {
         return GetTargetPosition() + GetTargetMoveDirection();
     }
-    
+
     private void LateUpdate()
     {
         _lastTargetPosition = GetTargetPosition();

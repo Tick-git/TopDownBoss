@@ -3,7 +3,7 @@
 public class LargeSpreadShootBehaviour : IShootBehaviour
 {
     public int ShotsCount => 2;
-    
+
     public void TriggerAim(BossController context)
     {
         context.Animator.SetAim2Trigger();

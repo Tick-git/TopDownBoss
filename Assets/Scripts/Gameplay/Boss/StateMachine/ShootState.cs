@@ -5,7 +5,7 @@
         private State _currentState;
         private int _shotsFiredCount;
         private readonly IShootBehaviour _shootBehaviour;
-        
+
         public bool IsRunning { get; private set; }
 
         enum State
