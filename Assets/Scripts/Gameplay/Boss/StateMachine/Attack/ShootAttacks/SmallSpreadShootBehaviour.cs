@@ -3,7 +3,6 @@
 public class SmallSpreadShootBehaviour : IShootBehaviour
 {
     public int ShotsCount => 3;
-    private const float ShootOffsetFactor = 2.0f;
 
     public void TriggerAim(BossController context)
     {
@@ -13,8 +12,7 @@ public class SmallSpreadShootBehaviour : IShootBehaviour
     public void Shoot(BossController context)
     {
         var tracker = context.TargetTracker;
-        var shootPos = tracker.GetTargetPosition() + (tracker.GetTargetMoveDirection() * ShootOffsetFactor);
-        context.Weapon.ShootSmallSpread(shootPos);
+        context.Weapon.ShootSmallSpread(tracker.GetTargetPosition(), tracker.GetTargetMoveSpeedVelocity());
     }
 
     public bool AimRunning(BossController context)

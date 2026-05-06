@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     public float MoveSpeedMultiplier { get; private set; }
+    public Vector2 MoveSpeedVelocity { get; private set; }
 
     public void Initialize()
     {
@@ -43,9 +44,18 @@ public class Movement : MonoBehaviour
 
     private void MovePosition(Vector2 direction, float speed, float deltaTime)
     {
+        CalculateVelocityMoveSpeed(direction, deltaTime);
+
         float distance = speed * deltaTime;
 
         _rigidbody.MovePosition(_rigidbody.position + GetMoveDelta(direction, distance));
+    }
+
+    private void CalculateVelocityMoveSpeed(Vector2 direction, float deltaTime)
+    {
+        float distance = _movementData.MoveSpeed * MoveSpeedMultiplier * deltaTime;
+
+        MoveSpeedVelocity = GetMoveDelta(direction, distance) / deltaTime;
     }
 
     private Vector2 GetMoveDelta(Vector2 direction, float distance)

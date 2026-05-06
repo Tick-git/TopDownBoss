@@ -33,9 +33,15 @@ public class BossWeapon : MonoBehaviour
         _weapon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
     }
 
-    public void ShootSmallSpread(Vector2 target)
+    public void ShootSmallSpread(Vector2 target, Vector2 targetVelocity)
     {
-        SpreadShot(target, _smallSpreadShotData);
+        var bulletData = _smallSpreadShotData;
+
+        var shootDistance = (target - (Vector2)_firePoint.position).magnitude;
+
+        var shootTarget = target + targetVelocity * (shootDistance / bulletData.Speed);
+
+        SpreadShot(shootTarget, _smallSpreadShotData);
     }
 
     public void ShootBigSpread(Vector2 target)

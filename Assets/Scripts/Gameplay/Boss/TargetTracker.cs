@@ -4,7 +4,12 @@ public class TargetTracker : MonoBehaviour
 {
     [SerializeField] private Transform _target;
 
-    private Vector3 _lastTargetPosition;
+    private Movement _movement;
+
+    private void Awake()
+    {
+        _movement = _target.GetComponent<Movement>();
+    }
 
     public bool IsRightSideOf(Vector2 position)
     {
@@ -21,23 +26,13 @@ public class TargetTracker : MonoBehaviour
         return (_target.position - transform.position).normalized;
     }
 
-    public Vector2 GetTargetMoveDirection()
+    public Vector2 GetTargetMoveSpeedVelocity()
     {
-        return (_target.position - _lastTargetPosition).normalized;
-    }
-
-    public Vector2 GetNextPositionPrediction()
-    {
-        return GetTargetPosition() + GetTargetMoveDirection();
+        return _movement.MoveSpeedVelocity;
     }
 
     public float DistanceToTarget()
     {
         return Vector3.Distance(_target.position, transform.position);
-    }
-
-    private void LateUpdate()
-    {
-        _lastTargetPosition = GetTargetPosition();
     }
 }
