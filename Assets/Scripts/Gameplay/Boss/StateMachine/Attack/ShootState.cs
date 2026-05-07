@@ -27,11 +27,13 @@
             _currentState = State.None;
             _shotsFiredCount = 0;
             Context.Animator.SetSpeed(0.25f);
+            Context.AttackDecider.NotifyAttackStarted();
         }
 
         public override void Exit()
         {
             Context.Animator.ResetSpeed();
+            Context.AttackDecider.NotifyAttackEnded();
         }
 
         public override void Update()

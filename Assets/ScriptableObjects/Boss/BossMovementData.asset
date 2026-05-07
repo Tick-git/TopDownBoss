@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa55d6febc65a94b8855415ddd7e92f, type: 3}
   m_Name: BossMovementData
   m_EditorClassIdentifier: Scripts::PlayerMovementData
-  _moveSpeed: 3
+  _moveSpeed: 4
   _rollSpeed: 7.5

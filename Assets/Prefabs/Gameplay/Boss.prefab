@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 7465731787159749018}
   - component: {fileID: 8218433025993125145}
   - component: {fileID: 3280221200995226428}
+  - component: {fileID: 177305444337318307}
   - component: {fileID: 4680123778016847766}
   - component: {fileID: 5965320094635387262}
   - component: {fileID: 3825441669576616186}
@@ -730,6 +731,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::Movement
   _movementData: {fileID: 11400000, guid: a98f9dabc35f2f24f8bff7a1cb57baa6, type: 2}
+--- !u!114 &177305444337318307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b35fa32c2864e33b69c4b870833d79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Gameplay.Boss.AttackDecider
+  Attack: 0
+  Attack2: 0
 --- !u!50 &4680123778016847766
 Rigidbody2D:
   serializedVersion: 5
