@@ -4,13 +4,13 @@ namespace Gameplay.Boss
 {
     public class AttackDecider : MonoBehaviour
     {
-        public bool Attack;
-        public bool Attack2;
         private int _count;
 
         private Timer _attackTimer;
 
         public bool IsAttacking { get; private set; }
+        public bool Attack { get; private set; }
+        public bool Attack2 { get; private set; }
 
         public void NotifyAttackStarted()
         {
@@ -20,6 +20,9 @@ namespace Gameplay.Boss
         public void NotifyAttackEnded()
         {
             IsAttacking = false;
+            
+            _attackTimer.Reset(Random.Range(1, 5));
+            _attackTimer.Start();
         }
 
         public void Initialize()
@@ -44,9 +47,6 @@ namespace Gameplay.Boss
                 Attack = false;
                 Attack2 = true;
             }
-
-            _attackTimer.Reset(Random.Range(1, 5));
-            _attackTimer.Start();
         }
 
         private void Update()
