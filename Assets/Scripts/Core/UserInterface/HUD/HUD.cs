@@ -1,4 +1,6 @@
 using System;
+using Core.UserInterface.HUD;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
 
 public class HUD : IDisposable
@@ -7,18 +9,28 @@ public class HUD : IDisposable
 
     private readonly HealthWidget _playerHealthWidget;
     private readonly HealthWidget _bossHealthWidget;
+    private readonly StaminaWidget _playerStaminaWidget;
+    private readonly Stamina _playerStamina;
 
-    public HUD(HUDManager hudManager, Health playerHealth, Health bossHealth)
+    public HUD(HUDManager hudManager, Health playerHealth, Health bossHealth, Stamina playerStamina)
     {
         _hudManager = hudManager;
+        _playerStamina = playerStamina;
 
         var root = hudManager.GetHUDRoot();
-
-        _playerHealthWidget = new HealthWidget(root.Q("PlayerStatsWidget"),"PlayerHealthBar", playerHealth);
+        var playerStats = root.Q("PlayerStatsWidget");
+        
+        _playerHealthWidget = new HealthWidget(playerStats,"PlayerHealthBar", playerHealth);
+        _playerStaminaWidget = new StaminaWidget(playerStats, "PlayerStaminaBar", _playerStamina.MaxStamina);
         _bossHealthWidget = new HealthWidget(root.Q("BossHealthWidget"),"BossHealthBar", bossHealth);
-
+        
         _hudManager.Register(_playerHealthWidget);
         _hudManager.Register(_bossHealthWidget);
+    }
+
+    public void Update()
+    {
+        _playerStaminaWidget.SetStamina(_playerStamina.CurrentStamina);
     }
 
 

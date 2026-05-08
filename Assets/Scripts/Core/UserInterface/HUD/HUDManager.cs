@@ -11,12 +11,13 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] private Health _player;
     [SerializeField] private Health _boss;
-
+    [SerializeField] private Stamina _playerStamina;
+    
     private HUD _hud;
 
     private void Awake()
     {
-        _hud = new HUD(this, _player, _boss);
+        _hud = new HUD(this, _player, _boss, _playerStamina);
         ShowHUD();
     }
 
@@ -24,6 +25,12 @@ public class HUDManager : MonoBehaviour
     {
         _hud.Dispose();
     }
+
+    private void Update()
+    {
+        _hud.Update();
+    }
+    
     // =====================
 
     public void Register(HUDWidget widget)

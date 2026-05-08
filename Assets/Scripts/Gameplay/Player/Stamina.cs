@@ -4,9 +4,10 @@ public class Stamina : MonoBehaviour
 {
     [SerializeField] StaminaData _staminaData;
 
-    private bool _regenerationEnabled; 
+    private bool _regenerationEnabled = true; 
     
     public float CurrentStamina { get; private set; }
+    public float MaxStamina => _staminaData.MaxStamina;
     
     public void EnableRegeneration() => _regenerationEnabled = true;
     
