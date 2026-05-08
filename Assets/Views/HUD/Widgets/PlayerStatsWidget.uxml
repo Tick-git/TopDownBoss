@@ -2,6 +2,9 @@
     <ui:Template name="Healthbar" src="project://database/Assets/Views/HUD/Templates/FillableBar.uxml?fileID=9197481963319205126&amp;guid=95f546badc693424787582a85030105f&amp;type=3#FillableBar"/>
     <Style src="project://database/Assets/Views/Styles/Color.uss?fileID=7433441132597879392&amp;guid=e085b0bb4833dc44cbc13c689f568195&amp;type=3#Color"/>
     <ui:VisualElement class="healthbar-color" style="flex-grow: 1; margin-right: 70%; margin-left: 20px; margin-top: 20px;">
-        <ui:Instance template="Healthbar" name="FillableBar" class="border-white-color healthbar-fill" style="height: 7px;"/>
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; justify-content: space-evenly; height: 75px;">
+            <ui:Instance template="Healthbar" name="PlayerHealthBar" class="border-white-color healthbar-fill" style="height: 15px;"/>
+            <ui:Instance template="Healthbar" name="PlayerStaminaBar" class="border-white-color healthbar-fill staminabar-color" style="height: 15px;"/>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

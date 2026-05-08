@@ -14,8 +14,8 @@ public class HUD : IDisposable
 
         var root = hudManager.GetHUDRoot();
 
-        _playerHealthWidget = new HealthWidget(root.Q("PlayerHealthWidget"), playerHealth);
-        _bossHealthWidget = new HealthWidget(root.Q("BossHealthWidget"), bossHealth);
+        _playerHealthWidget = new HealthWidget(root.Q("PlayerStatsWidget"),"PlayerHealthBar", playerHealth);
+        _bossHealthWidget = new HealthWidget(root.Q("BossHealthWidget"),"BossHealthBar", bossHealth);
 
         _hudManager.Register(_playerHealthWidget);
         _hudManager.Register(_bossHealthWidget);

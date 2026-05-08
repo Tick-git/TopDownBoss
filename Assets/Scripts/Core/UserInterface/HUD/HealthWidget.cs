@@ -5,11 +5,11 @@ public class HealthWidget : HUDWidget
     private readonly Slider _healthBar;
     private readonly Health _health;
 
-    public HealthWidget(VisualElement root, Health health) : base(root)
+    public HealthWidget(VisualElement root, string fillableBarRootName, Health health) : base(root)
     {
         _health = health;
 
-        _healthBar = root.Q<Slider>("FillableBar");
+        _healthBar = root.Q(fillableBarRootName).Q<Slider>("FillableBar");
         _health.HealthChanged += SetHealth;
 
         SetHealth(_health.MaxHealth);
