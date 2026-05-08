@@ -12,9 +12,7 @@
     border-left-width: 0;
 }
 
-.slider-tracker-fill .unity-base-slider__fill {
-    background-color: rgb(78, 4, 4);
-}
+
 
 .slider-drag-container .unity-base-slider__drag-container {
     margin-right: 0;

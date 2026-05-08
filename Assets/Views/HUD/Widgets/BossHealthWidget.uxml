@@ -1,11 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="Healthbar" src="project://database/Assets/Views/HUD/Healthbar.uxml?fileID=9197481963319205126&amp;guid=95f546badc693424787582a85030105f&amp;type=3#Healthbar"/>
-    <Style src="project://database/Assets/Views/Styles/SliderStyle.uss?fileID=7433441132597879392&amp;guid=0cf1a88e4e3b9ed45b2854cef986c828&amp;type=3#SliderStyle"/>
-    <Style src="project://database/Assets/Views/Styles/Healthbar.uss?fileID=7433441132597879392&amp;guid=c7b28f21997aabc428de0c536e31650d&amp;type=3#Healthbar"/>
+    <ui:Template name="Healthbar" src="project://database/Assets/Views/HUD/Templates/FillableBar.uxml?fileID=9197481963319205126&amp;guid=95f546badc693424787582a85030105f&amp;type=3#FillableBar"/>
     <Style src="project://database/Assets/Views/Styles/Typography.uss?fileID=7433441132597879392&amp;guid=6c7c6de22c85aed4692067f0b334d5b2&amp;type=3#Typography"/>
     <Style src="project://database/Assets/Views/Styles/Color.uss?fileID=7433441132597879392&amp;guid=e085b0bb4833dc44cbc13c689f568195&amp;type=3#Color"/>
     <ui:VisualElement name="BossHealthbar" style="flex-grow: 1; margin-top: 900px; margin-right: 300px; margin-left: 300px;">
         <ui:Label text="Holy Boss" name="Label" class="text-white-color h6"/>
-        <ui:Instance template="Healthbar" name="Healthbar" style="height: 30px;"/>
+        <ui:Instance template="Healthbar" name="FillableBar" class="healthbar-color" style="height: 30px;"/>
     </ui:VisualElement>
 </ui:UXML>

@@ -12,3 +12,9 @@
     border-top-color: rgb(200, 200, 200);
     border-bottom-color: rgb(200, 200, 200);
 }
+
+
+
+.healthbar-color .unity-base-slider__fill {
+    background-color: rgb(79, 0, 0);
+}

@@ -9,7 +9,7 @@ public class HealthWidget : HUDWidget
     {
         _health = health;
 
-        _healthBar = root.Q<Slider>("HealthBar");
+        _healthBar = root.Q<Slider>("FillableBar");
         _health.HealthChanged += SetHealth;
 
         SetHealth(_health.MaxHealth);
