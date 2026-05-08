@@ -11,13 +11,23 @@ public class Stamina : MonoBehaviour
     public void EnableRegeneration() => _regenerationEnabled = true;
     
     public void DisableRegeneration() => _regenerationEnabled = false;
-    
+
+    public void Consume(float amount)
+    {
+        SetStamina(CurrentStamina - amount);
+    }
+
+    private void SetStamina(float stamina)
+    {
+        CurrentStamina = Mathf.Clamp(stamina, 0, _staminaData.MaxStamina);
+    }
+
     private void Update()
     {
         if (!_regenerationEnabled) return;
 
         var nextStamina = CurrentStamina + _staminaData.RegenerationRate * Time.deltaTime;
 
-        CurrentStamina = Mathf.Clamp(nextStamina, 0, _staminaData.MaxStamina);
+        SetStamina(nextStamina);
     }
 }
