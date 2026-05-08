@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        transform.position = PooledPosition;
     }
 
     public void StartFlight(BulletFlightParams bulletFlightParams)
