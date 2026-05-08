@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2359513098666288967}
   - component: {fileID: 6620165309540836398}
   - component: {fileID: 1929541158366781160}
+  - component: {fileID: 3447885259023669951}
   - component: {fileID: 7666506039258470409}
   - component: {fileID: 8177183229520073781}
   m_Layer: 0
@@ -71,6 +72,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::PlayerMovement
   _movementData: {fileID: 11400000, guid: 326b8b00624802943b2271bacd65bf50, type: 2}
+--- !u!114 &3447885259023669951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594669592065292467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03f9f87ed745b4788a3605ee1ccd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Stamina
+  _staminaData: {fileID: 11400000, guid: 9bca604832834a54ba4b97ee27ab9c88, type: 2}
 --- !u!50 &7666506039258470409
 Rigidbody2D:
   serializedVersion: 5
