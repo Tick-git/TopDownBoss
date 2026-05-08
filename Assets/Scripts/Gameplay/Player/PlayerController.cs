@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponAnimator _weaponAnimator;
     [SerializeField] private Hitbox _hitbox;
     [SerializeField] private Health _health;
+    [SerializeField] private PlayerStaminaController _playerStaminaController;
 
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public Hitbox Hitbox => _hitbox;
     public WeaponAnimator WeaponAnimator => _weaponAnimator;
     public AssaultRifle Weapon => _weapon;
-
+    public PlayerStaminaController PlayerStaminaController => _playerStaminaController;
 
     private void Awake()
     {
@@ -71,7 +72,8 @@ public class PlayerController : MonoBehaviour
         AtMovement(idleState, rollState, new FuncPredicate(() => _rollBuffer.IsBuffered));
 
         AtMovement(walkState, idleState, new FuncPredicate(() => !IsMoving));
-        AtMovement(walkState, rollState, new FuncPredicate(() => _rollBuffer.IsBuffered));
+        AtMovement(walkState, rollState,
+            new FuncPredicate(() => _rollBuffer.IsBuffered && PlayerStaminaController.CanRoll));
 
         AtMovement(rollState, idleState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && !IsMoving));
         AtMovement(rollState, walkState, new FuncPredicate(() => !PlayerAnimator.RollAnimationRunning && IsMoving));

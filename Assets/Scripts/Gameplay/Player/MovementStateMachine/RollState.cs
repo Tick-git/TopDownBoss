@@ -13,6 +13,7 @@ public class RollState : BaseState<PlayerController>
         Context.PlayerAnimator.SetRollTrigger();
         Context.HolsterWeapon();
         Context.Hitbox.SetRolling();
+        Context.PlayerStaminaController.StartRoll();
     }
 
     public override void FixedUpdate()
@@ -28,5 +29,6 @@ public class RollState : BaseState<PlayerController>
 
         Context.EquipWeapon();
         Context.Hitbox.SetStanding();
+        Context.PlayerStaminaController.StopRoll();
     }
 }

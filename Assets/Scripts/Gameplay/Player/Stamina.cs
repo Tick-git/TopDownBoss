@@ -1,16 +1,35 @@
+using System;
 using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
     [SerializeField] StaminaData _staminaData;
 
-    private bool _regenerationEnabled = true; 
-    
+    private float _regenerationMultiplier = DefaultRegenerationMultiplier;
+    private bool _regenerationEnabled = true;
+
     public float CurrentStamina { get; private set; }
     public float MaxStamina => _staminaData.MaxStamina;
-    
+
+    private const float DefaultRegenerationMultiplier = 1.0f;
+
+    private void Awake()
+    {
+        CurrentStamina = MaxStamina;
+    }
+
+    public void SetRegenerationMultiplier(float value)
+    {
+        _regenerationMultiplier = value;
+    }
+
+    public void ResetRegenerationMultiplier()
+    {
+        _regenerationMultiplier = DefaultRegenerationMultiplier;
+    }
+
     public void EnableRegeneration() => _regenerationEnabled = true;
-    
+
     public void DisableRegeneration() => _regenerationEnabled = false;
 
     public void Consume(float amount)
@@ -27,7 +46,7 @@ public class Stamina : MonoBehaviour
     {
         if (!_regenerationEnabled) return;
 
-        var nextStamina = CurrentStamina + _staminaData.RegenerationRate * Time.deltaTime;
+        var nextStamina = CurrentStamina + _staminaData.RegenerationRate * _regenerationMultiplier * Time.deltaTime;
 
         SetStamina(nextStamina);
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6620165309540836398}
   - component: {fileID: 1929541158366781160}
   - component: {fileID: 3447885259023669951}
+  - component: {fileID: 2335199521697740465}
   - component: {fileID: 7666506039258470409}
   - component: {fileID: 8177183229520073781}
   m_Layer: 0
@@ -59,6 +60,7 @@ MonoBehaviour:
   _weaponAnimator: {fileID: 7360406256935177974}
   _hitbox: {fileID: 3652279118041857472}
   _health: {fileID: 244800082540759716}
+  _playerStaminaController: {fileID: 2335199521697740465}
 --- !u!114 &1929541158366781160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +87,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::Stamina
   _staminaData: {fileID: 11400000, guid: 9bca604832834a54ba4b97ee27ab9c88, type: 2}
+--- !u!114 &2335199521697740465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594669592065292467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2620ab86ee0fd894684f6c2a3a75e6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::PlayerStamina
+  _staminaCosts: {fileID: 11400000, guid: 66f96aad7041a62478d786f75485d051, type: 2}
+  _stamina: {fileID: 3447885259023669951}
 --- !u!50 &7666506039258470409
 Rigidbody2D:
   serializedVersion: 5

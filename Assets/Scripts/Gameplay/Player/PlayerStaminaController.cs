@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStamina : MonoBehaviour
+public class PlayerStaminaController : MonoBehaviour
 {
     [SerializeField] private StaminaCosts _staminaCosts;
     [SerializeField] private Stamina _stamina;
@@ -20,11 +20,11 @@ public class PlayerStamina : MonoBehaviour
 
     public void StartShoot()
     {
-        _stamina.DisableRegeneration();
+        _stamina.SetRegenerationMultiplier(0.1f);
     }
 
     public void StopShoot()
     {
-        _stamina.EnableRegeneration();
+        _stamina.ResetRegenerationMultiplier();
     }
 }

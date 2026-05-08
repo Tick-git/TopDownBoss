@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::HUDManager
   _player: {fileID: 82191624}
   _boss: {fileID: 753664303}
+  _playerStamina: {fileID: 1844441602615647219}
 --- !u!1001 &704895001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1039,6 +1040,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+--- !u!114 &1844441602615647219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3447885259023669951, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+  m_PrefabInstance: {fileID: 1844441602615647218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03f9f87ed745b4788a3605ee1ccd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Stamina
 --- !u!1001 &8913000147264923215
 PrefabInstance:
   m_ObjectHideFlags: 0
