@@ -5,5 +5,10 @@
         public AttackDecisionState(BossController context) : base(context)
         {
         }
+
+        public override void Update()
+        {
+            Context.Weapon.AimToDefault(Context.TargetTracker.GetTargetPosition());
+        }
     }
 }
