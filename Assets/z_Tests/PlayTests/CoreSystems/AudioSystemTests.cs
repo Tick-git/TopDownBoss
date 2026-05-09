@@ -17,7 +17,7 @@ public class AudioSystemTests
     {
         var clip = AudioClip.Create("testClip", 44100, 1, 44100, false);
         var soundData = ScriptableObject.CreateInstance<AudioData>();
-        soundData.Initialize(new[]{clip}, 1, 1, null);
+        soundData.InitializeForTests(new[]{clip}, 1, 1, null);
         return soundData;
     }
     
