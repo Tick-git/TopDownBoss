@@ -24,7 +24,7 @@ namespace Gameplay.Player
 
         private void Play(AudioData data)
         {
-            if (_audioManager == null) return;
+            if (_audioManager == null || data == null) return;
             
             _audioManager.PlaySfx(_shotSound);
         }
