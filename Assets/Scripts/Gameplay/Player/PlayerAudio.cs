@@ -13,7 +13,7 @@ namespace Gameplay.Player
 
         private AudioManager _audioManager;
 
-        private void Awake()
+        private void Start()
         {
             _audioManager = AudioManager.Instance;
         }
