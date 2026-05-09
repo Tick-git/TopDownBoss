@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossAnimator : MonoBehaviour
@@ -24,6 +25,8 @@ public class BossAnimator : MonoBehaviour
     public bool AimingRunning2 => _animationsRunning[Aim2];
     public bool ShootRunning2 => _animationsRunning[Shoot2];
     public bool HolsterRunning2 => _animationsRunning[Holster2];
+
+    public event Action FootGrounded;
 
     public void Initialize()
     {
@@ -102,5 +105,10 @@ public class BossAnimator : MonoBehaviour
     public void StopMoving()
     {
         _animator.SetBool(IsMoving, false);
+    }
+
+    public void OnFootGrounded()
+    {
+        FootGrounded?.Invoke();
     }
 }

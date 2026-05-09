@@ -54,6 +54,8 @@
             {
                 _currentState = State.Shoot;
                 Context.Animator.SetSpeed(1.5f);
+                Context.Audio.PlayShootSound();
+                
                 _shootBehaviour.Shoot(Context);
                 _shotsFiredCount++;
             }

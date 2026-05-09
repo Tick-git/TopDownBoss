@@ -7,6 +7,7 @@ namespace Gameplay.Boss
         [SerializeField] private BossVisuals _visuals;
         [SerializeField] private BossAnimator _animator;
         [SerializeField] private Health _health;
+        [SerializeField] private BossAudio _audio;
 
         private StateMachine _bossAttackSm;
         private StateMachine _bossMovementSm;
@@ -16,8 +17,9 @@ namespace Gameplay.Boss
         public TargetTracker TargetTracker { get; private set; }
         public Movement Movement { get; private set; }
         public AttackDecider AttackDecider { get; set; }
-
-
+        
+        public BossAudio Audio => _audio;
+    
         private void Awake()
         {
             TargetTracker = GetComponent<TargetTracker>();
