@@ -539,9 +539,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbcfa3519dd14a358584a54eacadb19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::Gameplay.Player.PlayerAudio
+  _animator: {fileID: 2751328546615226703}
   _shotSound: {fileID: 11400000, guid: f921b661fc7ee924f8c0f45953363144, type: 2}
   _rollSound: {fileID: 0}
-  _stepSound: {fileID: 0}
+  _stepSound: {fileID: 11400000, guid: f29c5c529e484114da991dfc6930793f, type: 2}
 --- !u!1 &5750400742650168061
 GameObject:
   m_ObjectHideFlags: 0

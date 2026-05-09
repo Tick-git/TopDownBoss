@@ -38,7 +38,7 @@ namespace Gameplay.Player
         {
             if (_audioManager == null || data == null) return;
 
-            _audioManager.PlaySfx(_shotSound);
+            _audioManager.PlaySfx(data);
         }
     }
 }
