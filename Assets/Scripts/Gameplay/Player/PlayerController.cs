@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private PlayerStaminaController _playerStaminaController;
     [SerializeField] private PlayerAudio _playerAudio;
-    
+
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
     private RollBuffer _rollBuffer;

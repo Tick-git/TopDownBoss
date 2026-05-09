@@ -12,7 +12,7 @@ public class RollState : BaseState<PlayerController>
 
         Context.PlayerAnimator.SetRollTrigger();
         Context.PlayerAudio.PlayRollSfx();
-        
+
         Context.HolsterWeapon();
         Context.Hitbox.SetRolling();
         Context.PlayerStaminaController.StartRoll();

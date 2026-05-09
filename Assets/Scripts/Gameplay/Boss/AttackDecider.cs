@@ -20,7 +20,7 @@ namespace Gameplay.Boss
         public void NotifyAttackEnded()
         {
             IsAttacking = false;
-            
+
             _attackTimer.Reset(Random.Range(1, 5));
             _attackTimer.Start();
         }

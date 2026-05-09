@@ -23,6 +23,6 @@
         if (Context.Weapon.TryShoot())
         {
             Context.PlayerAudio.PlayShootSfx();
-        };
+        }
     }
 }

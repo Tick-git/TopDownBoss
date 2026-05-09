@@ -9,7 +9,7 @@ public class BossWeapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
 
     private IDamageable _owner;
-    
+
     private float _currentAngle;
     private bool _lastAimedLeft;
 
@@ -32,12 +32,12 @@ public class BossWeapon : MonoBehaviour
 
         if (aimingLeft)
             rotationAngle -= 180;
-        
+
         if (_lastAimedLeft != aimingLeft)
             _currentAngle = rotationAngle;
         else
             _currentAngle = Mathf.LerpAngle(_currentAngle, rotationAngle, Time.deltaTime * 20);
-        
+
         _weapon.rotation = Quaternion.Euler(0f, 0f, _currentAngle);
         _lastAimedLeft = aimingLeft;
     }
@@ -52,9 +52,9 @@ public class BossWeapon : MonoBehaviour
         }
         else
         {
-            target =  _weapon.position + Vector3.right;
+            target = _weapon.position + Vector3.right;
         }
-        
+
         ApplyAim(target);
     }
 

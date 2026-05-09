@@ -5,24 +5,22 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(menuName = DataPaths.CoreData.AudioPath + "AudioData")]
 public class AudioData : ScriptableObject
 {
-    [Header("Clip")]
-    [SerializeField] private PickMode _pickMode;
+    [Header("Clip")] [SerializeField] private PickMode _pickMode;
     [SerializeField] private AudioClip[] _clips;
-    
-    [Header("Volume")]
-    [Range(0f, 1f)] [SerializeField] private float _volume = 1f;
 
-    [Header("Pitch")]
-    [SerializeField] private PitchMode _pitchMode = PitchMode.FixedPitch;
+    [Header("Volume")] [Range(0f, 1f)] [SerializeField]
+    private float _volume = 1f;
+
+    [Header("Pitch")] [SerializeField] private PitchMode _pitchMode = PitchMode.FixedPitch;
     [Range(0.1f, 3f)] [SerializeField] private float _pitch = 1f;
     [SerializeField] private Vector2 _pitchRange = new(0.9f, 1.1f);
-    
-    [Header("Mixer")]
-    [SerializeField] private AudioMixerGroup _mixerGroup;
+
+    [Header("Mixer")] [SerializeField] private AudioMixerGroup _mixerGroup;
 
     private int _index;
 
     public float Volume => _volume;
+
     public float Pitch
     {
         get
@@ -40,7 +38,7 @@ public class AudioData : ScriptableObject
     }
 
     public AudioMixerGroup MixerGroup => _mixerGroup;
-    
+
     public AudioClip GetClip()
     {
         if (_clips == null || _clips.Length == 0) return null;
@@ -69,7 +67,7 @@ public class AudioData : ScriptableObject
         Sequential,
         Random
     }
-    
+
     public void InitializeForTests(AudioClip[] clips, float volume, float pitch, AudioMixerGroup mixerGroup)
     {
         _clips = clips;

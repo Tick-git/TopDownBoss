@@ -12,7 +12,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Health _player;
     [SerializeField] private Health _boss;
     [SerializeField] private Stamina _playerStamina;
-    
+
     private HUD _hud;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class HUDManager : MonoBehaviour
     {
         _hud.Update();
     }
-    
+
     // =====================
 
     public void Register(HUDWidget widget)
