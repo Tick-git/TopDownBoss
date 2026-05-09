@@ -18,11 +18,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c8affc16955973e4b9f0474dc6dd77a2, type: 3}
   - {fileID: 8300000, guid: a2c7b1ec9c50da5409c1247a46639af9, type: 3}
   - {fileID: 8300000, guid: 66b0ad0e0fa7c404fac67b4da5eabd7b, type: 3}
-  - {fileID: 8300000, guid: 9c516a450aa663a4d871cdb6b0e655d5, type: 3}
   - {fileID: 8300000, guid: fc74e290b90eef24c9442321f61c0f79, type: 3}
   - {fileID: 8300000, guid: 050fa9d759d891b4b88b5a483aac978b, type: 3}
   - {fileID: 8300000, guid: 95102c43030cf0040a093fa7cf5c77d6, type: 3}
-  _volume: 1
+  _volume: 0.5
   _pitchMode: 0
   _pitch: 1
   _pitchRange: {x: 0.95, y: 1.05}
