@@ -15,7 +15,7 @@ MonoBehaviour:
   _pickMode: 0
   _clips:
   - {fileID: 8300000, guid: 3dfd7abbd6944514890fd0ebb631252f, type: 3}
-  _volume: 1
+  _volume: 0.6
   _pitchMode: 1
   _pitch: 1
   _pitchRange: {x: 0.9, y: 1.1}

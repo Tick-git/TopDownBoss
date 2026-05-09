@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c727520a4bca8f54a8f7482fe5ac9cfc, type: 3}
   - {fileID: 8300000, guid: 721a474eb38ce814ca3afeb6650ebcd5, type: 3}
   - {fileID: 8300000, guid: 0717c24e3f3c31c49a104f86ea306ef6, type: 3}
-  _volume: 0.5
+  _volume: 1
   _pitchMode: 0
   _pitch: 1
   _pitchRange: {x: 0.9, y: 1.1}
