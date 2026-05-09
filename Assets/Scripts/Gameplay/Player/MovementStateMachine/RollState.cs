@@ -32,5 +32,6 @@ public class RollState : BaseState<PlayerController>
         Context.EquipWeapon();
         Context.Hitbox.SetStanding();
         Context.PlayerStaminaController.StopRoll();
+        Context.Movement.SetMoveSpeedVelocityToZero();
     }
 }

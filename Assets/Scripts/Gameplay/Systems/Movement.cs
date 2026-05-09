@@ -42,6 +42,11 @@ public class Movement : MonoBehaviour
         MoveSpeedMultiplier = 1;
     }
 
+    public void SetMoveSpeedVelocityToZero()
+    {
+        MoveSpeedVelocity = Vector2.zero;
+    }
+
     private void MovePosition(Vector2 direction, float speed, float deltaTime)
     {
         CalculateVelocityMoveSpeed(direction, deltaTime);

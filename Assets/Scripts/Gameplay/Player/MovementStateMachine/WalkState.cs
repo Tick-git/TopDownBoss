@@ -8,9 +8,12 @@ public class WalkState : BaseState<PlayerController>
 
     public override void FixedUpdate()
     {
-        base.FixedUpdate();
-
         Context.Movement.Move(Context.Input.MoveDirection, Time.fixedDeltaTime);
         Context.PlayerAnimator.SetMoveSpeedMultiplier(Context.Movement.MoveSpeedMultiplier);
+    }
+
+    public override void Exit()
+    {
+        Context.Movement.SetMoveSpeedVelocityToZero();
     }
 }
