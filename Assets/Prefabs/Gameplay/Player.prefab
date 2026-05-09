@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 2876336262204950301}
   - component: {fileID: 6594921970630969279}
   m_Layer: 0
-  m_Name: PlayerAudio
+  m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::Gameplay.Player.PlayerAudio
   _animator: {fileID: 2751328546615226703}
   _shotSound: {fileID: 11400000, guid: f921b661fc7ee924f8c0f45953363144, type: 2}
-  _rollSound: {fileID: 0}
+  _rollSound: {fileID: 11400000, guid: edae0514f2f7b3e458be8e2907b793ae, type: 2}
   _stepSound: {fileID: 11400000, guid: f29c5c529e484114da991dfc6930793f, type: 2}
 --- !u!1 &5750400742650168061
 GameObject:
