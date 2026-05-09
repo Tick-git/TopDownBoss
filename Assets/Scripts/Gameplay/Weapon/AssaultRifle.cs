@@ -62,10 +62,10 @@ public class AssaultRifle : MonoBehaviour
         return result;
     }
 
-    public void TryShoot()
+    public bool TryShoot()
     {
         if (Time.time < _lastShotTime + (1 / _data.FireRatePerSecond))
-            return;
+            return false;
 
         _magazine.TryGetBullet(out Bullet bullet);
         _lastShotTime = Time.time;
@@ -79,5 +79,7 @@ public class AssaultRifle : MonoBehaviour
             _owner);
 
         bullet.StartFlight(bulletParams);
+
+        return true;
     }
 }

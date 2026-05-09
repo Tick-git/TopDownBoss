@@ -19,6 +19,10 @@
     public override void Update()
     {
         Context.Weapon.ApplyAim(Context.Input.AimDirection);
-        Context.Weapon.TryShoot();
+
+        if (Context.Weapon.TryShoot())
+        {
+            Context.PlayerAudio.PlayShootSfx();
+        };
     }
 }

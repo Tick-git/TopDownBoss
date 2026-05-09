@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifleData
   m_EditorClassIdentifier: Scripts::AssaultRifleData
   _orbitRadius: 0.3
-  _damage: 55
-  _fireRatePerSecond: 4
+  _damage: 100
+  _fireRatePerSecond: 2
   _range: 12.5
   _speed: 15

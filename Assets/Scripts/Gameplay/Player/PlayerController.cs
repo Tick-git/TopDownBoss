@@ -1,3 +1,4 @@
+using Gameplay.Player;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Hitbox _hitbox;
     [SerializeField] private Health _health;
     [SerializeField] private PlayerStaminaController _playerStaminaController;
-
+    [SerializeField] private PlayerAudio _playerAudio;
+    
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
     private RollBuffer _rollBuffer;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public WeaponAnimator WeaponAnimator => _weaponAnimator;
     public AssaultRifle Weapon => _weapon;
     public PlayerStaminaController PlayerStaminaController => _playerStaminaController;
+    public PlayerAudio PlayerAudio => _playerAudio;
 
     private void Awake()
     {
