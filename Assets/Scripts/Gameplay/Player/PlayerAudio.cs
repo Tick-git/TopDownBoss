@@ -5,9 +5,10 @@ namespace Gameplay.Player
     public class PlayerAudio : MonoBehaviour
     {
         [SerializeField] private PlayerAnimator _animator;
-        
-        [Header("Audio Data")]
-        [SerializeField] private AudioData _shotSound;
+
+        [Header("Audio Data")] [SerializeField]
+        private AudioData _shotSound;
+
         [SerializeField] private AudioData _rollSound;
         [SerializeField] private AudioData _stepSound;
 

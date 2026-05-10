@@ -16,12 +16,12 @@ public class PlayerAnimator : MonoBehaviour
     private Vector2 _lastAimDirection;
 
     public event Action FootOnGround;
-    
+
     public void OnFootOnGroundAnimationEvent()
     {
         FootOnGround?.Invoke();
     }
-    
+
     public void Initialize()
     {
         _animator = GetComponent<Animator>();

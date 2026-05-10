@@ -4,11 +4,12 @@ using UnityEngine;
 public class BossAudio : MonoBehaviour
 {
     [SerializeField] private BossAnimator _animator;
-    
-    [Header("Audio Data")]
-    [SerializeField] private AudioData _walkData;
+
+    [Header("Audio Data")] [SerializeField]
+    private AudioData _walkData;
+
     [SerializeField] private AudioData _shootData;
-    
+
     private AudioManager _audioManager;
 
     private void Start()
@@ -20,7 +21,7 @@ public class BossAudio : MonoBehaviour
     {
         _animator.FootGrounded += PlayWalkSound;
     }
-    
+
     private void OnDisable()
     {
         _animator.FootGrounded -= PlayWalkSound;
@@ -30,11 +31,11 @@ public class BossAudio : MonoBehaviour
 
     public void PlayShootSound() => Play(_shootData);
 
-    
+
     private void Play(AudioData data)
     {
         if (_audioManager == null || data == null) return;
-        
+
         _audioManager.PlaySfx(data);
     }
 }
