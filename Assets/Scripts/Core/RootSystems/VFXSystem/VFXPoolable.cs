@@ -6,9 +6,10 @@ public class VFXSystem : MonoBehaviour, IPoolable<VFXSystem>, IPoolReturner<VFXS
     private ParticleSystem _particleSystem;
     private bool _isReturned;
 
-    public void Play(Vector3 position)
+    public void Play(Vector3 position, Quaternion rotation)
     {
         transform.position = position;
+        transform.rotation = rotation;
         _particleSystem.Play();
     }
 

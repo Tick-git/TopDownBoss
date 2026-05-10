@@ -18,10 +18,10 @@ public class VFXManager : Singleton<VFXManager>
         InstantiatePools();
     }
 
-    public VFXSystem SpawnVfx(VFXType type, Vector3 position)
+    public VFXSystem SpawnVfx(VFXType type, Vector3 position, Quaternion rotation = default)
     {
         VFXSystem vfxSystem = _vfxPools[type].Get();
-        vfxSystem.Play(position);
+        vfxSystem.Play(position, rotation);
 
         return vfxSystem;
     }

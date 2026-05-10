@@ -54,7 +54,7 @@ public class VFXSystemTests
         var pool = CreatePool();
 
         var vfx = pool.Get();
-        vfx.Play(Vector3.zero);
+        vfx.Play(Vector3.zero, Quaternion.identity);
 
         var ps = vfx.GetComponent<ParticleSystem>();
 
