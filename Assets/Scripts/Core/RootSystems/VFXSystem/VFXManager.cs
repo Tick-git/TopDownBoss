@@ -7,6 +7,12 @@ public class VFXManager : Singleton<VFXManager>
 
     private readonly Dictionary<VFXType, ObjectPool<VFXSystem>> _vfxPools = new();
 
+    protected override void Awake()
+    {
+        base.Awake();
+        Initialize();
+    }
+
     public void Initialize()
     {
         InstantiatePools();

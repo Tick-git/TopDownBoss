@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0d22bfd5c94262a1cf5bb528640bfe, type: 3}
+  m_Name: BloodVFX
+  m_EditorClassIdentifier: Scripts::VFXData
+  _vfxPrefab: {fileID: 352150705735630440, guid: 0ff6506f3f00ae14aaacbebee39d4335, type: 3}
+  _vfxType: 4
+  _poolSize: 10
