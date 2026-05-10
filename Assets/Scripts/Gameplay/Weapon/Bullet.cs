@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPoolable<Bullet>
@@ -36,8 +35,8 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
 
             var damageContext = new DamageContext(
                 _bulletParams.Damage,
-                transform.position,
-                -_bulletParams.Direction,
+                other.ClosestPoint(transform.position),
+                _bulletParams.StartPos - (Vector2)other.transform.position,
                 other.transform);
 
             damageable.ApplyDamage(damageContext);
