@@ -29,6 +29,8 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (!_isFlying) return;
+
         if (other.TryGetComponent(out IDamageable damageable))
         {
             if (damageable == _bulletParams.Owner) return;
