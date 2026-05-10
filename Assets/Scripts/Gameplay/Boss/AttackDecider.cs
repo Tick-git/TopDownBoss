@@ -21,7 +21,7 @@ namespace Gameplay.Boss
         {
             IsAttacking = false;
 
-            _attackTimer.Reset(Random.Range(1, 5));
+            _attackTimer.Reset(Random.Range(1, 3));
             _attackTimer.Start();
         }
 
