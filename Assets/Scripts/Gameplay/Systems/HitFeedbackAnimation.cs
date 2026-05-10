@@ -10,15 +10,15 @@ public class AnimationHitFeedback : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealthChanged += OnHealthChanged;
+        _health.Hit += OnHit;
     }
 
     private void OnDisable()
     {
-        _health.HealthChanged -= OnHealthChanged;
+        _health.Hit -= OnHit;
     }
 
-    private void OnHealthChanged(float obj)
+    private void OnHit(DamageContext damageContext)
     {
         _animator.SetTrigger(Hit);
     }

@@ -4,9 +4,9 @@ public class HitFeedbackAudio : MonoBehaviour
 {
     [SerializeField] private Health _health;
     [SerializeField] private AudioData _hitAudioData;
-    
+
     AudioManager _audioManager;
-    
+
     private void Start()
     {
         _audioManager = AudioManager.Instance;
@@ -14,18 +14,18 @@ public class HitFeedbackAudio : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealthChanged += OnHealthChanged;
+        _health.Hit += OnHit;
     }
 
     private void OnDisable()
     {
-        _health.HealthChanged -= OnHealthChanged;
+        _health.Hit -= OnHit;
     }
 
-    private void OnHealthChanged(float _)
+    private void OnHit(DamageContext damageContext)
     {
         if (_audioManager == null) return;
-        
+
         _audioManager.PlaySfx(_hitAudioData);
     }
 }

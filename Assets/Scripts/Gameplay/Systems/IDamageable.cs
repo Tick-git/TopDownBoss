@@ -1,4 +1,16 @@
-﻿public interface IDamageable
+﻿using UnityEngine;
+
+public interface IDamageable
 {
-    public void ApplyDamage(float damage);
+    public void ApplyDamage(DamageContext damageContext);
+}
+
+public struct DamageContext
+{
+    public readonly float Damage;
+
+    public DamageContext(float damage)
+    {
+        Damage = damage;
+    }
 }
