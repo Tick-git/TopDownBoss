@@ -40,7 +40,7 @@
         {
             TryChangeState();
 
-            Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
+            _shootBehaviour.ApplyAim(Context);
         }
 
         private void TryChangeState()
@@ -55,7 +55,7 @@
                 _currentState = State.Shoot;
                 Context.Animator.SetSpeed(1.5f);
                 Context.Audio.PlayShootSound();
-                
+
                 _shootBehaviour.Shoot(Context);
                 _shotsFiredCount++;
             }

@@ -1,8 +1,14 @@
 ﻿using Gameplay.Boss;
+using UnityEngine;
 
 public class LargeSpreadShootBehaviour : IShootBehaviour
 {
     public int ShotsCount => 2;
+
+    public void ApplyAim(BossController context)
+    {
+        context.Weapon.ApplyAim(context.TargetTracker.GetTargetPosition());
+    }
 
     public void TriggerAim(BossController context)
     {

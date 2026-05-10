@@ -35,4 +35,9 @@ public class TargetTracker : MonoBehaviour
     {
         return Vector3.Distance(_target.position, transform.position);
     }
+
+    public Vector2 GetTargetMovePrediction(float time)
+    {
+        return GetTargetPosition() + GetTargetMoveSpeedVelocity() * time;
+    }
 }

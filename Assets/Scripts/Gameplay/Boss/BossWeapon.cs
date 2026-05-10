@@ -13,6 +13,9 @@ public class BossWeapon : MonoBehaviour
     private float _currentAngle;
     private bool _lastAimedLeft;
 
+    public Vector2 FirePointPosition => _firePoint.position;
+    public float SmallSpreadShotBulletSpeed => _smallSpreadShotData.Speed;
+
     public void Initialize(IDamageable owner)
     {
         _owner = owner;
@@ -58,15 +61,9 @@ public class BossWeapon : MonoBehaviour
         ApplyAim(target);
     }
 
-    public void ShootSmallSpread(Vector2 target, Vector2 targetVelocity)
+    public void ShootSmallSpread(Vector2 target)
     {
-        var bulletData = _smallSpreadShotData;
-
-        var shootDistance = (target - (Vector2)_firePoint.position).magnitude;
-
-        var shootTarget = target + targetVelocity * (shootDistance / bulletData.Speed);
-
-        SpreadShot(shootTarget, _smallSpreadShotData);
+        SpreadShot(target, _smallSpreadShotData);
     }
 
     public void ShootBigSpread(Vector2 target)
