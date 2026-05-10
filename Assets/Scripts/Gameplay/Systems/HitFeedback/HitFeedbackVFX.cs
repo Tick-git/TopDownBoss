@@ -14,7 +14,7 @@ public class HitFeedbackVFX : HitFeedback
     {
         if (_vfxManager == null) return;
 
-        var zRotation = Mathf.Atan2(damageContext.HitNormal.y, damageContext.HitNormal.x) * Mathf.Rad2Deg;
+        var zRotation = Mathf.Atan2(damageContext.FeedbackDirection.y, damageContext.FeedbackDirection.x) * Mathf.Rad2Deg;
         var rotation = Quaternion.Euler(0, 0, zRotation);
 
         var spawnParams = new VFXSpawnParams(damageContext.HitPoint, rotation, damageContext.HitTransform);

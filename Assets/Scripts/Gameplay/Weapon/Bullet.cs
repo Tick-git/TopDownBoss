@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
             var damageContext = new DamageContext(
                 _bulletParams.Damage,
                 other.ClosestPoint(transform.position),
-                _bulletParams.StartPos - (Vector2)other.transform.position,
+                (_bulletParams.StartPos - (Vector2) other.transform.position).normalized,
                 other.transform);
 
             damageable.ApplyDamage(damageContext);
