@@ -1651,6 +1651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::HitFeedbackVFX
   _health: {fileID: 7465731787159749018}
+  _vfxScale: {x: 1.5, y: 1.5}
 --- !u!1001 &58441317005799131
 PrefabInstance:
   m_ObjectHideFlags: 0

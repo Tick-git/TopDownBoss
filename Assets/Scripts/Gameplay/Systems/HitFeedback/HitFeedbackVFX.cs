@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class HitFeedbackVFX : HitFeedback
@@ -19,7 +18,9 @@ public class HitFeedbackVFX : HitFeedback
         var zRotation = Mathf.Atan2(damageContext.FeedbackDirection.y, damageContext.FeedbackDirection.x) * Mathf.Rad2Deg;
         var rotation = Quaternion.Euler(0, 0, zRotation);
 
-        var spawnParams = new VFXSpawnParams(damageContext.HitPoint, rotation, _vfxScale, damageContext.HitTransform);
+        var scale = Random.Range(_vfxScale.x - _vfxScale.x * 0.2f, _vfxScale.x + _vfxScale.x * 0.2f);
+        
+        var spawnParams = new VFXSpawnParams(damageContext.HitPoint, rotation, new Vector2(scale , scale), damageContext.HitTransform);
         
         _vfxManager.SpawnVfx(VFXType.BloodSplash, spawnParams);
     }
