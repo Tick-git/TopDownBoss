@@ -55,6 +55,7 @@ public class ObjectPool<T> where T : MonoBehaviour, IPoolable<T>
         }
 
         pooledBehaviour.OnReturnToPool();
+        pooledBehaviour.transform.parent = _parent;
         pooledBehaviour.gameObject.SetActive(false);
 
         _pool.Enqueue(pooledBehaviour);

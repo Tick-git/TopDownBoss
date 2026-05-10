@@ -34,7 +34,12 @@ public class Bullet : MonoBehaviour, IPoolable<Bullet>
         {
             if (damageable == _bulletParams.Owner) return;
 
-            var damageContext = new DamageContext(_bulletParams.Damage, transform.position, -_bulletParams.Direction);
+            var damageContext = new DamageContext(
+                _bulletParams.Damage,
+                transform.position,
+                -_bulletParams.Direction,
+                other.transform);
+
             damageable.ApplyDamage(damageContext);
             EndFlight();
             return;

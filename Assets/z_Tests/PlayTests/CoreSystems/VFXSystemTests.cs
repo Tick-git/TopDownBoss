@@ -41,7 +41,7 @@ public class VFXSystemTests
         manager.SetVFXLibrary(library);
         manager.Initialize();
 
-        var vfx = manager.SpawnVfx(VFXType.Smoke, Vector3.zero);
+        var vfx = manager.SpawnVfx(VFXType.Smoke, new VFXSpawnParams(position: Vector2.zero));
 
         Assert.IsNotNull(vfx);
 
@@ -54,7 +54,7 @@ public class VFXSystemTests
         var pool = CreatePool();
 
         var vfx = pool.Get();
-        vfx.Play(Vector3.zero, Quaternion.identity);
+        vfx.Play(new VFXSpawnParams(position: Vector2.zero));
 
         var ps = vfx.GetComponent<ParticleSystem>();
 
