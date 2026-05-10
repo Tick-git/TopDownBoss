@@ -42,12 +42,14 @@ public class VFXManager : Singleton<VFXManager>
 
 public struct VFXSpawnParams
 {
-    public readonly Vector3 Position;
-    public readonly Quaternion Rotation;
+    public readonly Vector3? Position;
+    public readonly Quaternion? Rotation;
     public readonly Transform Parent;
+    public readonly Vector3? Scale;
 
-    public VFXSpawnParams(Vector3 position = default, Quaternion rotation = default, Transform parent = null)
+    public VFXSpawnParams(Vector3? position = null, Quaternion? rotation = null, Vector3? scale = null, Transform parent = null)
     {
+        Scale = scale;
         Position = position;
         Rotation = rotation;
         Parent = parent;

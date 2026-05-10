@@ -40,6 +40,11 @@ public class ObjectPool<T> where T : MonoBehaviour, IPoolable<T>
         }
 
         _active.Add(pooledBehaviour);
+        
+        pooledBehaviour.transform.parent = _parent;
+        pooledBehaviour.transform.rotation = _prefab.transform.rotation;
+        pooledBehaviour.transform.localScale = _prefab.transform.localScale;
+        
         pooledBehaviour.OnGetFromPool();
         pooledBehaviour.gameObject.SetActive(true);
 
