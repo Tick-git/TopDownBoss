@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class HitFeedbackAudio : MonoBehaviour
+public class HitFeedbackAudio : HitFeedback
 {
-    [SerializeField] private Health _health;
     [SerializeField] private AudioData _hitAudioData;
 
     AudioManager _audioManager;
@@ -12,17 +11,7 @@ public class HitFeedbackAudio : MonoBehaviour
         _audioManager = AudioManager.Instance;
     }
 
-    private void OnEnable()
-    {
-        _health.Hit += OnHit;
-    }
-
-    private void OnDisable()
-    {
-        _health.Hit -= OnHit;
-    }
-
-    private void OnHit(DamageContext damageContext)
+    protected override void OnHit(DamageContext damageContext)
     {
         if (_audioManager == null) return;
 

@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class ColorHitFeedback : MonoBehaviour
+public class ColorHitFeedback : HitFeedback
 {
-    [SerializeField] private Health _health;
     [SerializeField] private SpriteRenderer[] _spriteRenderers;
 
     private SpriteRendererData[] _spriteRendererData;
@@ -26,17 +25,7 @@ public class ColorHitFeedback : MonoBehaviour
         _time = FullyRecoveredTime;
     }
 
-    private void OnEnable()
-    {
-        _health.Hit += OnHit;
-    }
-
-    private void OnDisable()
-    {
-        _health.Hit -= OnHit;
-    }
-
-    private void OnHit(DamageContext damageContext)
+    protected override void OnHit(DamageContext damageContext)
     {
         SetSpriteRenderersColor(_hitColor);
         _time = 0;
