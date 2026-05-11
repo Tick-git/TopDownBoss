@@ -10,6 +10,8 @@ public class GameplayBootstrap : MonoBehaviour
 
     void Start()
     {
+        if (!Root.Instance.Initialized) return;
+        
         var viewStack = Root.Instance.ViewStack;
         var audioEmitterUI = Root.Instance.AudioEmitterUI;
         var gameFlow = Root.Instance.GameFlowService;
