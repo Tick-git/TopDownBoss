@@ -15,14 +15,24 @@ public class UIInputReader : IDisposable
     {
         _viewStack = viewStack;
         _cancelAction = InputSystem.actions.FindAction("Cancel");
+        _pauseAction = InputSystem.actions.FindAction("Pause");
 
         _cancelAction.performed += OnCancelPerformed;
+        _pauseAction.performed += OnPausePerformed;
+    }
+
+    private void OnPausePerformed(InputAction.CallbackContext _)
+    {
+        PausePerformed?.Invoke();
     }
 
     public void Dispose()
     {
         _cancelAction.performed -= OnCancelPerformed;
+        _pauseAction.performed -= OnPausePerformed;
+        
         _cancelAction?.Dispose();
+        _pauseAction?.Dispose();
     }
 
     private void OnCancelPerformed(InputAction.CallbackContext ctx)
