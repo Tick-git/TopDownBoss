@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class GameplayBootstrap : MonoBehaviour
 {
+    [SerializeField] HUDManager _hudManager;
+    
     private PauseView _pauseView;
     private PauseManager _pauseManager;
     private SettingView _settingsView;
@@ -10,13 +13,15 @@ public class GameplayBootstrap : MonoBehaviour
     private void Awake()
     {
         if (!Root.HasInstance) return;
-        
+
         var viewStack = Root.Instance.ViewStack;
         var audioEmitterUI = Root.Instance.AudioEmitterUI;
         var gameFlow = Root.Instance.GameFlowService;
         var settingsManager = Root.Instance.SettingsManager;
         var uiInputReader = Root.Instance.UIInputReader;
+
         _pauseManager = new PauseManager();
+        viewStack.ActiveViewChanged += OnActiveViewChanged;
 
         _settingsView = CreateSettingView(viewStack, settingsManager, audioEmitterUI);
         _pauseView = new PauseView(viewStack.GetUIRoot().Q<VisualElement>("PauseView"), audioEmitterUI);
@@ -34,14 +39,27 @@ public class GameplayBootstrap : MonoBehaviour
         viewStack.Register(_pauseView);
     }
 
+    private void OnActiveViewChanged(ActiveViewChangedArgs args)
+    {
+        if (args.IsFirstActiveView)
+        {
+            _hudManager.HideHUD();
+        }
+        else if(args.HasNoActiveView)
+        {
+            _hudManager.ShowHUD();
+        }
+    }
+
     private void OnDestroy()
     {
         if (!Root.HasInstance) return;
-        
+
         var viewStack = Root.Instance.ViewStack;
         var gameFlow = Root.Instance.GameFlowService;
         var uiInputReader = Root.Instance.UIInputReader;
 
+        viewStack.ActiveViewChanged -= OnActiveViewChanged;
         _settingsView.LeaveSettingRequested -= OnResumeRequested;
 
         _pauseView.ResumeRequested -= viewStack.Pop;
@@ -51,6 +69,7 @@ public class GameplayBootstrap : MonoBehaviour
 
         uiInputReader.PausePerformed -= OnPausePerformed;
 
+        _pauseManager.Dispose();
         _pauseView.Dispose();
         _settingsView.Dispose();
 

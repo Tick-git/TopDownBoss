@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class PauseManager
+public class PauseManager : IDisposable
 {
-    public event Action<bool> OnPauseStateChanged;
+    public event Action<bool> PauseStateChanged;
 
     public bool IsPaused { get; private set; }
 
@@ -11,13 +11,19 @@ public class PauseManager
     {
         Time.timeScale = 0f;
         IsPaused = true;
-        OnPauseStateChanged?.Invoke(IsPaused);
+        PauseStateChanged?.Invoke(IsPaused);
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
         IsPaused = false;
-        OnPauseStateChanged?.Invoke(IsPaused);
+        PauseStateChanged?.Invoke(IsPaused);
+    }
+
+    public void Dispose()
+    {
+        if (IsPaused)
+            Resume();
     }
 }

@@ -161,6 +161,9 @@ public readonly struct ActiveViewChangedArgs
         PreviousActiveView = previousActiveView;
         CurrentActiveView = currentActiveView;
     }
+    
+    public bool IsFirstActiveView =>  CurrentActiveView != null && PreviousActiveView == null;
+    public bool HasNoActiveView  =>  CurrentActiveView == null;
 }
 
 public enum InteractionModeUI
