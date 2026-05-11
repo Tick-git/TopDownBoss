@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,9 +7,9 @@ public class GameplayBootstrap : MonoBehaviour
     private PauseManager _pauseManager;
     private SettingView _settingsView;
 
-    void Start()
+    private void Awake()
     {
-        if (!Root.Instance.Initialized) return;
+        if (!Root.HasInstance) return;
         
         var viewStack = Root.Instance.ViewStack;
         var audioEmitterUI = Root.Instance.AudioEmitterUI;
@@ -37,6 +36,8 @@ public class GameplayBootstrap : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!Root.HasInstance) return;
+        
         var viewStack = Root.Instance.ViewStack;
         var gameFlow = Root.Instance.GameFlowService;
         var uiInputReader = Root.Instance.UIInputReader;

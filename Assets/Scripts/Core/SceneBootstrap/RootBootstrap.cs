@@ -19,8 +19,6 @@ public class RootBootstrap : MonoBehaviour
     public AudioEmitterUI AudioEmitterUI { get; private set; }
     public UIInputReader UIInputReader { get; private set; }
 
-    public bool Initialized { get; private set; }
-
     private MouseVisibilityController _mouseVisibilityController;
     private ViewInteractionController _viewInteractionController;
     private ViewFocusController _viewFocusController;
@@ -54,8 +52,6 @@ public class RootBootstrap : MonoBehaviour
         SceneController.CreateTransition()
             .Load(SceneDatabase.Slots.Content, SceneDatabase.Scenes.MainMenu, true)
             .Execute();
-
-        Initialized = true;
     }
 
     private void HandleEventSubscriptions()

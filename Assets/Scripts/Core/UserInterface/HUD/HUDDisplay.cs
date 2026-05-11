@@ -3,7 +3,7 @@ using Core.UserInterface.HUD;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
 
-public class HUD : IDisposable
+public class HUDDisplay : IDisposable
 {
     private readonly HUDManager _hudManager;
 
@@ -12,7 +12,7 @@ public class HUD : IDisposable
     private readonly StaminaWidget _playerStaminaWidget;
     private readonly Stamina _playerStamina;
 
-    public HUD(HUDManager hudManager, Health playerHealth, Health bossHealth, Stamina playerStamina)
+    public HUDDisplay(HUDManager hudManager, Health playerHealth, Health bossHealth, Stamina playerStamina)
     {
         _hudManager = hudManager;
         _playerStamina = playerStamina;

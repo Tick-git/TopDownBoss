@@ -10,8 +10,6 @@
 
     public AudioEmitterUI AudioEmitterUI => _rootBootstrap.AudioEmitterUI;
 
-    public bool Initialized => _rootBootstrap.Initialized;
-    
     private RootBootstrap _rootBootstrap;
 
     public void Initialize(RootBootstrap rootBootstrap)

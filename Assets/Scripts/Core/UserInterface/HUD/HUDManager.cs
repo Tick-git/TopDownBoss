@@ -13,22 +13,22 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Health _boss;
     [SerializeField] private Stamina _playerStamina;
 
-    private HUD _hud;
+    private HUDDisplay _hudDisplay;
 
     private void Awake()
     {
-        _hud = new HUD(this, _player, _boss, _playerStamina);
+        _hudDisplay = new HUDDisplay(this, _player, _boss, _playerStamina);
         ShowHUD();
     }
 
     private void OnDestroy()
     {
-        _hud.Dispose();
+        _hudDisplay.Dispose();
     }
 
     private void Update()
     {
-        _hud.Update();
+        _hudDisplay.Update();
     }
 
     // =====================
