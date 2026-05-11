@@ -434,7 +434,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: f651f89812f32cb438fa0cd30ef9a081, type: 3}
   m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 589020981887688431}
   - component: {fileID: 5075857452760608986}
   - component: {fileID: 6789940858104212308}
+  - component: {fileID: 1776034965919207394}
   m_Layer: 0
   m_Name: Feedback
   m_TagString: Untagged
@@ -638,6 +639,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::HitFeedbackAudio
   _health: {fileID: 244800082540759716}
   _hitAudioData: {fileID: 11400000, guid: 90f5b67de94358f45a80742ba73092b7, type: 2}
+--- !u!114 &1776034965919207394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411162421369959549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b44429561672b543a903d818e220f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::HitFeedbackVFX
+  _health: {fileID: 244800082540759716}
+  _vfxScale: {x: 1, y: 1}
 --- !u!1 &6674241816666180841
 GameObject:
   m_ObjectHideFlags: 0

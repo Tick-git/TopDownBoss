@@ -9,7 +9,8 @@
     public UIInputReader UIInputReader => _rootBootstrap.UIInputReader;
 
     public AudioEmitterUI AudioEmitterUI => _rootBootstrap.AudioEmitterUI;
-
+    public VFXManager VFXManager => _rootBootstrap.VFXManager;
+    
     private RootBootstrap _rootBootstrap;
 
     public void Initialize(RootBootstrap rootBootstrap)

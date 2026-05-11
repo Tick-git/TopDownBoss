@@ -9,6 +9,7 @@ public class RootBootstrap : MonoBehaviour
     [SerializeField] private InputManager _inputManagerPrefab;
     [SerializeField] private UIAudioLibrary _uiAudioLibrary;
     [SerializeField] private AudioManager _audioManagerPrefab;
+    [SerializeField] private VFXManager _vfxManagerPrefab;
 
     public ViewStack ViewStack { get; private set; }
     public GameFlowService GameFlowService { get; private set; }
@@ -18,6 +19,8 @@ public class RootBootstrap : MonoBehaviour
     public AudioManager AudioManager { get; private set; }
     public AudioEmitterUI AudioEmitterUI { get; private set; }
     public UIInputReader UIInputReader { get; private set; }
+    
+    public VFXManager VFXManager { get; private set; }
 
     private MouseVisibilityController _mouseVisibilityController;
     private ViewInteractionController _viewInteractionController;
@@ -38,6 +41,7 @@ public class RootBootstrap : MonoBehaviour
         SettingsManager = new SettingsManager(AudioManager);
         AudioEmitterUI = new AudioEmitterUI(AudioManager, _uiAudioLibrary);
         UIInputReader = new UIInputReader(ViewStack);
+        VFXManager = Instantiate(_vfxManagerPrefab);
 
         _mouseVisibilityController = new MouseVisibilityController(ViewStack, InputManager);
         _viewInteractionController = new ViewInteractionController(ViewStack, InputManager);
