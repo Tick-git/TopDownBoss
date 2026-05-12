@@ -6,11 +6,11 @@
     public SceneController SceneController => _rootBootstrap.SceneController;
     public InputManager InputManager => _rootBootstrap.InputManager;
     public AudioManager AudioManager => _rootBootstrap.AudioManager;
-    public UIInputReader UIInputReader => _rootBootstrap.UIInputReader;
+    public InputReader InputReader => _rootBootstrap.InputReader;
 
     public AudioEmitterUI AudioEmitterUI => _rootBootstrap.AudioEmitterUI;
     public VFXManager VFXManager => _rootBootstrap.VFXManager;
-    
+
     private RootBootstrap _rootBootstrap;
 
     public void Initialize(RootBootstrap rootBootstrap)

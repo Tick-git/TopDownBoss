@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class GameplayBootstrap : MonoBehaviour
 {
     [SerializeField] HUDManager _hudManager;
-    
+
     private PauseView _pauseView;
     private PauseManager _pauseManager;
     private SettingView _settingsView;
@@ -18,7 +17,7 @@ public class GameplayBootstrap : MonoBehaviour
         var audioEmitterUI = Root.Instance.AudioEmitterUI;
         var gameFlow = Root.Instance.GameFlowService;
         var settingsManager = Root.Instance.SettingsManager;
-        var uiInputReader = Root.Instance.UIInputReader;
+        var inputReader = Root.Instance.InputReader;
 
         _pauseManager = new PauseManager();
         viewStack.ActiveViewChanged += OnActiveViewChanged;
@@ -33,7 +32,7 @@ public class GameplayBootstrap : MonoBehaviour
         _pauseView.MainMenuRequested += gameFlow.LoadMainMenu;
         _pauseView.ExitRequested += Application.Quit;
 
-        uiInputReader.PausePerformed += OnPausePerformed;
+        inputReader.PausePerformed += OnPausePerformed;
 
         viewStack.Register(_settingsView);
         viewStack.Register(_pauseView);
@@ -45,7 +44,7 @@ public class GameplayBootstrap : MonoBehaviour
         {
             _hudManager.HideHUD();
         }
-        else if(args.HasNoActiveView)
+        else if (args.HasNoActiveView)
         {
             _hudManager.ShowHUD();
         }
@@ -57,7 +56,7 @@ public class GameplayBootstrap : MonoBehaviour
 
         var viewStack = Root.Instance.ViewStack;
         var gameFlow = Root.Instance.GameFlowService;
-        var uiInputReader = Root.Instance.UIInputReader;
+        var uiInputReader = Root.Instance.InputReader;
 
         viewStack.ActiveViewChanged -= OnActiveViewChanged;
         _settingsView.LeaveSettingRequested -= OnResumeRequested;
@@ -81,8 +80,16 @@ public class GameplayBootstrap : MonoBehaviour
     {
         var viewStack = Root.Instance.ViewStack;
 
-        _pauseManager.Pause();
-        viewStack.Push<PauseView>();
+        if (viewStack.HasActiveView)
+        {
+            _pauseManager.Resume();
+            viewStack.Clear();
+        }
+        else
+        {
+            _pauseManager.Pause();
+            viewStack.Push<PauseView>();
+        }
     }
 
     private void OnResumeRequested()

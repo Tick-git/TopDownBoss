@@ -10,6 +10,7 @@ public class RootBootstrap : MonoBehaviour
     [SerializeField] private UIAudioLibrary _uiAudioLibrary;
     [SerializeField] private AudioManager _audioManagerPrefab;
     [SerializeField] private VFXManager _vfxManagerPrefab;
+    [SerializeField] private InputReader _inputReaderSo;
 
     public ViewStack ViewStack { get; private set; }
     public GameFlowService GameFlowService { get; private set; }
@@ -18,8 +19,8 @@ public class RootBootstrap : MonoBehaviour
     public InputManager InputManager { get; private set; }
     public AudioManager AudioManager { get; private set; }
     public AudioEmitterUI AudioEmitterUI { get; private set; }
-    public UIInputReader UIInputReader { get; private set; }
-    
+    public InputReader InputReader => _inputReaderSo;
+
     public VFXManager VFXManager { get; private set; }
 
     private MouseVisibilityController _mouseVisibilityController;
@@ -40,7 +41,6 @@ public class RootBootstrap : MonoBehaviour
         SceneController = Instantiate(_sceneControllerPrefab);
         SettingsManager = new SettingsManager(AudioManager);
         AudioEmitterUI = new AudioEmitterUI(AudioManager, _uiAudioLibrary);
-        UIInputReader = new UIInputReader(ViewStack);
         VFXManager = Instantiate(_vfxManagerPrefab);
 
         _mouseVisibilityController = new MouseVisibilityController(ViewStack, InputManager);
@@ -60,15 +60,32 @@ public class RootBootstrap : MonoBehaviour
 
     private void HandleEventSubscriptions()
     {
-        UIInputReader.CancelPerformed += ViewStack.HandleCancel;
+        ViewStack.ActiveViewChanged += OnActiveViewChanged;
+        InputReader.CancelPerformed += ViewStack.HandleCancel;
     }
 
     private void OnDestroy()
     {
-        UIInputReader.CancelPerformed -= ViewStack.HandleCancel;
+        InputReader.CancelPerformed -= ViewStack.HandleCancel;
+        ViewStack.ActiveViewChanged -= OnActiveViewChanged;
 
         _mouseVisibilityController.Dispose();
         _viewInteractionController.Dispose();
         _viewInteractionController.Dispose();
+    }
+
+    private void OnActiveViewChanged(ActiveViewChangedArgs obj)
+    {
+        if (obj.IsFirstActiveView)
+        {
+            _inputReaderSo.EnableUIInput();
+            return;
+        }
+
+        if (obj.HasNoActiveView)
+        {
+            _inputReaderSo.EnableGameplayInput();
+            return;
+        }
     }
 }

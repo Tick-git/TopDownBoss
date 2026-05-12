@@ -99,7 +99,7 @@
                 {
                     "name": "Pause",
                     "type": "Button",
-                    "id": "a1d1be5f-21a6-4409-a3b0-7753624dd6f5",
+                    "id": "0dbf4e5e-caed-4800-a98d-d01a920337ad",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -505,11 +505,22 @@
                 },
                 {
                     "name": "",
-                    "id": "4a82e66d-1bcb-4a25-906e-cbb7dc15450b",
+                    "id": "e1ed4b4e-02e5-4a5d-9a48-281012064173",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23cf073d-4078-4e6b-a177-45a2bf86d94f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -614,6 +625,15 @@
                     "name": "Continue",
                     "type": "Button",
                     "id": "4066648a-aa49-481c-be53-12441fff8d95",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClosePause",
+                    "type": "Button",
+                    "id": "12ef10fe-48de-47bd-9c2c-8a7ee72d13ef",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1113,6 +1133,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c70db02b-75af-4f5e-bb6b-9eec8bd47386",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "ClosePause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
