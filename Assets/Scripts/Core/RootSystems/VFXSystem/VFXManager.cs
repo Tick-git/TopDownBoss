@@ -47,7 +47,8 @@ public struct VFXSpawnParams
     public readonly Transform Parent;
     public readonly Vector3? Scale;
 
-    public VFXSpawnParams(Vector3? position = null, Quaternion? rotation = null, Vector3? scale = null, Transform parent = null)
+    public VFXSpawnParams(Vector3? position = null, Quaternion? rotation = null, Vector3? scale = null,
+        Transform parent = null)
     {
         Scale = scale;
         Position = position;

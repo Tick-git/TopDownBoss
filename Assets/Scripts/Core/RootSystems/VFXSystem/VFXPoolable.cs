@@ -10,16 +10,16 @@ public class VFXSystem : MonoBehaviour, IPoolable<VFXSystem>, IPoolReturner<VFXS
     {
         if (vfxSpawnParams.Parent != null)
             transform.parent = vfxSpawnParams.Parent;
-        
+
         if (vfxSpawnParams.Position.HasValue)
             transform.position = vfxSpawnParams.Position.Value;
-        
+
         if (vfxSpawnParams.Rotation.HasValue)
             transform.rotation = vfxSpawnParams.Rotation.Value;
-        
+
         if (vfxSpawnParams.Scale.HasValue)
             transform.localScale = vfxSpawnParams.Scale.Value;
-        
+
         _particleSystem.Play();
     }
 
@@ -27,7 +27,7 @@ public class VFXSystem : MonoBehaviour, IPoolable<VFXSystem>, IPoolReturner<VFXS
     {
         _isReturned = false;
         transform.parent = null;
-        
+
         _particleSystem.Clear();
     }
 

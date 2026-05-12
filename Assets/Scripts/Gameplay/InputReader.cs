@@ -11,7 +11,7 @@ public class InputReader : ScriptableObject
     private void OnEnable()
     {
         _inputActions = new InputActions();
-        
+
         _inputActions.Player.Pause.performed += OnPausePerformed;
         _inputActions.UI.ClosePause.performed += OnPausePerformed;
         _inputActions.UI.Cancel.performed += OnCancelPerformed;
@@ -29,7 +29,7 @@ public class InputReader : ScriptableObject
         _inputActions.Player.Enable();
         _inputActions.UI.Disable();
     }
-    
+
     public void EnableUIInput()
     {
         _inputActions.Player.Disable();
@@ -58,7 +58,7 @@ public class InputReader : ScriptableObject
 
         return direction;
     }
-    
+
     private void OnCancelPerformed(InputAction.CallbackContext obj) => CancelPerformed?.Invoke();
     private void OnPausePerformed(InputAction.CallbackContext obj) => PausePerformed?.Invoke();
 }
