@@ -48,7 +48,7 @@ public class TimerTests
     {
         var timer = new Timer(1f);
         int calls = 0;
-        
+
         timer.Start();
         timer.Completed += () => calls++;
 
@@ -58,5 +58,4 @@ public class TimerTests
         Assert.AreEqual(1, calls);
         Assert.IsFalse(timer.IsRunning);
     }
-
 }

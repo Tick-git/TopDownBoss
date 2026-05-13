@@ -30,14 +30,14 @@ public class VFXSystemTests
 
         var data = ScriptableObject.CreateInstance<VFXData>();
         data.Initialize(VFXType.Smoke, prefab, 1);
-        
+
         var library = ScriptableObject.CreateInstance<VFXLibrary>();
-        
+
         library.Initialize(new List<VFXData>()
         {
             data
         });
-        
+
         manager.SetVFXLibrary(library);
         manager.Initialize();
 
@@ -47,7 +47,7 @@ public class VFXSystemTests
 
         yield return null;
     }
-    
+
     [UnityTest]
     public IEnumerator Returns_To_Pool_When_ParticleSystem_Stops()
     {

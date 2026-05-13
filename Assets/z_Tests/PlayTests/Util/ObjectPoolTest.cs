@@ -58,7 +58,7 @@ public class ObjectPoolTests
         var obj = pool.Get();
 
         pool.Return(obj);
-        
+
         LogAssert.Expect(LogType.Warning, new Regex(".*"));
         pool.Return(obj);
 
@@ -71,7 +71,7 @@ public class ObjectPoolTests
 
         yield return null;
     }
-    
+
     [UnityTest]
     public IEnumerator Create_Pool_Without_Correctly_Configured_Poolable()
     {
@@ -79,26 +79,28 @@ public class ObjectPoolTests
         {
             var objectPool = new ObjectPool<TestPoolable>(null, 1, null);
         });
-        
+
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
             var objectPool = new ObjectPool<TestPoolable>(CreatePoolable(), -1, null);
         });
-        
+
         Assert.Throws<InvalidOperationException>(() =>
         {
             var objectPool = new ObjectPool<TestPoolable>(new GameObject(), 1, null);
         });
-        
+
         yield return null;
     }
-    
+
     private class TestPoolable : MonoBehaviour, IPoolable<TestPoolable>
     {
         public bool Got { get; private set; }
         public bool Returned { get; private set; }
 
-        public void Initialize(ObjectPool<TestPoolable> pool) { }
+        public void Initialize(ObjectPool<TestPoolable> pool)
+        {
+        }
 
         public void OnGetFromPool()
         {

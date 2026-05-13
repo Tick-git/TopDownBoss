@@ -12,15 +12,15 @@ public class AudioSystemTests
         obj.AddComponent<AudioSource>();
         return new ObjectPool<AudioPoolable>(obj, 1, obj.transform);
     }
-    
+
     private AudioData CreateSoundData()
     {
         var clip = AudioClip.Create("testClip", 44100, 1, 44100, false);
         var soundData = ScriptableObject.CreateInstance<AudioData>();
-        soundData.InitializeForTests(new[]{clip}, 1, 1, null);
+        soundData.InitializeForTests(new[] { clip }, 1, 1, null);
         return soundData;
     }
-    
+
     [UnityTest]
     public IEnumerator Returns_To_Pool_When_Audio_Source_Stop()
     {

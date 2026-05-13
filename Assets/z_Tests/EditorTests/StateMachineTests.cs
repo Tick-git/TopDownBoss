@@ -113,9 +113,19 @@ public abstract class TestBaseState : IState
     public void Exit() => ExitCount++;
     public void Update() => UpdateCount++;
 
-    public void FixedUpdate() {}
+    public void FixedUpdate()
+    {
+    }
 }
 
-public class TestStateA : TestBaseState {}
-public class TestStateB : TestBaseState {}
-public class TestStateC : TestBaseState {}
+public class TestStateA : TestBaseState
+{
+}
+
+public class TestStateB : TestBaseState
+{
+}
+
+public class TestStateC : TestBaseState
+{
+}
