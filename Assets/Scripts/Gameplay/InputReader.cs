@@ -15,6 +15,8 @@ public class InputReader : ScriptableObject
         _inputActions.Player.Pause.performed += OnPausePerformed;
         _inputActions.UI.ClosePause.performed += OnPausePerformed;
         _inputActions.UI.Cancel.performed += OnCancelPerformed;
+
+        EnableGameplayInput();
     }
 
     private void OnDisable()
@@ -22,6 +24,9 @@ public class InputReader : ScriptableObject
         _inputActions.Player.Pause.performed -= OnPausePerformed;
         _inputActions.UI.ClosePause.performed -= OnPausePerformed;
         _inputActions.UI.Cancel.performed -= OnCancelPerformed;
+        
+        _inputActions.Player.Disable();
+        _inputActions.UI.Disable();
     }
 
     public void EnableGameplayInput()
