@@ -6,12 +6,12 @@ public class Stamina : MonoBehaviour
     [SerializeField] StaminaData _staminaData;
 
     private float _regenerationMultiplier = DefaultRegenerationMultiplier;
-    private bool _regenerationEnabled = true;
 
     public float CurrentStamina { get; private set; }
     public float MaxStamina => _staminaData.MaxStamina;
 
     private const float DefaultRegenerationMultiplier = 1.0f;
+    public bool RegenerationEnabled { get; private set; } = true;
 
     private void Awake()
     {
@@ -28,9 +28,9 @@ public class Stamina : MonoBehaviour
         _regenerationMultiplier = DefaultRegenerationMultiplier;
     }
 
-    public void EnableRegeneration() => _regenerationEnabled = true;
+    public void EnableRegeneration() => RegenerationEnabled = true;
 
-    public void DisableRegeneration() => _regenerationEnabled = false;
+    public void DisableRegeneration() => RegenerationEnabled = false;
 
     public void Consume(float amount)
     {
@@ -44,7 +44,7 @@ public class Stamina : MonoBehaviour
 
     private void Update()
     {
-        if (!_regenerationEnabled) return;
+        if (!RegenerationEnabled) return;
 
         var nextStamina = CurrentStamina + _staminaData.RegenerationRate * _regenerationMultiplier * Time.deltaTime;
 

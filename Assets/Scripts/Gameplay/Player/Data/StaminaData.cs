@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = DataPaths.GameplayData.PlayerPaths + "StaminaData")]
+[CreateAssetMenu(menuName = DataPaths.GameplayData.ComponentPath + "StaminaData")]
 public class StaminaData : ScriptableObject
 {
     [SerializeField] private int _maxStamina = 100;
