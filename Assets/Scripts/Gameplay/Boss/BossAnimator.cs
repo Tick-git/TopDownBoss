@@ -55,16 +55,24 @@ public class BossAnimator : MonoBehaviour
             behaviour.StateExit -= OnStateExit;
         }
     }
+    
+    public void SetAimTrigger() => _animator.SetTrigger(Aim);
 
-    private void OnStateExit(int shortNameHash)
-    {
-        SetAnimationRunningEntry(shortNameHash, false);
-    }
+    public void SetAim2Trigger() => _animator.SetTrigger(Aim2);
 
-    private void OnStateEnter(int shortNameHash)
-    {
-        SetAnimationRunningEntry(shortNameHash, true);
-    }
+    public void ResetSpeed() => _animator.SetFloat(AttackSpeed, 1);
+
+    public void SetSpeed(float value) => _animator.SetFloat(AttackSpeed, value);
+
+    public void StartMoving() => _animator.SetBool(IsMoving, true);
+
+    public void StopMoving() => _animator.SetBool(IsMoving, false);
+
+    public void OnFootGrounded() => FootGrounded?.Invoke();
+    
+    private void OnStateExit(int shortNameHash) => SetAnimationRunningEntry(shortNameHash, false);
+
+    private void OnStateEnter(int shortNameHash) => SetAnimationRunningEntry(shortNameHash, true);
 
     private void SetAnimationRunningEntry(int shortNameHash, bool running)
     {
@@ -75,40 +83,5 @@ public class BossAnimator : MonoBehaviour
         }
 
         _animationsRunning[shortNameHash] = running;
-    }
-
-    public void SetAimTrigger()
-    {
-        _animator.SetTrigger(Aim);
-    }
-
-    public void SetAim2Trigger()
-    {
-        _animator.SetTrigger(Aim2);
-    }
-
-    public void ResetSpeed()
-    {
-        _animator.SetFloat(AttackSpeed, 1);
-    }
-
-    public void SetSpeed(float value)
-    {
-        _animator.SetFloat(AttackSpeed, value);
-    }
-
-    public void StartMoving()
-    {
-        _animator.SetBool(IsMoving, true);
-    }
-
-    public void StopMoving()
-    {
-        _animator.SetBool(IsMoving, false);
-    }
-
-    public void OnFootGrounded()
-    {
-        FootGrounded?.Invoke();
     }
 }
