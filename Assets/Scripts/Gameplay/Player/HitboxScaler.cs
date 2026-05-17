@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hitbox : MonoBehaviour
+public class HitboxScaler : MonoBehaviour
 {
     private Collider2D _headCollider;
 

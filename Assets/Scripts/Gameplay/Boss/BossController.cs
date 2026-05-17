@@ -8,6 +8,7 @@ namespace Gameplay.Boss
         [SerializeField] private BossAnimator _animator;
         [SerializeField] private Health _health;
         [SerializeField] private BossAudio _audio;
+        [SerializeField] private Hitbox _hitbox;
 
         private StateMachine _bossAttackSm;
         private StateMachine _bossMovementSm;
@@ -19,7 +20,7 @@ namespace Gameplay.Boss
         public AttackDecider AttackDecider { get; private set; }
 
         public BossTeleport Teleport { get; private set; }
-
+        public Hitbox Hitbox => _hitbox;
         public BossAudio Audio => _audio;
 
         private void Awake()

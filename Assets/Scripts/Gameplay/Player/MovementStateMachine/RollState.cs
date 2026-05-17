@@ -14,7 +14,7 @@ public class RollState : BaseState<PlayerController>
         Context.PlayerAudio.PlayRollSfx();
 
         Context.HolsterWeapon();
-        Context.Hitbox.SetRolling();
+        Context.HitboxScaler.SetRolling();
         Context.PlayerStaminaController.StartRoll();
     }
 
@@ -30,7 +30,7 @@ public class RollState : BaseState<PlayerController>
         base.Exit();
 
         Context.EquipWeapon();
-        Context.Hitbox.SetStanding();
+        Context.HitboxScaler.SetStanding();
         Context.PlayerStaminaController.StopRoll();
         Context.Movement.SetMoveSpeedVelocityToZero();
     }

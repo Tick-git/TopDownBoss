@@ -407,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 7505809914505454616, guid: 6a176b7d704843049b07f0094c0dbb5e, type: 3}
       propertyPath: _boss
       value: 
-      objectReference: {fileID: 1600216584}
+      objectReference: {fileID: 881984657}
     - target: {fileID: 7505809914505454616, guid: 6a176b7d704843049b07f0094c0dbb5e, type: 3}
       propertyPath: _player
       value: 
@@ -553,6 +553,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3770434238370709630, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
   m_PrefabInstance: {fileID: 881984655}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &881984657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7985963186804972621, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+  m_PrefabInstance: {fileID: 881984655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::Health
 --- !u!114 &882540540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3447885259023669951, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
@@ -564,17 +575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec03f9f87ed745b4788a3605ee1ccd6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::Stamina
---- !u!114 &1600216584 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7465731787159749018, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 881984655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02638ea5d252e3d4f80ca3abaa1d68c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::Health
 --- !u!114 &1974898872 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 244800082540759716, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}

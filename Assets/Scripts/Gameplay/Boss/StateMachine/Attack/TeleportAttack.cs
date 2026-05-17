@@ -65,7 +65,7 @@ public class TeleportAttack : BaseState<BossController>
                 break;
             case TeleportState.Disappearing:
                 Context.Animator.SetTeleportTrigger();
-                // Disable Hitbox
+                Context.Hitbox.DisableHitbox();
                 break;
             case TeleportState.Invisible:
                 break;
@@ -73,7 +73,7 @@ public class TeleportAttack : BaseState<BossController>
                 Context.Teleport.TeleportIntoOrbit(Context.TargetTracker.GetTargetPosition());
                 break;
             case TeleportState.Aiming:
-                // Enable Hitbox
+                Context.Hitbox.EnableHitbox();
                 break;
             case TeleportState.Shooting:
                 Context.Audio.PlayShootSound();

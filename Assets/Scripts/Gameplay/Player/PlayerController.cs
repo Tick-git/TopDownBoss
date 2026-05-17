@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Movement _movement;
     [SerializeField] private AssaultRifle _weapon;
     [SerializeField] private WeaponAnimator _weaponAnimator;
-    [SerializeField] private Hitbox _hitbox;
+    [SerializeField] private HitboxScaler _hitboxScaler;
     [SerializeField] private Health _health;
     [SerializeField] private PlayerStaminaController _playerStaminaController;
     [SerializeField] private PlayerAudio _playerAudio;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAnimator PlayerAnimator => _playerAnimator;
     public Movement Movement => _movement;
     public InputReader Input => _input;
-    public Hitbox Hitbox => _hitbox;
+    public HitboxScaler HitboxScaler => _hitboxScaler;
     public WeaponAnimator WeaponAnimator => _weaponAnimator;
     public AssaultRifle Weapon => _weapon;
     public PlayerStaminaController PlayerStaminaController => _playerStaminaController;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         _movement.Initialize();
         _weapon.Initialize(_health);
         _weaponAnimator.Initialize();
-        _hitbox.Initialize();
+        _hitboxScaler.Initialize();
 
         _rollBuffer = new RollBuffer(0.125f);
 
