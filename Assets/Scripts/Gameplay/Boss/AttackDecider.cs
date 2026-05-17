@@ -4,6 +4,10 @@ namespace Gameplay.Boss
 {
     public class AttackDecider : MonoBehaviour
     {
+        [SerializeField] private bool _forceAttack1;
+        [SerializeField] private bool _forceAttack2;
+        [SerializeField] private bool _forceAttack3;
+
         private int _count;
 
         private Timer _attackTimer;
@@ -11,6 +15,7 @@ namespace Gameplay.Boss
         public bool IsAttacking { get; private set; }
         public bool Attack { get; private set; }
         public bool Attack2 { get; private set; }
+        public bool Attack3 { get; private set; }
 
         public void NotifyAttackStarted()
         {
@@ -20,6 +25,9 @@ namespace Gameplay.Boss
         public void NotifyAttackEnded()
         {
             IsAttacking = false;
+            Attack = false;
+            Attack2 = false;
+            Attack3 = false;
 
             _attackTimer.Reset(Random.Range(1, 3));
             _attackTimer.Start();
@@ -35,17 +43,43 @@ namespace Gameplay.Boss
 
         private void OnAttackTimerCompleted()
         {
-            var random = Random.Range(0, 2);
+            if (_forceAttack1)
+            {
+                Attack = true;
+                return;
+            }
+
+            if (_forceAttack2)
+            {
+                Attack2 = true;
+                return;
+            }
+
+            if (_forceAttack3)
+            {
+                Attack3 = true;
+                return;
+            }
+
+            var random = Random.Range(0, 3);
 
             if (random == 0)
             {
                 Attack = true;
                 Attack2 = false;
+                Attack3 = false;
+            }
+            else if (random == 1)
+            {
+                Attack = false;
+                Attack2 = true;
+                Attack3 = false;
             }
             else
             {
                 Attack = false;
-                Attack2 = true;
+                Attack2 = false;
+                Attack3 = true;
             }
         }
 

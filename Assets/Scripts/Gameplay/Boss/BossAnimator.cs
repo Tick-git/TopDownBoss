@@ -11,8 +11,17 @@ public class BossAnimator : MonoBehaviour
     private static readonly int Aim2 = Animator.StringToHash("Aim2");
     private static readonly int Shoot2 = Animator.StringToHash("Shoot2");
     private static readonly int Holster2 = Animator.StringToHash("Holster2");
+
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");
     private static readonly int AttackSpeed = Animator.StringToHash("AttackSpeed");
+
+    private static readonly int Teleport = Animator.StringToHash("Teleport");
+    private static readonly int Appear = Animator.StringToHash("Appear");
+    private static readonly int Disappear = Animator.StringToHash("Disappear");
+    private static readonly int Invisible = Animator.StringToHash("Invisible");
+    private static readonly int TeleportAim = Animator.StringToHash("TeleportAim");
+    private static readonly int TeleportShoot = Animator.StringToHash("TeleportShoot");
+
 
     private readonly Dictionary<int, bool> _animationsRunning = new();
 
@@ -25,6 +34,11 @@ public class BossAnimator : MonoBehaviour
     public bool AimingRunning2 => _animationsRunning[Aim2];
     public bool ShootRunning2 => _animationsRunning[Shoot2];
     public bool HolsterRunning2 => _animationsRunning[Holster2];
+    public bool DisappearingRunning => _animationsRunning[Disappear];
+    public bool InvisibleRunning => _animationsRunning[Invisible];
+    public bool AppearingRunning => _animationsRunning[Appear];
+    public bool TeleportAimRunning => _animationsRunning[TeleportAim];
+    public bool TeleportShootRunning => _animationsRunning[TeleportShoot];
 
     public event Action FootGrounded;
 
@@ -38,13 +52,19 @@ public class BossAnimator : MonoBehaviour
             behaviour.StateExit += OnStateExit;
         }
 
-        _animationsRunning.Add(Aim, true);
-        _animationsRunning.Add(Shoot, true);
-        _animationsRunning.Add(Holster, true);
+        _animationsRunning.Add(Aim, false);
+        _animationsRunning.Add(Shoot, false);
+        _animationsRunning.Add(Holster, false);
 
-        _animationsRunning.Add(Aim2, true);
-        _animationsRunning.Add(Shoot2, true);
-        _animationsRunning.Add(Holster2, true);
+        _animationsRunning.Add(Aim2, false);
+        _animationsRunning.Add(Shoot2, false);
+        _animationsRunning.Add(Holster2, false);
+
+        _animationsRunning.Add(Disappear, false);
+        _animationsRunning.Add(Invisible, false);
+        _animationsRunning.Add(Appear, false);
+        _animationsRunning.Add(TeleportAim, false);
+        _animationsRunning.Add(TeleportShoot, false);
     }
 
     public void OnDestroy()
@@ -55,7 +75,7 @@ public class BossAnimator : MonoBehaviour
             behaviour.StateExit -= OnStateExit;
         }
     }
-    
+
     public void SetAimTrigger() => _animator.SetTrigger(Aim);
 
     public void SetAim2Trigger() => _animator.SetTrigger(Aim2);
@@ -69,7 +89,7 @@ public class BossAnimator : MonoBehaviour
     public void StopMoving() => _animator.SetBool(IsMoving, false);
 
     public void OnFootGrounded() => FootGrounded?.Invoke();
-    
+
     private void OnStateExit(int shortNameHash) => SetAnimationRunningEntry(shortNameHash, false);
 
     private void OnStateEnter(int shortNameHash) => SetAnimationRunningEntry(shortNameHash, true);
@@ -83,5 +103,10 @@ public class BossAnimator : MonoBehaviour
         }
 
         _animationsRunning[shortNameHash] = running;
+    }
+
+    public void SetTeleportTrigger()
+    {
+        _animator.SetTrigger(Teleport);
     }
 }

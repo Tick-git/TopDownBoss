@@ -16,7 +16,9 @@ namespace Gameplay.Boss
         public BossWeapon Weapon { get; private set; }
         public TargetTracker TargetTracker { get; private set; }
         public Movement Movement { get; private set; }
-        public AttackDecider AttackDecider { get; set; }
+        public AttackDecider AttackDecider { get; private set; }
+
+        public BossTeleport Teleport { get; private set; }
 
         public BossAudio Audio => _audio;
 
@@ -26,6 +28,7 @@ namespace Gameplay.Boss
             Weapon = GetComponent<BossWeapon>();
             Movement = GetComponent<Movement>();
             AttackDecider = GetComponent<AttackDecider>();
+            Teleport = GetComponent<BossTeleport>();
 
             Movement.Initialize();
             Weapon.Initialize(_health);
@@ -64,11 +67,17 @@ namespace Gameplay.Boss
             var decisionState = new AttackDecisionState(this);
             var attackState = new ShootState(this, new LargeSpreadShootBehaviour());
             var attackState2 = new ShootState(this, new SmallSpreadShootBehaviour());
+            var teleportAttack = new TeleportAttack(this);
 
             _bossAttackSm.AddTransition(decisionState, attackState, new FuncPredicate(() => AttackDecider.Attack));
             _bossAttackSm.AddTransition(decisionState, attackState2, new FuncPredicate(() => AttackDecider.Attack2));
+            _bossAttackSm.AddTransition(decisionState, teleportAttack, new FuncPredicate(() => AttackDecider.Attack3));
+
             _bossAttackSm.AddTransition(attackState, decisionState, new FuncPredicate(() => !attackState.IsRunning));
             _bossAttackSm.AddTransition(attackState2, decisionState, new FuncPredicate(() => !attackState2.IsRunning));
+            _bossAttackSm.AddTransition(teleportAttack, decisionState,
+                new FuncPredicate(() => !teleportAttack.IsRunning));
+
 
             _bossAttackSm.SetState(decisionState);
         }

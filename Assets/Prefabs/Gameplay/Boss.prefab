@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 8218433025993125145}
   - component: {fileID: 3280221200995226428}
   - component: {fileID: 177305444337318307}
+  - component: {fileID: 9197270143952649614}
   - component: {fileID: 4680123778016847766}
   - component: {fileID: 5965320094635387262}
   - component: {fileID: 3825441669576616186}
@@ -749,6 +750,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b35fa32c2864e33b69c4b870833d79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::Gameplay.Boss.AttackDecider
+  _forceAttack1: 0
+  _forceAttack2: 0
+  _forceAttack3: 0
+--- !u!114 &9197270143952649614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737609244628997734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84bb5fbb662447a92c8af0ebadeb6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::BossTeleport
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _data: {fileID: 11400000, guid: 30588082c820b784190ddb160f4dda13, type: 2}
 --- !u!50 &4680123778016847766
 Rigidbody2D:
   serializedVersion: 5
