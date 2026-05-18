@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStamina
   m_EditorClassIdentifier: Scripts::StaminaCosts
   _maxStamina: 100
-  _regenerationRate: 25
+  _regenerationRate: 30
   _rollCost: 20
   _regenerationEnableDelayTime: 0.5
   _shootRegenerationMultiplier: 0.2
