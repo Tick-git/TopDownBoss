@@ -207,7 +207,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Holster2
+  m_Name: HipHolster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -284,7 +284,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Aim
+    m_ConditionEvent: ShoulderTrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1738709361161865457}
@@ -416,7 +416,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Holster
+  m_Name: ShoulderHolster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -538,7 +538,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Aim
+  m_Name: ShoulderAim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -566,7 +566,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shoot
+  m_Name: ShoulderShot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -621,13 +621,13 @@ AnimatorController:
   m_Name: Boss
   serializedVersion: 6
   m_AnimatorParameters:
-  - m_Name: Aim
+  - m_Name: ShoulderTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Aim2
+  - m_Name: HipTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -704,7 +704,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Aim
+    m_ConditionEvent: ShoulderTrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1738709361161865457}
@@ -783,7 +783,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Aim2
+    m_ConditionEvent: HipTrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4745159539131407411}
@@ -820,7 +820,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Aim2
+    m_ConditionEvent: HipTrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4745159539131407411}
@@ -969,7 +969,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Aim2
+  m_Name: HipAim
   m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
@@ -1145,7 +1145,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shoot2
+  m_Name: HipShot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1210,7 +1210,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TeleportShoot
+  m_Name: TeleportShot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

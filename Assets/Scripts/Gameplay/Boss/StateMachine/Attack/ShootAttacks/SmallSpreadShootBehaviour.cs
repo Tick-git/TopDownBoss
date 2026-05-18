@@ -12,7 +12,7 @@ public class SmallSpreadShootBehaviour : IShootBehaviour
 
     public void TriggerAim(BossController context)
     {
-        context.Animator.SetAimTrigger();
+        context.Animator.SetShoulderAttackTrigger();
     }
 
     public void Shoot(BossController context)
@@ -23,17 +23,17 @@ public class SmallSpreadShootBehaviour : IShootBehaviour
 
     public bool AimRunning(BossController context)
     {
-        return context.Animator.AimingRunning;
+        return context.Animator.ShoulderAimRunning;
     }
 
     public bool ShootRunning(BossController context)
     {
-        return context.Animator.ShootRunning;
+        return context.Animator.ShoulderShotRunning;
     }
 
     public bool HolsterRunning(BossController context)
     {
-        return context.Animator.HolsterRunning;
+        return context.Animator.ShoulderHolsterRunning;
     }
 
     private Vector2 GetTargetMovePredictionForBullet(BossController context)

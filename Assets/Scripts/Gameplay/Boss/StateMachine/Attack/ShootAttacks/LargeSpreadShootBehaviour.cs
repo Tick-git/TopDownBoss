@@ -12,7 +12,7 @@ public class LargeSpreadShootBehaviour : IShootBehaviour
 
     public void TriggerAim(BossController context)
     {
-        context.Animator.SetAim2Trigger();
+        context.Animator.SetHipAttackTrigger();
     }
 
     public void Shoot(BossController context)
@@ -22,16 +22,16 @@ public class LargeSpreadShootBehaviour : IShootBehaviour
 
     public bool AimRunning(BossController context)
     {
-        return context.Animator.AimingRunning2;
+        return context.Animator.HipAimRunning;
     }
 
     public bool ShootRunning(BossController context)
     {
-        return context.Animator.ShootRunning2;
+        return context.Animator.HipShotRunning;
     }
 
     public bool HolsterRunning(BossController context)
     {
-        return context.Animator.HolsterRunning2;
+        return context.Animator.HipHolsterRunning;
     }
 }
