@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BossAnimator : MonoBehaviour
+{
+    private Animator _animator;
+
+    private Dictionary<AttackAnimationType, int> _attackAnimationHashes;
+
+    public event Action<AttackAnimationType> AttackAnimationFinished;
+    
+    public void Initialize()
+    {
+        _animator = GetComponent<Animator>();
+
+        _attackAnimationHashes = new Dictionary<AttackAnimationType, int>()
+        {
+            { AttackAnimationType.ShoulderAim, Animator.StringToHash("ShoulderAim") },
+            { AttackAnimationType.ShoulderShot, Animator.StringToHash("ShoulderShot") },
+            { AttackAnimationType.ShoulderHolster, Animator.StringToHash("ShoulderHolster") },
+            { AttackAnimationType.HipAim, Animator.StringToHash("HipAim") },
+            { AttackAnimationType.HipShot, Animator.StringToHash("HipShot") },
+            { AttackAnimationType.HipHolster, Animator.StringToHash("HipHolster") },
+            { AttackAnimationType.Teleport, Animator.StringToHash("Teleport") },
+            { AttackAnimationType.Appear, Animator.StringToHash("Appear") },
+            { AttackAnimationType.Disappear, Animator.StringToHash("Disappear") },
+            { AttackAnimationType.TeleportAim, Animator.StringToHash("TeleportAim") },
+            { AttackAnimationType.TeleportShot, Animator.StringToHash("TeleportShot") },
+        };
+        
+        foreach (var behaviour in _animator.GetBehaviours<AttackStateBehaviour>())
+        {
+            behaviour.AnimationFinished += OnAnimationFinished;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var behaviour in _animator.GetBehaviours<AttackStateBehaviour>())
+        {
+            behaviour.AnimationFinished -= OnAnimationFinished;
+        }
+    }
+
+    private void OnAnimationFinished(AttackAnimationType type) => AttackAnimationFinished?.Invoke(type);
+    
+    public void PlayAttack(AttackAnimationType type)
+    {
+        if (_attackAnimationHashes.TryGetValue(type, out var hash))
+        {
+            _animator.Play(hash);
+        }
+        else
+        {
+            Debug.LogWarning("Animation doesn't exist: " + type);
+        }
+    }
+
+    public void PlayIdle()
+    {
+        _animator.Play("Idle");
+    }
+}
+
+public enum AttackAnimationType
+{
+    ShoulderAim,
+    ShoulderShot,
+    ShoulderHolster,
+
+    HipAim,
+    HipShot,
+    HipHolster,
+
+    Disappear,
+    Teleport,
+    Appear,
+    TeleportAim,
+    TeleportShot
+}
