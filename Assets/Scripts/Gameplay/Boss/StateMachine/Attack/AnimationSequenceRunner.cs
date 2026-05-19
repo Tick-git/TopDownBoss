@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationSequenceRunner : IDisposable
 {
     private AttackAnimationType _currentAnimation;
-    
-    private readonly Queue<AttackAnimationType> _animationSequence = new();
-    private readonly BossAnimator _animator;
-
+    private AttackAnimationSequence _currentSequence;
     public event Action<AttackAnimationType> AnimationChanged;
     public event Action SequenceFinished;
     
+    private readonly BossAnimator _animator;
     public AnimationSequenceRunner(BossAnimator animator)
     {
         _animator = animator;
@@ -20,11 +17,6 @@ public class AnimationSequenceRunner : IDisposable
     public void Dispose()
     {
         _animator.AttackAnimationFinished -= OnAttackAnimationFinished;
-    }
-
-    public void AddAnimationStep(AttackAnimationType type)
-    {
-        _animationSequence.Enqueue(type);
     }
     
     private void OnAttackAnimationFinished(AttackAnimationType type)
@@ -39,20 +31,22 @@ public class AnimationSequenceRunner : IDisposable
 
     private void PlayNextAnimation()
     {
-        if (_animationSequence.Count <= 0)
+        if (_currentSequence.Count <= 0)
         {
             SequenceFinished?.Invoke();
             return;
         }
         
-        _currentAnimation = _animationSequence.Dequeue();
+        _currentAnimation = _currentSequence.GetNextStep();
         
         _animator.PlayAttack(_currentAnimation);
         AnimationChanged?.Invoke(_currentAnimation);
     }
 
-    public void StartSequence()
+    public void Run(AttackAnimationSequence sequence)
     {
+        _currentSequence = sequence;
+        
         PlayNextAnimation();
     }
 }

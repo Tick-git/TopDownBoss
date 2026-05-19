@@ -16,13 +16,14 @@ public class TeleportAttackState : BaseState<BossController>
         Context.AttackSequenceRunner.AnimationChanged += OnAnimationChanged;
         Context.AttackSequenceRunner.SequenceFinished += OnSequenceFinished;
 
-        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.Disappear);
-        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.Teleport);
-        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.Appear);
-        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.TeleportAim);
-        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.TeleportShot);
-
-        Context.AttackSequenceRunner.StartSequence();
+        var animationSequence = new AttackAnimationSequence()
+            .AddStep(AttackAnimationType.Disappear)
+            .AddStep(AttackAnimationType.Teleport)
+            .AddStep(AttackAnimationType.Appear)
+            .AddStep(AttackAnimationType.TeleportAim)
+            .AddStep(AttackAnimationType.TeleportShot);
+        
+        Context.AttackSequenceRunner.Run(animationSequence);
     }
 
     public override void Update()
