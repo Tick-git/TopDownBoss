@@ -24,6 +24,7 @@ namespace Gameplay.Boss
         public BossTeleport Teleport { get; private set; }
         public Hitbox Hitbox => _hitbox;
         public BossAudio Audio => _audio;
+        public AnimationSequenceRunner AttackSequenceRunner { get; private set; }
 
         private void Awake()
         {
@@ -32,7 +33,8 @@ namespace Gameplay.Boss
             Movement = GetComponent<Movement>();
             AttackDecider = GetComponent<AttackDecider>();
             Teleport = GetComponent<BossTeleport>();
-
+            AttackSequenceRunner =  new AnimationSequenceRunner(Animator);
+            
             Movement.Initialize();
             Weapon.Initialize(_health);
             AttackDecider.Initialize();
@@ -43,7 +45,11 @@ namespace Gameplay.Boss
             InitBossAttackStateMachine();
         }
 
-
+        private void OnDestroy()
+        {
+            AttackSequenceRunner.Dispose();
+        }
+        
         private void InitBossMovementStateMachine()
         {
             _bossMovementSm = new StateMachine();

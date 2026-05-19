@@ -2,30 +2,27 @@ using Gameplay.Boss;
 
 public class TeleportAttackState : BaseState<BossController>
 {
-    private readonly AnimationSequenceRunner _attackSequenceRunner;
     public bool IsRunning { get; private set; }
 
     public TeleportAttackState(BossController context) : base(context)
     {
-        _attackSequenceRunner = new AnimationSequenceRunner(context.Animator);
     }
 
     public override void Enter()
     {
         IsRunning = true;
         Context.AttackDecider.NotifyAttackStarted();
+        
+        Context.AttackSequenceRunner.AnimationChanged += OnAnimationChanged;
+        Context.AttackSequenceRunner.SequenceFinished += OnSequenceFinished;
 
-        _attackSequenceRunner.Prepare();
-        _attackSequenceRunner.AnimationChanged += OnAnimationChanged;
-        _attackSequenceRunner.SequenceFinished += OnSequenceFinished;
+        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.Disappear);
+        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.Teleport);
+        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.Appear);
+        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.TeleportAim);
+        Context.AttackSequenceRunner.AddAnimationStep(AttackAnimationType.TeleportShot);
 
-        _attackSequenceRunner.AddAnimationStep(AttackAnimationType.Disappear);
-        _attackSequenceRunner.AddAnimationStep(AttackAnimationType.Teleport);
-        _attackSequenceRunner.AddAnimationStep(AttackAnimationType.Appear);
-        _attackSequenceRunner.AddAnimationStep(AttackAnimationType.TeleportAim);
-        _attackSequenceRunner.AddAnimationStep(AttackAnimationType.TeleportShot);
-
-        _attackSequenceRunner.StartSequence();
+        Context.AttackSequenceRunner.StartSequence();
     }
 
     public override void Update()
@@ -35,9 +32,8 @@ public class TeleportAttackState : BaseState<BossController>
 
     private void OnSequenceFinished()
     {
-        _attackSequenceRunner.CleanUp();
-        _attackSequenceRunner.AnimationChanged -= OnAnimationChanged;
-        _attackSequenceRunner.SequenceFinished -= OnSequenceFinished;
+        Context.AttackSequenceRunner.AnimationChanged -= OnAnimationChanged;
+        Context.AttackSequenceRunner.SequenceFinished -= OnSequenceFinished;
         
         IsRunning = false;
     }

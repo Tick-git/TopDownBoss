@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationSequenceRunner 
+public class AnimationSequenceRunner : IDisposable
 {
     private AttackAnimationType _currentAnimation;
     
@@ -15,15 +15,9 @@ public class AnimationSequenceRunner
     public AnimationSequenceRunner(BossAnimator animator)
     {
         _animator = animator;
-    }
-
-    public void Prepare()
-    {
-        _animationSequence.Clear();
         _animator.AttackAnimationFinished += OnAttackAnimationFinished;
     }
-
-    public void CleanUp()
+    public void Dispose()
     {
         _animator.AttackAnimationFinished -= OnAttackAnimationFinished;
     }
