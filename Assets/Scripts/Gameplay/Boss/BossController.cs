@@ -5,14 +5,16 @@ namespace Gameplay.Boss
     public class BossController : MonoBehaviour
     {
         [SerializeField] private BossVisuals _visuals;
-        [SerializeField] private BossAnimator _animator;
+        [SerializeField] private BossAnimatorOld _animatorOld;
         [SerializeField] private Health _health;
         [SerializeField] private BossAudio _audio;
         [SerializeField] private Hitbox _hitbox;
+        [SerializeField] private BossAnimator _animator;
 
         private StateMachine _bossAttackSm;
         private StateMachine _bossMovementSm;
 
+        public BossAnimatorOld AnimatorOld => _animatorOld;
         public BossAnimator Animator => _animator;
         public BossWeapon Weapon { get; private set; }
         public TargetTracker TargetTracker { get; private set; }
@@ -34,7 +36,8 @@ namespace Gameplay.Boss
             Movement.Initialize();
             Weapon.Initialize(_health);
             AttackDecider.Initialize();
-            _animator.Initialize();
+            _animatorOld.Initialize();
+            Animator.Initialize();
 
             InitBossMovementStateMachine();
             InitBossAttackStateMachine();
@@ -68,7 +71,7 @@ namespace Gameplay.Boss
             var decisionState = new AttackDecisionState(this);
             var attackState = new ShootState(this, new LargeSpreadShootBehaviour());
             var attackState2 = new ShootState(this, new SmallSpreadShootBehaviour());
-            var teleportAttack = new TeleportAttack(this);
+            var teleportAttack = new TeleportAttackState(this);
 
             _bossAttackSm.AddTransition(decisionState, attackState, new FuncPredicate(() => AttackDecider.Attack));
             _bossAttackSm.AddTransition(decisionState, attackState2, new FuncPredicate(() => AttackDecider.Attack2));

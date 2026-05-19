@@ -10,12 +10,12 @@ namespace Gameplay.Boss
 
         public override void Enter()
         {
-            Context.Animator.StartMoving();
+            Context.AnimatorOld.StartMoving();
         }
 
         public override void Exit()
         {
-            Context.Animator.StopMoving();
+            Context.AnimatorOld.StopMoving();
         }
 
         public override void FixedUpdate()

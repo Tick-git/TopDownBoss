@@ -26,13 +26,13 @@
             IsRunning = true;
             _currentState = State.None;
             _shotsFiredCount = 0;
-            Context.Animator.SetSpeed(0.25f);
+            Context.AnimatorOld.SetSpeed(0.25f);
             Context.AttackDecider.NotifyAttackStarted();
         }
 
         public override void Exit()
         {
-            Context.Animator.ResetSpeed();
+            Context.AnimatorOld.ResetSpeed();
             Context.AttackDecider.NotifyAttackEnded();
         }
 
@@ -53,7 +53,7 @@
             else if (_currentState == State.Aim && !_shootBehaviour.AimRunning(Context))
             {
                 _currentState = State.Shoot;
-                Context.Animator.SetSpeed(1.5f);
+                Context.AnimatorOld.SetSpeed(1.5f);
                 Context.Audio.PlayShootSound();
 
                 _shootBehaviour.Shoot(Context);

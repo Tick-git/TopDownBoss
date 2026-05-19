@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAnimator : MonoBehaviour
+public class BossAnimatorOld : MonoBehaviour
 {
     private static readonly int ShoulderTrigger = Animator.StringToHash("ShoulderTrigger");
     private static readonly int ShoulderAim = Animator.StringToHash("ShoulderAim");
