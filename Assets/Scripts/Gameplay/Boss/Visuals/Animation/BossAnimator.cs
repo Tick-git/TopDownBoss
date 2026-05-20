@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossAnimator : MonoBehaviour
 {
+    private static readonly int AttackSpeedMultiplier = Animator.StringToHash("AttackSpeedMultiplier");
+    
     private Animator _animator;
 
     private Dictionary<AttackAnimationType, int> _attackAnimationHashes;
@@ -45,10 +47,11 @@ public class BossAnimator : MonoBehaviour
 
     private void OnAnimationFinished(AttackAnimationType type) => AttackAnimationFinished?.Invoke(type);
     
-    public void PlayAttack(AttackAnimationType type)
+    public void PlayAttack(AttackAnimationType type, float attackSpeedMultiplier)
     {
         if (_attackAnimationHashes.TryGetValue(type, out var hash))
         {
+            _animator.SetFloat(AttackSpeedMultiplier, attackSpeedMultiplier);
             _animator.Play(hash);
         }
         else
@@ -60,6 +63,11 @@ public class BossAnimator : MonoBehaviour
     public void PlayIdle()
     {
         _animator.Play("Idle");
+    }
+
+    public void ResetAttackSpeedMultiplier()
+    {
+        _animator.SetFloat(AttackSpeedMultiplier, 1.0f);
     }
 }
 

@@ -26,7 +26,7 @@ AnimatorStateMachine:
     m_Position: {x: 700, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7977628410058189768}
-    m_Position: {x: 950, y: 250, z: 0}
+    m_Position: {x: 950, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5823910381709854722}
     m_Position: {x: 700, y: 330, z: 0}
@@ -72,13 +72,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 021786716b87b3649a787ce73204bc8a, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -534,6 +534,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: AttackSpeedMultiplier
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Attacks
@@ -805,13 +811,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 6bb7517ef5b570d44857ac439e7e083e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -854,13 +860,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: f7708b08be0cb4c449556e05c5188ef0, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -1030,13 +1036,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: a8b69bde388a65e4399bb96ce27ae075, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -1085,13 +1091,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 20a8b69a40698634d952dcf9520c7733, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

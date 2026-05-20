@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class AnimationSequenceRunner : IDisposable
 {
-    private AttackAnimationType _currentAnimation;
+    private AttackAnimationStep _currentAnimationStep;
     private AttackAnimationSequence _currentSequence;
+    
+    private bool _running;
     public event Action<AttackAnimationType> AnimationChanged;
     public event Action SequenceFinished;
     
@@ -21,7 +23,17 @@ public class AnimationSequenceRunner : IDisposable
     
     private void OnAttackAnimationFinished(AttackAnimationType type)
     {
-        if (_currentAnimation != type)
+        if (!_running) return;
+        
+        if (_currentSequence.Count <= 0)
+        {
+            _running = false;
+            _animator.ResetAttackSpeedMultiplier();
+            SequenceFinished?.Invoke();
+            return;
+        }
+        
+        if (_currentAnimationStep.AnimationType != type)
         {
             Debug.LogWarning("Unexpected Animation Finished " + GetType());
         }
@@ -31,21 +43,16 @@ public class AnimationSequenceRunner : IDisposable
 
     private void PlayNextAnimation()
     {
-        if (_currentSequence.Count <= 0)
-        {
-            SequenceFinished?.Invoke();
-            return;
-        }
+        _currentAnimationStep = _currentSequence.GetNextStep();
         
-        _currentAnimation = _currentSequence.GetNextStep();
-        
-        _animator.PlayAttack(_currentAnimation);
-        AnimationChanged?.Invoke(_currentAnimation);
+        _animator.PlayAttack(_currentAnimationStep.AnimationType, _currentAnimationStep.AttackSpeedMultiplier);
+        AnimationChanged?.Invoke(_currentAnimationStep.AnimationType);
     }
 
     public void Run(AttackAnimationSequence sequence)
     {
         _currentSequence = sequence;
+        _running = true;
         
         PlayNextAnimation();
     }
