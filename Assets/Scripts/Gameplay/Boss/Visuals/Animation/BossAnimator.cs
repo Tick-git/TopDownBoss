@@ -5,11 +5,13 @@ using UnityEngine;
 public class BossAnimator : MonoBehaviour
 {
     private static readonly int AttackSpeedMultiplier = Animator.StringToHash("AttackSpeedMultiplier");
-    
+    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+
     private Animator _animator;
 
     private Dictionary<AttackAnimationType, int> _attackAnimationHashes;
     public event Action<AttackAnimationType> AttackAnimationFinished;
+    public event Action FootGrounded;
     
     public void Initialize()
     {
@@ -60,6 +62,7 @@ public class BossAnimator : MonoBehaviour
             Debug.LogWarning("Animation doesn't exist: " + type);
         }
     }
+    public void OnFootGroundedAnimationEvent() => FootGrounded?.Invoke();
 
     public void PlayIdle()
     {
@@ -70,6 +73,10 @@ public class BossAnimator : MonoBehaviour
     {
         _animator.SetFloat(AttackSpeedMultiplier, 1.0f);
     }
+    
+    public void StartMoving() => _animator.SetBool(IsMoving, true);
+
+    public void StopMoving() => _animator.SetBool(IsMoving, false);
 }
 
 public enum AttackAnimationType

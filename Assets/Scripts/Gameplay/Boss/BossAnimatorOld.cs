@@ -42,6 +42,8 @@ public class BossAnimatorOld : MonoBehaviour
     public bool TeleportShootRunning => _animationsRunning[TeleportShot];
 
     public event Action FootGrounded;
+    public void OnFootGrounded() => FootGrounded?.Invoke();
+    
 
     public void Initialize()
     {
@@ -89,7 +91,6 @@ public class BossAnimatorOld : MonoBehaviour
 
     public void StopMoving() => _animator.SetBool(IsMoving, false);
 
-    public void OnFootGrounded() => FootGrounded?.Invoke();
 
     private void OnStateExit(int shortNameHash) => SetAnimationRunningEntry(shortNameHash, false);
 

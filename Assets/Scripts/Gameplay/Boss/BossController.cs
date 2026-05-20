@@ -5,7 +5,6 @@ namespace Gameplay.Boss
     public class BossController : MonoBehaviour
     {
         [SerializeField] private BossVisuals _visuals;
-        [SerializeField] private BossAnimatorOld _animatorOld;
         [SerializeField] private Health _health;
         [SerializeField] private BossAudio _audio;
         [SerializeField] private Hitbox _hitbox;
@@ -14,7 +13,6 @@ namespace Gameplay.Boss
         private StateMachine _bossAttackSm;
         private StateMachine _bossMovementSm;
 
-        public BossAnimatorOld AnimatorOld => _animatorOld;
         public BossAnimator Animator => _animator;
         public BossWeapon Weapon { get; private set; }
         public TargetTracker TargetTracker { get; private set; }
@@ -38,7 +36,6 @@ namespace Gameplay.Boss
             Movement.Initialize();
             Weapon.Initialize(_health);
             AttackDecider.Initialize();
-            _animatorOld.Initialize();
             Animator.Initialize();
 
             InitBossMovementStateMachine();

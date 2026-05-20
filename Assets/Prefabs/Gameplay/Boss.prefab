@@ -884,7 +884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _visuals: {fileID: 8358695227807185365}
-  _animatorOld: {fileID: 2382058574239483312}
   _health: {fileID: 7985963186804972621}
   _audio: {fileID: 5983505661553330397}
   _hitbox: {fileID: 1821540124419798161}
@@ -1292,7 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da64ca80854613945b83f0015ded1c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::BossAudio
-  _animatorOld: {fileID: 2382058574239483312}
+  _animator: {fileID: 3941875422255464116}
   _walkData: {fileID: 11400000, guid: 7d3187f5bcb321c40a822faac717bb06, type: 2}
   _shootData: {fileID: 11400000, guid: 2b07819305bd27d40b3e0ee42acf1bde, type: 2}
 --- !u!1 &6172364736327432499
@@ -1306,7 +1305,6 @@ GameObject:
   - component: {fileID: 4801749448013727988}
   - component: {fileID: 3844184909614700151}
   - component: {fileID: 1122890562315532522}
-  - component: {fileID: 2382058574239483312}
   - component: {fileID: 3941875422255464116}
   m_Layer: 0
   m_Name: AnimationRoot
@@ -1370,18 +1368,6 @@ SortingGroup:
   m_SortingOrder: 10
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
---- !u!114 &2382058574239483312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172364736327432499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633c531a20014f59bf7239dbe5c6268a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::BossAnimator
 --- !u!114 &3941875422255464116
 MonoBehaviour:
   m_ObjectHideFlags: 0

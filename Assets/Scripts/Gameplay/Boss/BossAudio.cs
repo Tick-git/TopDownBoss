@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossAudio : MonoBehaviour
 {
-    [SerializeField] private BossAnimatorOld _animatorOld;
+    [SerializeField] private BossAnimator _animator;
 
     [Header("Audio Data")] [SerializeField]
     private AudioData _walkData;
@@ -19,12 +19,12 @@ public class BossAudio : MonoBehaviour
 
     private void OnEnable()
     {
-        _animatorOld.FootGrounded += PlayWalkSound;
+        _animator.FootGrounded += PlayWalkSound;
     }
 
     private void OnDisable()
     {
-        _animatorOld.FootGrounded -= PlayWalkSound;
+        _animator.FootGrounded -= PlayWalkSound;
     }
 
     private void PlayWalkSound() => Play(_walkData);
