@@ -75,8 +75,8 @@ namespace Gameplay.Boss
             _bossAttackSm = new StateMachine();
 
             var decisionState = new AttackDecisionState(this);
-            var attackState = new ShootState(this, new LargeSpreadShootBehaviour());
-            var attackState2 = new ShootState(this, new SmallSpreadShootBehaviour());
+            var attackState = new LargeSpreadShotState(this);
+            var attackState2 = new SmallSpreadShotState(this);
             var teleportAttack = new TeleportAttackState(this);
 
             _bossAttackSm.AddTransition(decisionState, attackState, new FuncPredicate(() => AttackDecider.Attack));

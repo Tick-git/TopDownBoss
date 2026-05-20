@@ -9,7 +9,6 @@ public class BossAnimator : MonoBehaviour
     private Animator _animator;
 
     private Dictionary<AttackAnimationType, int> _attackAnimationHashes;
-
     public event Action<AttackAnimationType> AttackAnimationFinished;
     
     public void Initialize()
@@ -39,6 +38,8 @@ public class BossAnimator : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (_animator == null) return;
+        
         foreach (var behaviour in _animator.GetBehaviours<AttackStateBehaviour>())
         {
             behaviour.AnimationFinished -= OnAnimationFinished;
