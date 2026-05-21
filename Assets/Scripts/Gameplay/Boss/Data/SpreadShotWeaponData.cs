@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = DataPaths.GameplayData.BossPaths + "SpreadShot")]
-public class BossSpreadShotData : ScriptableObject
+public class SpreadShotWeaponData : ScriptableObject
 {
     [SerializeField] private float _damage = 10;
     [SerializeField] private float _spreadAngle = 7.5f;

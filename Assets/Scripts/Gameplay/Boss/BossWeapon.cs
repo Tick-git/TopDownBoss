@@ -2,8 +2,8 @@
 
 public class BossWeapon : MonoBehaviour
 {
-    [SerializeField] private BossSpreadShotData _smallSpreadShotData;
-    [SerializeField] private BossSpreadShotData _largeSpreadShotData;
+    [SerializeField] private SpreadShotWeaponData _smallSpreadShotWeaponData;
+    [SerializeField] private SpreadShotWeaponData _largeSpreadShotWeaponData;
     [SerializeField] private Transform _weapon;
     [SerializeField] private Magazine _magazine;
     [SerializeField] private Transform _firePoint;
@@ -14,7 +14,7 @@ public class BossWeapon : MonoBehaviour
     private bool _lastAimedLeft;
 
     public Vector2 FirePointPosition => _firePoint.position;
-    public float SmallSpreadShotBulletSpeed => _smallSpreadShotData.Speed;
+    public float SmallSpreadShotBulletSpeed => _smallSpreadShotWeaponData.Speed;
 
     public void Initialize(IDamageable owner)
     {
@@ -63,30 +63,30 @@ public class BossWeapon : MonoBehaviour
 
     public void ShootSmallSpread(Vector2 target)
     {
-        SpreadShot(target, _smallSpreadShotData);
+        SpreadShot(target, _smallSpreadShotWeaponData);
     }
 
     public void ShootBigSpread(Vector2 target)
     {
-        SpreadShot(target, _largeSpreadShotData);
+        SpreadShot(target, _largeSpreadShotWeaponData);
     }
 
-    private void SpreadShot(Vector2 target, BossSpreadShotData data)
+    private void SpreadShot(Vector2 target, SpreadShotWeaponData weaponData)
     {
         var direction = (target - (Vector2)_firePoint.position).normalized;
-        var bulletSpreadSpacing = (data.SpreadAngle * 2) / (data.BulletCount - 1);
+        var bulletSpreadSpacing = (weaponData.SpreadAngle * 2) / (weaponData.BulletCount - 1);
 
-        for (int i = 0; i < data.BulletCount; i++)
+        for (int i = 0; i < weaponData.BulletCount; i++)
         {
-            var curSpreadAngle = data.SpreadAngle - (bulletSpreadSpacing * i);
+            var curSpreadAngle = weaponData.SpreadAngle - (bulletSpreadSpacing * i);
             var curDirection = Quaternion.Euler(0, 0, curSpreadAngle) * direction;
 
             var bulletParams = new BulletFlightParams(
                 _firePoint.position,
                 curDirection,
-                data.Damage,
-                data.Speed,
-                data.Range,
+                weaponData.Damage,
+                weaponData.Speed,
+                weaponData.Range,
                 _owner);
 
             var bullet = _magazine.GetBullet();
