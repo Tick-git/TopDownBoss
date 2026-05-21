@@ -29,7 +29,11 @@ public class BossAnimator : MonoBehaviour
             { AttackAnimationType.Appear, Animator.StringToHash("Appear") },
             { AttackAnimationType.Disappear, Animator.StringToHash("Disappear") },
             { AttackAnimationType.TeleportAim, Animator.StringToHash("TeleportAim") },
-            { AttackAnimationType.TeleportShot, Animator.StringToHash("TeleportShot") },
+            { AttackAnimationType.TeleportShot, Animator.StringToHash("TeleportShot")},
+            { AttackAnimationType.GroundExplodeHandUp, Animator.StringToHash("GroundExplodeHandUp")},
+            { AttackAnimationType.GroundExplodeHandDown, Animator.StringToHash("GroundExplodeHandDown")},
+            { AttackAnimationType.GroundExplodeAttack, Animator.StringToHash("GroundExplodeAttack")},
+            { AttackAnimationType.GroundExplodeRecover, Animator.StringToHash("GroundExplodeRecover")}
         };
         
         foreach (var behaviour in _animator.GetBehaviours<AttackStateBehaviour>())
@@ -93,5 +97,10 @@ public enum AttackAnimationType
     Teleport,
     Appear,
     TeleportAim,
-    TeleportShot
+    TeleportShot,
+    
+    GroundExplodeHandUp,
+    GroundExplodeHandDown,
+    GroundExplodeAttack,
+    GroundExplodeRecover
 }
