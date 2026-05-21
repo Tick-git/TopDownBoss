@@ -3,8 +3,11 @@ using Gameplay.Boss;
 
 public class LargeSpreadShotState : BaseBossAttackState
 {
-    public LargeSpreadShotState(BossController context) : base(context)
+    private readonly SpreadShotAttackData _data;
+
+    public LargeSpreadShotState(BossController context, SpreadShotAttackData data) : base(context)
     {
+        _data = data;
     }
 
     public override void Enter()
@@ -12,16 +15,16 @@ public class LargeSpreadShotState : BaseBossAttackState
         base.Enter();
 
         var attackSequence = new AttackAnimationSequence()
-            .AddStep(AttackAnimationType.HipAim, 0.75f)
-            .AddStep(AttackAnimationType.HipShot)
-            .AddStep(AttackAnimationType.HipHolster);
+            .AddStep(AttackAnimationType.HipAim, _data.SetupAnimationTime)
+            .AddStep(AttackAnimationType.HipShot, _data.ShootAnimationTime)
+            .AddStep(AttackAnimationType.HipHolster, _data.HolsterAnimationTime);
 
         for (int i = 0; i < 1; i++)
         {
             attackSequence
-                .AddStep(AttackAnimationType.HipAim)
-                .AddStep(AttackAnimationType.HipShot)
-                .AddStep(AttackAnimationType.HipHolster);
+                .AddStep(AttackAnimationType.HipAim, _data.AimAnimationTime)
+                .AddStep(AttackAnimationType.HipShot, _data.ShootAnimationTime)
+                .AddStep(AttackAnimationType.HipHolster, _data.HolsterAnimationTime);
         }
 
         Context.AttackSequenceRunner.Run(attackSequence);

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = DataPaths.GameplayData.BossPaths + "SpreadShot")]
+[CreateAssetMenu(menuName = DataPaths.GameplayData.BossPaths + "Spread Shot Weapon")]
 public class SpreadShotWeaponData : ScriptableObject
 {
     [SerializeField] private float _damage = 10;

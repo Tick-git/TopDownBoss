@@ -2,8 +2,11 @@ namespace Gameplay.Boss
 {
     public class GroundAttackState : BaseBossAttackState
     {
-        public GroundAttackState(BossController context) : base(context)
+        private readonly GroundAttackData _data;
+
+        public GroundAttackState(BossController context, GroundAttackData data) : base(context)
         {
+            _data = data;
         }
 
         public override void Enter()
@@ -11,17 +14,16 @@ namespace Gameplay.Boss
             base.Enter();
 
             var attackSequence = new AttackAnimationSequence()
-                .AddStep(AttackAnimationType.GroundExplodeHandUp, 0.5f)
-                .AddStep(AttackAnimationType.GroundExplodeHandDown)
-                .AddStep(AttackAnimationType.GroundExplodeAttack)
-                .AddStep(AttackAnimationType.GroundExplodeRecover);
-            
+                .AddStep(AttackAnimationType.GroundExplodeHandUp, _data.HandsUpAnimationTime)
+                .AddStep(AttackAnimationType.GroundExplodeHandDown, _data.HandsDownAnimationTime)
+                .AddStep(AttackAnimationType.GroundExplodeAttack, _data.AttackAnimationTime)
+                .AddStep(AttackAnimationType.GroundExplodeRecover, _data.RecoverAnimationTime);
+
             Context.AttackSequenceRunner.Run(attackSequence);
         }
 
         protected override void OnAnimationEnter(AttackAnimationType animationType)
         {
-            
         }
     }
 }

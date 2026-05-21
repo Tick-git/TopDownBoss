@@ -2,8 +2,11 @@ using Gameplay.Boss;
 
 public class TeleportAttackState : BaseBossAttackState
 {
-    public TeleportAttackState(BossController context) : base(context)
+    private readonly TeleportAttackData _data;
+
+    public TeleportAttackState(BossController context, TeleportAttackData data) : base(context)
     {
+        _data = data;
     }
 
     public override void Enter()
@@ -11,11 +14,11 @@ public class TeleportAttackState : BaseBossAttackState
         base.Enter();
 
         var animationSequence = new AttackAnimationSequence()
-            .AddStep(AttackAnimationType.Disappear)
-            .AddStep(AttackAnimationType.Teleport)
-            .AddStep(AttackAnimationType.Appear)
-            .AddStep(AttackAnimationType.TeleportAim)
-            .AddStep(AttackAnimationType.TeleportShot);
+            .AddStep(AttackAnimationType.Disappear, _data.DisappearAnimationTime)
+            .AddStep(AttackAnimationType.Teleport, _data.TeleportAnimationTime)
+            .AddStep(AttackAnimationType.Appear, _data.AppearAnimationTime)
+            .AddStep(AttackAnimationType.TeleportAim, _data.TeleportAimAnimationTime)
+            .AddStep(AttackAnimationType.TeleportShot, _data.TeleportShotAnimationTime);
 
         Context.AttackSequenceRunner.Run(animationSequence);
     }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SmallSpreadShotState : BaseBossAttackState
 {
-    public SmallSpreadShotState(BossController context) : base(context)
+    private readonly SpreadShotAttackData _data;
+
+    public SmallSpreadShotState(BossController context, SpreadShotAttackData data) : base(context)
     {
+        _data = data;
     }
 
     public override void Enter()
@@ -13,16 +16,16 @@ public class SmallSpreadShotState : BaseBossAttackState
         base.Enter();
 
         var attackSequence = new AttackAnimationSequence()
-            .AddStep(AttackAnimationType.ShoulderAim, 0.5f)
-            .AddStep(AttackAnimationType.ShoulderShot)
-            .AddStep(AttackAnimationType.ShoulderHolster);
+            .AddStep(AttackAnimationType.ShoulderAim, _data.SetupAnimationTime)
+            .AddStep(AttackAnimationType.ShoulderShot, _data.ShootAnimationTime)
+            .AddStep(AttackAnimationType.ShoulderHolster, _data.HolsterAnimationTime);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < _data.ShotCount - 1; i++)
         {
             attackSequence
-                .AddStep(AttackAnimationType.ShoulderAim)
-                .AddStep(AttackAnimationType.ShoulderShot)
-                .AddStep(AttackAnimationType.ShoulderHolster);
+                .AddStep(AttackAnimationType.ShoulderAim, _data.AimAnimationTime)
+                .AddStep(AttackAnimationType.ShoulderShot, _data.ShootAnimationTime)
+                .AddStep(AttackAnimationType.ShoulderHolster, _data.HolsterAnimationTime);
         }
 
         Context.AttackSequenceRunner.Run(attackSequence);

@@ -321,6 +321,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.433
       objectReference: {fileID: 0}
+    - target: {fileID: 8218433025993125145, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: _largeSpreadShotWeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 692bc605d9f3188488d985dda7c34d0b, type: 2}
+    - target: {fileID: 8218433025993125145, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: _smallSpreadShotWeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: bbd1c6740ecebe54cbb8d09ca6ddbfea, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

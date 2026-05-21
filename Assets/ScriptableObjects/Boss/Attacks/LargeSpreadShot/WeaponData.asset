@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8caa05e62ca54747937cf38f1af54cee, type: 3}
-  m_Name: BossSmallSpreadShot
-  m_EditorClassIdentifier: Scripts::BossSpreadShotData
+  m_Name: WeaponData
+  m_EditorClassIdentifier: Scripts::SpreadShotWeaponData
   _damage: 10
-  _spreadAngle: 5
+  _spreadAngle: 7.5
   _speed: 20
   _bulletCount: 3
   _range: 50
