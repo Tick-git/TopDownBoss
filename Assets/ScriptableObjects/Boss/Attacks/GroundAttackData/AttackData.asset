@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2656c4a73b49bf9884783cddfbd292, type: 3}
   m_Name: AttackData
   m_EditorClassIdentifier: Scripts::GroundAttackData
-  _handsUpAnimationTime: 0.25
-  _handsDownAnimationTime: 0.25
+  _handsUpAnimationTime: 0.75
+  _handsDownAnimationTime: 0.0625
   _attackAnimationTime: 0.25
   _recoverAnimationTime: 0.25

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponData
   m_EditorClassIdentifier: Scripts::SpreadShotWeaponData
   _damage: 10
-  _spreadAngle: 7.5
+  _spreadAngle: 40
   _speed: 20
-  _bulletCount: 3
+  _bulletCount: 11
   _range: 50

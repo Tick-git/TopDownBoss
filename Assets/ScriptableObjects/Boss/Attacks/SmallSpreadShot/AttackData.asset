@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackData
   m_EditorClassIdentifier: Scripts::SpreadShotData
   _shotCount: 3
-  _setupAnimationTime: 0.25
-  _aimAnimationTime: 0.25
-  _shootAnimationTime: 0.25
-  _holsterAnimationTime: 0.25
+  _setupAnimationTime: 0.5
+  _aimAnimationTime: 0.2
+  _shootAnimationTime: 0.2
+  _holsterAnimationTime: 0.2

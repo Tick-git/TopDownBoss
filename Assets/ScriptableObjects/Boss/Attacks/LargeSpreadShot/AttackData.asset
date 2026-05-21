@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::SpreadShotAttackData
   _shotCount: 2
   _setupAnimationTime: 0.75
-  _aimAnimationTime: 0.25
-  _shootAnimationTime: 0.25
-  _holsterAnimationTime: 0.25
+  _aimAnimationTime: 0.2
+  _shootAnimationTime: 0.2
+  _holsterAnimationTime: 0.2

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::TeleportAttackData
   _disappearAnimationTime: 0.25
   _teleportAnimationTime: 0.25
-  _appearAnimationTime: 0.25
-  _teleportAimAnimationTime: 0.25
-  _teleportShotAnimationTime: 0.25
+  _appearAnimationTime: 0.125
+  _teleportAimAnimationTime: 0.125
+  _teleportShotAnimationTime: 0.125
