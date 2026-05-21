@@ -1,20 +1,14 @@
 using Gameplay.Boss;
 
-public class TeleportAttackState : BaseState<BossController>
+public class TeleportAttackState : BossAttackState
 {
-    public bool IsRunning { get; private set; }
-
     public TeleportAttackState(BossController context) : base(context)
     {
     }
 
     public override void Enter()
     {
-        IsRunning = true;
-        Context.AttackDecider.NotifyAttackStarted();
-        
-        Context.AttackSequenceRunner.AnimationChanged += OnAnimationChanged;
-        Context.AttackSequenceRunner.SequenceFinished += OnSequenceFinished;
+        base.Enter();
 
         var animationSequence = new AttackAnimationSequence()
             .AddStep(AttackAnimationType.Disappear)
@@ -22,7 +16,7 @@ public class TeleportAttackState : BaseState<BossController>
             .AddStep(AttackAnimationType.Appear)
             .AddStep(AttackAnimationType.TeleportAim)
             .AddStep(AttackAnimationType.TeleportShot);
-        
+
         Context.AttackSequenceRunner.Run(animationSequence);
     }
 
@@ -31,15 +25,7 @@ public class TeleportAttackState : BaseState<BossController>
         Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
     }
 
-    private void OnSequenceFinished()
-    {
-        Context.AttackSequenceRunner.AnimationChanged -= OnAnimationChanged;
-        Context.AttackSequenceRunner.SequenceFinished -= OnSequenceFinished;
-        
-        IsRunning = false;
-    }
-
-    private void OnAnimationChanged(AttackAnimationType animation)
+    protected override void OnAnimationChanged(AttackAnimationType animation)
     {
         switch (animation)
         {
@@ -59,11 +45,5 @@ public class TeleportAttackState : BaseState<BossController>
                 Context.Weapon.ShootSmallSpread(Context.TargetTracker.GetTargetPosition());
                 break;
         }
-    }
-
-    public override void Exit()
-    {
-        Context.Animator.PlayIdle();
-        Context.AttackDecider.NotifyAttackEnded();
     }
 }

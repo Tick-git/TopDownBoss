@@ -2,20 +2,15 @@ using System;
 using Gameplay.Boss;
 using UnityEngine;
 
-public class SmallSpreadShotState : BaseState<BossController>
+public class SmallSpreadShotState : BossAttackState
 {
-    public bool IsRunning { get; private set; }
-
     public SmallSpreadShotState(BossController context) : base(context)
     {
     }
 
     public override void Enter()
     {
-        IsRunning = true;
-        Context.AttackDecider.NotifyAttackStarted();
-        Context.AttackSequenceRunner.AnimationChanged += OnAnimationChanged;
-        Context.AttackSequenceRunner.SequenceFinished += OnSequenceFinished;
+        base.Enter();
 
         var attackSequence = new AttackAnimationSequence()
             .AddStep(AttackAnimationType.ShoulderAim, 0.25f)
@@ -33,15 +28,12 @@ public class SmallSpreadShotState : BaseState<BossController>
         Context.AttackSequenceRunner.Run(attackSequence);
     }
 
-    private void OnSequenceFinished()
+    public override void Update()
     {
-        IsRunning = false;
-
-        Context.AttackSequenceRunner.AnimationChanged -= OnAnimationChanged;
-        Context.AttackSequenceRunner.SequenceFinished -= OnSequenceFinished;
+        Context.Weapon.ApplyAim(GetTargetMovePredictionForBullet());
     }
 
-    private void OnAnimationChanged(AttackAnimationType animationType)
+    protected override void OnAnimationChanged(AttackAnimationType animationType)
     {
         switch (animationType)
         {
@@ -56,16 +48,6 @@ public class SmallSpreadShotState : BaseState<BossController>
             default:
                 throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
         }
-    }
-
-    public override void Update()
-    {
-        Context.Weapon.ApplyAim(GetTargetMovePredictionForBullet());
-    }
-
-    public override void Exit()
-    {
-        Context.AttackDecider.NotifyAttackEnded();
     }
 
     private Vector2 GetTargetMovePredictionForBullet()

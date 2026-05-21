@@ -1,20 +1,15 @@
 using System;
 using Gameplay.Boss;
 
-public class LargeSpreadShotState : BaseState<BossController>
+public class LargeSpreadShotState : BossAttackState
 {
-    public bool IsRunning { get; private set; }
-    
     public LargeSpreadShotState(BossController context) : base(context)
     {
     }
 
     public override void Enter()
     {
-        IsRunning = true;
-        Context.AttackDecider.NotifyAttackStarted();
-        Context.AttackSequenceRunner.AnimationChanged += OnAnimationChanged;
-        Context.AttackSequenceRunner.SequenceFinished += OnSequenceFinished;
+        base.Enter();
 
         var attackSequence = new AttackAnimationSequence()
             .AddStep(AttackAnimationType.HipAim, 0.25f)
@@ -28,19 +23,16 @@ public class LargeSpreadShotState : BaseState<BossController>
                 .AddStep(AttackAnimationType.HipShot, 1.5f)
                 .AddStep(AttackAnimationType.HipHolster, 1.5f);
         }
-        
+
         Context.AttackSequenceRunner.Run(attackSequence);
     }
 
-    private void OnSequenceFinished()
+    public override void Update()
     {
-        IsRunning = false;
-        
-        Context.AttackSequenceRunner.AnimationChanged -= OnAnimationChanged;
-        Context.AttackSequenceRunner.SequenceFinished -= OnSequenceFinished;
+        Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
     }
 
-    private void OnAnimationChanged(AttackAnimationType animationType)
+    protected override void OnAnimationChanged(AttackAnimationType animationType)
     {
         switch (animationType)
         {
@@ -55,15 +47,5 @@ public class LargeSpreadShotState : BaseState<BossController>
             default:
                 throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
         }
-    }
-
-    public override void Update()
-    {
-        Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
-    }
-    
-    public override void Exit()
-    {
-        Context.AttackDecider.NotifyAttackEnded();
     }
 }
