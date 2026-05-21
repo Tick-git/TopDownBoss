@@ -7,8 +7,7 @@ namespace Gameplay.Boss
         [SerializeField] private bool _forceAttack1;
         [SerializeField] private bool _forceAttack2;
         [SerializeField] private bool _forceAttack3;
-
-        private int _count;
+        [SerializeField] private bool _forceAttack4;
 
         private Timer _attackTimer;
 
@@ -16,6 +15,8 @@ namespace Gameplay.Boss
         public bool Attack { get; private set; }
         public bool Attack2 { get; private set; }
         public bool Attack3 { get; private set; }
+        
+        public bool Attack4 { get; private set; }
 
         public void NotifyAttackStarted()
         {
@@ -28,6 +29,7 @@ namespace Gameplay.Boss
             Attack = false;
             Attack2 = false;
             Attack3 = false;
+            Attack4 = false;
 
             _attackTimer.Reset(Random.Range(1, 3));
             _attackTimer.Start();
@@ -60,45 +62,48 @@ namespace Gameplay.Boss
                 Attack3 = true;
                 return;
             }
+            
+            if (_forceAttack4)
+            {
+                Attack4 = true;
+                return;
+            }
 
-            var random = Random.Range(0, 3);
+            var random = Random.Range(0, 4);
 
             if (random == 0)
             {
                 Attack = true;
                 Attack2 = false;
                 Attack3 = false;
+                Attack4 = false;
             }
             else if (random == 1)
             {
                 Attack = false;
                 Attack2 = true;
                 Attack3 = false;
+                Attack4 = false;
+            }
+            else if (random == 2)
+            {
+                Attack = false;
+                Attack2 = false;
+                Attack3 = true;
+                Attack4 = false;
             }
             else
             {
                 Attack = false;
                 Attack2 = false;
-                Attack3 = true;
+                Attack3 = false;
+                Attack4 = true;
             }
         }
 
         private void Update()
         {
             _attackTimer.Tick(Time.deltaTime);
-        }
-
-        private void LateUpdate()
-        {
-            if (Attack || Attack2)
-                _count++;
-
-            if (_count >= 5)
-            {
-                Attack = false;
-                Attack2 = false;
-                _count = 0;
-            }
         }
     }
 }
