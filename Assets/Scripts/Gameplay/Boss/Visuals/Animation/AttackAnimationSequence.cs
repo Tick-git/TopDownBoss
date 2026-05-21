@@ -6,9 +6,9 @@ public class AttackAnimationSequence
 
     public int Count => _animationSequence.Count;
     
-    public AttackAnimationSequence AddStep(AttackAnimationType animationType, float attackSpeedMultiplier = 1.0f)
+    public AttackAnimationSequence AddStep(AttackAnimationType animationType, float animationTime = 0.25f)
     {
-        _animationSequence.Enqueue(new AttackAnimationStep(animationType, attackSpeedMultiplier));
+        _animationSequence.Enqueue(new AttackAnimationStep(animationType, animationTime));
 
         return this;
     }

@@ -12,16 +12,16 @@ public class LargeSpreadShotState : BaseBossAttackState
         base.Enter();
 
         var attackSequence = new AttackAnimationSequence()
-            .AddStep(AttackAnimationType.HipAim, 0.25f)
-            .AddStep(AttackAnimationType.HipShot, 1.5f)
-            .AddStep(AttackAnimationType.HipHolster, 1.5f);
+            .AddStep(AttackAnimationType.HipAim, 0.75f)
+            .AddStep(AttackAnimationType.HipShot)
+            .AddStep(AttackAnimationType.HipHolster);
 
         for (int i = 0; i < 1; i++)
         {
             attackSequence
-                .AddStep(AttackAnimationType.HipAim, 1.5f)
-                .AddStep(AttackAnimationType.HipShot, 1.5f)
-                .AddStep(AttackAnimationType.HipHolster, 1.5f);
+                .AddStep(AttackAnimationType.HipAim)
+                .AddStep(AttackAnimationType.HipShot)
+                .AddStep(AttackAnimationType.HipHolster);
         }
 
         Context.AttackSequenceRunner.Run(attackSequence);

@@ -11,7 +11,7 @@ namespace Gameplay.Boss
             base.Enter();
 
             var attackSequence = new AttackAnimationSequence()
-                .AddStep(AttackAnimationType.GroundExplodeHandUp)
+                .AddStep(AttackAnimationType.GroundExplodeHandUp, 0.5f)
                 .AddStep(AttackAnimationType.GroundExplodeHandDown)
                 .AddStep(AttackAnimationType.GroundExplodeAttack)
                 .AddStep(AttackAnimationType.GroundExplodeRecover);

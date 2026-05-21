@@ -13,16 +13,16 @@ public class SmallSpreadShotState : BaseBossAttackState
         base.Enter();
 
         var attackSequence = new AttackAnimationSequence()
-            .AddStep(AttackAnimationType.ShoulderAim, 0.25f)
-            .AddStep(AttackAnimationType.ShoulderShot, 1.5f)
-            .AddStep(AttackAnimationType.ShoulderHolster, 1.5f);
+            .AddStep(AttackAnimationType.ShoulderAim, 0.5f)
+            .AddStep(AttackAnimationType.ShoulderShot)
+            .AddStep(AttackAnimationType.ShoulderHolster);
 
         for (int i = 0; i < 2; i++)
         {
             attackSequence
-                .AddStep(AttackAnimationType.ShoulderAim, 1.5f)
-                .AddStep(AttackAnimationType.ShoulderShot, 1.5f)
-                .AddStep(AttackAnimationType.ShoulderHolster, 1.5f);
+                .AddStep(AttackAnimationType.ShoulderAim)
+                .AddStep(AttackAnimationType.ShoulderShot)
+                .AddStep(AttackAnimationType.ShoulderHolster);
         }
 
         Context.AttackSequenceRunner.Run(attackSequence);

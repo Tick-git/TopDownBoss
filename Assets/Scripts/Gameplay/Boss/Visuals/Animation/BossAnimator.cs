@@ -54,11 +54,11 @@ public class BossAnimator : MonoBehaviour
 
     private void OnAnimationFinished(AttackAnimationType type) => AttackAnimationFinished?.Invoke(type);
     
-    public void PlayAttack(AttackAnimationType type, float attackSpeedMultiplier)
+    public void PlayAttack(AttackAnimationType type, float animationTime)
     {
         if (_attackAnimationHashes.TryGetValue(type, out var hash))
         {
-            _animator.SetFloat(AttackSpeedMultiplier, attackSpeedMultiplier);
+            _animator.SetFloat(AttackSpeedMultiplier, 1.0f / animationTime);
             _animator.Play(hash);
         }
         else
