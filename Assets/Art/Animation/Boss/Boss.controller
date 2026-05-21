@@ -276,6 +276,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::AttackStateBehaviour
   _type: 5
+--- !u!114 &-4325229372008190348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327ed15225974acb85d5f675a6242e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::AttackStateBehaviour
+  _type: 13
 --- !u!114 &-3776856361917334102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,6 +302,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::AttackStateBehaviour
   _type: 1
+--- !u!114 &-3377458867772173929
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327ed15225974acb85d5f675a6242e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::AttackStateBehaviour
+  _type: 12
 --- !u!114 &-3196030994360254227
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,7 +444,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -4325229372008190348}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -471,7 +498,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -3377458867772173929}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -790,7 +818,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 8453350982845502782}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -830,6 +859,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b765205e645747f08109dcefa0fb2367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::RollStateBehaviour
+--- !u!114 &5842339885508401019
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327ed15225974acb85d5f675a6242e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::AttackStateBehaviour
+  _type: 14
 --- !u!1102 &6537426809550512484
 AnimatorState:
   serializedVersion: 6
@@ -963,6 +1005,19 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &8453350982845502782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327ed15225974acb85d5f675a6242e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::AttackStateBehaviour
+  _type: 11
 --- !u!1102 &8556420360641098431
 AnimatorState:
   serializedVersion: 6
@@ -1001,7 +1056,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 5842339885508401019}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
