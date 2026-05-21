@@ -1,6 +1,6 @@
 using Gameplay.Boss;
 
-public class TeleportAttackState : BossAttackState
+public class TeleportAttackState : BaseBossAttackState
 {
     public TeleportAttackState(BossController context) : base(context)
     {
@@ -25,7 +25,7 @@ public class TeleportAttackState : BossAttackState
         Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
     }
 
-    protected override void OnAnimationChanged(AttackAnimationType animation)
+    protected override void OnAnimationEnter(AttackAnimationType animation)
     {
         switch (animation)
         {

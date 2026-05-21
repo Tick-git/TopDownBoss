@@ -1,7 +1,7 @@
 using System;
 using Gameplay.Boss;
 
-public class LargeSpreadShotState : BossAttackState
+public class LargeSpreadShotState : BaseBossAttackState
 {
     public LargeSpreadShotState(BossController context) : base(context)
     {
@@ -32,7 +32,7 @@ public class LargeSpreadShotState : BossAttackState
         Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
     }
 
-    protected override void OnAnimationChanged(AttackAnimationType animationType)
+    protected override void OnAnimationEnter(AttackAnimationType animationType)
     {
         switch (animationType)
         {

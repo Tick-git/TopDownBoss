@@ -1,11 +1,11 @@
 using Gameplay.Boss;
 
-public abstract class BossAttackState : IState
+public abstract class BaseBossAttackState : IState
 {
     protected BossController Context;
     public bool IsRunning { get; private set; }
 
-    protected BossAttackState(BossController context)
+    protected BaseBossAttackState(BossController context)
     {
         Context = context;
     }
@@ -14,7 +14,7 @@ public abstract class BossAttackState : IState
     {
         IsRunning = true;
         Context.AttackDecider.NotifyAttackStarted();
-        Context.AttackSequenceRunner.AnimationChanged += OnAnimationChanged;
+        Context.AttackSequenceRunner.AnimationChanged += OnAnimationEnter;
         Context.AttackSequenceRunner.SequenceFinished += OnSequenceFinished;
     }
 
@@ -23,7 +23,7 @@ public abstract class BossAttackState : IState
         CleanUp();
     }
 
-    protected virtual void OnAnimationChanged(AttackAnimationType animationType)
+    protected virtual void OnAnimationEnter(AttackAnimationType animationType)
     {
         // NOOP
     }
@@ -49,7 +49,7 @@ public abstract class BossAttackState : IState
     private void CleanUp()
     {
         IsRunning = false;
-        Context.AttackSequenceRunner.AnimationChanged -= OnAnimationChanged;
+        Context.AttackSequenceRunner.AnimationChanged -= OnAnimationEnter;
         Context.AttackSequenceRunner.SequenceFinished -= OnSequenceFinished;
     }
 }

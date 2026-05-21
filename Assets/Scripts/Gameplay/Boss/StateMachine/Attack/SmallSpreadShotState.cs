@@ -2,7 +2,7 @@ using System;
 using Gameplay.Boss;
 using UnityEngine;
 
-public class SmallSpreadShotState : BossAttackState
+public class SmallSpreadShotState : BaseBossAttackState
 {
     public SmallSpreadShotState(BossController context) : base(context)
     {
@@ -33,7 +33,7 @@ public class SmallSpreadShotState : BossAttackState
         Context.Weapon.ApplyAim(GetTargetMovePredictionForBullet());
     }
 
-    protected override void OnAnimationChanged(AttackAnimationType animationType)
+    protected override void OnAnimationEnter(AttackAnimationType animationType)
     {
         switch (animationType)
         {
