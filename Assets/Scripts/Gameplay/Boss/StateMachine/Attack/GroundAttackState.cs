@@ -1,3 +1,5 @@
+using System;
+
 namespace Gameplay.Boss
 {
     public class GroundAttackState : BaseBossAttackState
@@ -24,6 +26,18 @@ namespace Gameplay.Boss
 
         protected override void OnAnimationEnter(AttackAnimationType animationType)
         {
+            switch (animationType)
+            {
+                case AttackAnimationType.GroundExplodeHandUp:
+                    break;
+                case AttackAnimationType.GroundExplodeHandDown:
+                    break;
+                case AttackAnimationType.GroundExplodeAttack:
+                    Context.BossMagic.ExplodeGround(Context.TargetTracker.GetTargetPosition());
+                    break;
+                case AttackAnimationType.GroundExplodeRecover:
+                    break;
+            }
         }
     }
 }

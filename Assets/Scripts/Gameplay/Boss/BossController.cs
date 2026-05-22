@@ -28,6 +28,7 @@ namespace Gameplay.Boss
         public Hitbox Hitbox => _hitbox;
         public BossAudio Audio => _audio;
         public AnimationSequenceRunner AttackSequenceRunner { get; private set; }
+        public BossMagic BossMagic { get; private set; }
 
         private void Awake()
         {
@@ -36,6 +37,7 @@ namespace Gameplay.Boss
             Movement = GetComponent<Movement>();
             AttackDecider = GetComponent<AttackDecider>();
             Teleport = GetComponent<BossTeleport>();
+            BossMagic = GetComponent<BossMagic>();
             AttackSequenceRunner = new AnimationSequenceRunner(Animator);
 
             Movement.Initialize();
