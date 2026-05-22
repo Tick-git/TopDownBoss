@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 
     private BoxCollider2D _collider;
     private Rigidbody2D _rigidbody;
+    private ContactFilter2D _filter;
 
     public float MoveSpeedMultiplier { get; private set; }
     public Vector2 MoveSpeedVelocity { get; private set; }
@@ -14,6 +15,11 @@ public class Movement : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
+
+        _filter = new ContactFilter2D()
+        {
+            useTriggers = false
+        };
 
         MoveSpeedMultiplier = 1;
 
@@ -66,7 +72,7 @@ public class Movement : MonoBehaviour
     private Vector2 GetMoveDelta(Vector2 direction, float distance)
     {
         RaycastHit2D[] hits = new RaycastHit2D[8];
-        int count = _collider.Cast(direction, hits, distance);
+        int count = _collider.Cast(direction, _filter, hits, distance);
 
         for (int i = 0; i < count; i++)
         {
