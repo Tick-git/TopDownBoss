@@ -9,7 +9,7 @@ public abstract class BaseBossAttackState : IState
     {
         Context = context;
     }
-    
+
     public virtual void Enter()
     {
         IsRunning = true;
