@@ -15,7 +15,7 @@ namespace Gameplay.Boss
         public bool Attack { get; private set; }
         public bool Attack2 { get; private set; }
         public bool Attack3 { get; private set; }
-        
+
         public bool Attack4 { get; private set; }
 
         public void NotifyAttackStarted()
@@ -62,7 +62,7 @@ namespace Gameplay.Boss
                 Attack3 = true;
                 return;
             }
-            
+
             if (_forceAttack4)
             {
                 Attack4 = true;
