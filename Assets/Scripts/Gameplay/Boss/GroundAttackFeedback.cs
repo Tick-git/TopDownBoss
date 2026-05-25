@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GroundAttackFeedback : MonoBehaviour
 {
+    [SerializeField] private GroundAttackAudio _groundAttackAudio;
     [SerializeField] private GroundAttackVFX _groundAttackVFX;
     [SerializeField] private BossSceneReferences _sceneReferences;
 
@@ -18,6 +19,7 @@ public class GroundAttackFeedback : MonoBehaviour
     {
         _groundAttackVFX.StopHandFireVFX();
         _groundAttackVFX.PlayGroundImpact();
+        _groundAttackAudio.PlayGroundImpact();
 
         CameraShake.Shake(4, 0.1f, 0.3f);
     }

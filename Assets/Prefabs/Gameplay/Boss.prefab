@@ -209,6 +209,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::Health
   _healthData: {fileID: 11400000, guid: 5da71740b8623774cb5fea09659ae3b5, type: 2}
+--- !u!1 &123402784974439444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7436711343655951139}
+  - component: {fileID: 9074445365347278582}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7436711343655951139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123402784974439444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4666988942296692817}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9074445365347278582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123402784974439444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4713480b81eb4a34899f72b2620e9171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _groundImpact: {fileID: 11400000, guid: cad153fdd844cb14996cfc557ad544b6, type: 2}
 --- !u!1 &509673935882653165
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +576,7 @@ GameObject:
   - component: {fileID: 4666988942296692817}
   - component: {fileID: 421813891089711569}
   m_Layer: 0
-  m_Name: GroundAttack
+  m_Name: GroundAttackFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,6 +596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3274769682380673391}
+  - {fileID: 7436711343655951139}
   m_Father: {fileID: 8096158159807247218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &421813891089711569
@@ -565,6 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfaa2b810c6932408adf48808c998cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _groundAttackAudio: {fileID: 9074445365347278582}
   _groundAttackVFX: {fileID: 7451668615322887585}
   _sceneReferences: {fileID: 4707428341076117251}
 --- !u!1 &2609443885799918886

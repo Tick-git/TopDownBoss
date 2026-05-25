@@ -116,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5790576342728956956}
   - component: {fileID: 1766491788845401118}
+  - component: {fileID: 2403871209570809554}
   m_Layer: 0
   m_Name: GameplayCamera
   m_TagString: Untagged
@@ -178,3 +179,15 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2256935409591414668}
+--- !u!114 &2403871209570809554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000515343424759834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a969abfb272626499504cdfcfbba5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::CameraShake
