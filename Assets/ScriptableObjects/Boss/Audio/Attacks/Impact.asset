@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f0726e72b8880489880bec3a783692, type: 3}
+  m_Name: Impact
+  m_EditorClassIdentifier: Scripts::AudioData
+  _pickMode: 0
+  _clips:
+  - {fileID: 8300000, guid: 215a86921191f1f46926a876cd6fc214, type: 3}
+  _volume: 0.6
+  _pitchMode: 1
+  _pitch: 1
+  _pitchRange: {x: 0.9, y: 1.1}
+  _mixerGroup: {fileID: -7453883030881573146, guid: 19c80ff22cd3f56409211437318db1c1, type: 2}

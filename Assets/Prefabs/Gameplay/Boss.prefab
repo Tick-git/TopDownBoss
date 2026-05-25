@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _groundImpact: {fileID: 11400000, guid: cad153fdd844cb14996cfc557ad544b6, type: 2}
+  _fire: {fileID: 11400000, guid: 8429e48b068d4044aaff6df5be1c57e0, type: 2}
 --- !u!1 &509673935882653165
 GameObject:
   m_ObjectHideFlags: 0
