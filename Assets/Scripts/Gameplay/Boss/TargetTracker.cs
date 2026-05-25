@@ -2,13 +2,15 @@
 
 public class TargetTracker : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
+    [SerializeField] private BossSceneReferences _bossSceneReferences;
+    
+    private Transform Target => _bossSceneReferences.Player.transform;
 
     private Movement _movement;
 
     private void Awake()
     {
-        _movement = _target.GetComponent<Movement>();
+        _movement = Target.GetComponent<Movement>();
     }
 
     public bool IsRightSideOf(Vector2 position)
@@ -18,12 +20,12 @@ public class TargetTracker : MonoBehaviour
 
     public Vector2 GetTargetPosition()
     {
-        return _target.position;
+        return Target.position;
     }
 
     public Vector2 GetTargetDirection()
     {
-        return (_target.position - transform.position).normalized;
+        return (Target.position - transform.position).normalized;
     }
 
     public Vector2 GetTargetMoveSpeedVelocity()
@@ -33,7 +35,7 @@ public class TargetTracker : MonoBehaviour
 
     public float DistanceToTarget()
     {
-        return Vector3.Distance(_target.position, transform.position);
+        return Vector3.Distance(Target.position, transform.position);
     }
 
     public Vector2 GetTargetMovePrediction(float time)

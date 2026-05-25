@@ -265,6 +265,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36760443a5276a64fbb6baf0e5ec1e08, type: 3}
+--- !u!1 &1198070439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
+  m_PrefabInstance: {fileID: 1844441602615647218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1200034108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000515343424759834, guid: 24156c1bca9cd7e42a65d7c0ce4ad4d2, type: 3}
+  m_PrefabInstance: {fileID: 1654059766441036476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1200034109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200034108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a969abfb272626499504cdfcfbba5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::CameraShake
 --- !u!1001 &1454931504210112939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,10 +295,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 844885654616230305, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 419185266}
     - target: {fileID: 3737609244628997734, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -321,14 +339,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.433
       objectReference: {fileID: 0}
-    - target: {fileID: 8218433025993125145, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _largeSpreadShotWeaponData
+    - target: {fileID: 4707428341076117251, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: _player
       value: 
-      objectReference: {fileID: 11400000, guid: 692bc605d9f3188488d985dda7c34d0b, type: 2}
-    - target: {fileID: 8218433025993125145, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _smallSpreadShotWeaponData
+      objectReference: {fileID: 1198070439}
+    - target: {fileID: 4707428341076117251, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
+      propertyPath: _cameraShake
       value: 
-      objectReference: {fileID: 11400000, guid: bbd1c6740ecebe54cbb8d09ca6ddbfea, type: 2}
+      objectReference: {fileID: 1200034109}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -467,7 +485,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1000515343424759834, guid: 24156c1bca9cd7e42a65d7c0ce4ad4d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1200034109}
   m_SourcePrefab: {fileID: 100100000, guid: 24156c1bca9cd7e42a65d7c0ce4ad4d2, type: 3}
 --- !u!1001 &1844441602615647218
 PrefabInstance:
@@ -531,7 +552,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3447885259023669951, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
   m_PrefabInstance: {fileID: 1844441602615647218}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1198070439}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec03f9f87ed745b4788a3605ee1ccd6e, type: 3}
