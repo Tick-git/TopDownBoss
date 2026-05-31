@@ -1216,7 +1216,7 @@ MonoBehaviour:
   _forceAttack1: 0
   _forceAttack2: 0
   _forceAttack3: 0
-  _forceAttack4: 0
+  _forceAttack4: 1
 --- !u!114 &9197270143952649614
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -347,10 +347,6 @@ PrefabInstance:
       propertyPath: _cameraShake
       value: 
       objectReference: {fileID: 1200034109}
-    - target: {fileID: 5254690416376191896, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _groundExplodeSpellPrefab
-      value: 
-      objectReference: {fileID: 6839985639373586245, guid: 07578a8aa3b07404c81d55b5e6ef6c6d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

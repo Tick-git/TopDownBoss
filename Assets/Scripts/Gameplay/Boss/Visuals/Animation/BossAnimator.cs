@@ -31,6 +31,7 @@ public class BossAnimator : MonoBehaviour
             { AttackAnimationType.TeleportAim, Animator.StringToHash("TeleportAim") },
             { AttackAnimationType.TeleportShot, Animator.StringToHash("TeleportShot") },
             { AttackAnimationType.GroundExplodeHandUp, Animator.StringToHash("GroundExplodeHandUp") },
+            { AttackAnimationType.GroundExplodeHandHold, Animator.StringToHash("GroundExplodeHandHold") },
             { AttackAnimationType.GroundExplodeHandDown, Animator.StringToHash("GroundExplodeHandDown") },
             { AttackAnimationType.GroundExplodeAttack, Animator.StringToHash("GroundExplodeAttack") },
             { AttackAnimationType.GroundExplodeRecover, Animator.StringToHash("GroundExplodeRecover") }
@@ -103,5 +104,6 @@ public enum AttackAnimationType
     GroundExplodeHandUp,
     GroundExplodeHandDown,
     GroundExplodeAttack,
-    GroundExplodeRecover
+    GroundExplodeRecover,
+    GroundExplodeHandHold
 }

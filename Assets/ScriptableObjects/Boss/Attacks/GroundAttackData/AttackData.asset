@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AttackData
   m_EditorClassIdentifier: Scripts::GroundAttackData
   _handsUpAnimationTime: 0.75
+  _handsHoldAnimationTime: 0.25
   _handsDownAnimationTime: 0.0625
   _attackAnimationTime: 0.5
   _recoverAnimationTime: 0.5
