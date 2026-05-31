@@ -13,7 +13,7 @@ namespace Gameplay.Boss
         [Header("Data")] [SerializeField] private SpreadShotAttackData _smallSpreadShotAttackData;
         [SerializeField] private SpreadShotAttackData _largeSpreadShotAttackData;
         [SerializeField] private TeleportAttackData _teleportAttackData;
-        [SerializeField] private GroundAttackData _groundAttackData;
+        [SerializeField] private GroundExplodeAnimationData _groundExplodeAnimationData;
 
         private StateMachine _attackSm;
         private StateMachine _movementSm;
@@ -82,7 +82,7 @@ namespace Gameplay.Boss
             var attackState = new LargeSpreadShotState(this, _largeSpreadShotAttackData);
             var attackState2 = new SmallSpreadShotState(this, _smallSpreadShotAttackData);
             var teleportAttack = new TeleportAttackState(this, _teleportAttackData);
-            var groundAttack = new GroundAttackState(this, _groundAttackData);
+            var groundAttack = new GroundAttackState(this, _groundExplodeAnimationData);
 
             _attackSm.AddTransition(decisionState, attackState, new FuncPredicate(() => AttackDecider.Attack));
             _attackSm.AddTransition(decisionState, attackState2, new FuncPredicate(() => AttackDecider.Attack2));

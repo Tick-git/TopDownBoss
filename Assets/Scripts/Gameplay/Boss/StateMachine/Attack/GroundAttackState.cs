@@ -4,9 +4,9 @@ namespace Gameplay.Boss
 {
     public class GroundAttackState : BaseBossAttackState
     {
-        private readonly GroundAttackData _data;
+        private readonly GroundExplodeAnimationData _data;
 
-        public GroundAttackState(BossController context, GroundAttackData data) : base(context)
+        public GroundAttackState(BossController context, GroundExplodeAnimationData data) : base(context)
         {
             _data = data;
         }

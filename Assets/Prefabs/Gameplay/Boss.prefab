@@ -471,6 +471,51 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &2021459206089243977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8665949181645678041}
+  - component: {fileID: 2647143726065099994}
+  m_Layer: 0
+  m_Name: Spells
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8665949181645678041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021459206089243977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3770434238370709630}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2647143726065099994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021459206089243977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11b622bb562fa64e9809cef7d34d7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _groundExplodeSpellPoolData: {fileID: 11400000, guid: ab60a28eaf119b34dada3fbbfe89d5e8, type: 2}
 --- !u!1 &2277864919170372729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,9 +1131,10 @@ Transform:
   m_Children:
   - {fileID: 7703203469287793520}
   - {fileID: 4551768460080673829}
+  - {fileID: 8665949181645678041}
   - {fileID: 1782420763766218849}
-  - {fileID: 4028368764294394734}
   - {fileID: 4032120850620508470}
+  - {fileID: 4028368764294394734}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3754632420856483821
@@ -1111,7 +1157,7 @@ MonoBehaviour:
   _smallSpreadShotAttackData: {fileID: 11400000, guid: 22ed99ecbea0d8d45940d11775a319e8, type: 2}
   _largeSpreadShotAttackData: {fileID: 11400000, guid: b7b661ce3909c1746b256bb602717d0f, type: 2}
   _teleportAttackData: {fileID: 11400000, guid: 67d411738f78d5449868fd8198cc8e13, type: 2}
-  _groundAttackData: {fileID: 11400000, guid: 61009c99e4ebaa04f8ccc65dc952e0f9, type: 2}
+  _groundExplodeAnimationData: {fileID: 11400000, guid: 61009c99e4ebaa04f8ccc65dc952e0f9, type: 2}
 --- !u!114 &844885654616230305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,7 +1216,7 @@ MonoBehaviour:
   _forceAttack1: 0
   _forceAttack2: 0
   _forceAttack3: 0
-  _forceAttack4: 1
+  _forceAttack4: 0
 --- !u!114 &9197270143952649614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1272,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc5abc1220c1964ba79bf6e5815c17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _spells: {fileID: 2647143726065099994}
 --- !u!114 &4707428341076117251
 MonoBehaviour:
   m_ObjectHideFlags: 0

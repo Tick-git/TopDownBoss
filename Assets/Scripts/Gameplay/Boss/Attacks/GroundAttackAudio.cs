@@ -7,7 +7,7 @@ public class GroundAttackAudio : MonoBehaviour
 
     private AudioManager _audioManager;
 
-    private void Awake()
+    private void Start()
     {
         _audioManager = AudioManager.Instance;
     }

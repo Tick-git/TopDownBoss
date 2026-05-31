@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = DataPaths.GameplayData.Boss.Attack + "Ground Attack")]
-public class GroundAttackData : ScriptableObject
+[CreateAssetMenu(menuName = DataPaths.GameplayData.Boss.Attack + "Ground Explode Animation Data")]
+public class GroundExplodeAnimationData : ScriptableObject
 {
     [SerializeField] private float _handsUpAnimationTime = 0.25f;
     [SerializeField] private float _handsDownAnimationTime = 0.25f;
