@@ -84,10 +84,10 @@ namespace Gameplay.Boss
             var teleportAttack = new TeleportAttackState(this, _teleportAttackData);
             var groundAttack = new GroundAttackState(this, _groundExplodeAnimationData);
 
-            _attackSm.AddTransition(decisionState, attackState, new FuncPredicate(() => AttackDecider.Attack));
-            _attackSm.AddTransition(decisionState, attackState2, new FuncPredicate(() => AttackDecider.Attack2));
-            _attackSm.AddTransition(decisionState, teleportAttack, new FuncPredicate(() => AttackDecider.Attack3));
-            _attackSm.AddTransition(decisionState, groundAttack, new FuncPredicate(() => AttackDecider.Attack4));
+            _attackSm.AddTransition(decisionState, attackState, NextAttackIs(BossAttack.SmallSpreadShot));
+            _attackSm.AddTransition(decisionState, attackState2, NextAttackIs(BossAttack.LargeSpreadShot));
+            _attackSm.AddTransition(decisionState, teleportAttack, NextAttackIs(BossAttack.TeleportShot));
+            _attackSm.AddTransition(decisionState, groundAttack, NextAttackIs(BossAttack.GroundExplode));
 
             _attackSm.AddTransition(attackState, decisionState, new FuncPredicate(() => !attackState.IsRunning));
             _attackSm.AddTransition(attackState2, decisionState, new FuncPredicate(() => !attackState2.IsRunning));
@@ -95,6 +95,11 @@ namespace Gameplay.Boss
             _attackSm.AddTransition(groundAttack, decisionState, new FuncPredicate(() => !groundAttack.IsRunning));
 
             _attackSm.SetState(decisionState);
+        }
+
+        private FuncPredicate NextAttackIs(BossAttack bossAttack)
+        {
+            return new FuncPredicate(() => AttackDecider.NextAttackIs(bossAttack));
         }
 
         private void Update()
