@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private PlayerStaminaController _playerStaminaController;
     [SerializeField] private PlayerAudio _playerAudio;
+    [SerializeField] private Invulnerability _invulnerability;
 
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public AssaultRifle Weapon => _weapon;
     public PlayerStaminaController PlayerStaminaController => _playerStaminaController;
     public PlayerAudio PlayerAudio => _playerAudio;
+    public Invulnerability Invulnerability => _invulnerability;
 
     private void Awake()
     {

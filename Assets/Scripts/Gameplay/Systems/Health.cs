@@ -5,6 +5,7 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] HealthData _healthData;
 
+    private bool _vulnerable;
     private float _currentHealth;
     public event Action<float> HealthChanged;
     public event Action Died;
@@ -15,10 +16,13 @@ public class Health : MonoBehaviour, IDamageable
     private void Awake()
     {
         _currentHealth = _healthData.MaxHealth;
+        _vulnerable = true;
     }
 
     public void ApplyDamage(DamageContext damageContext)
     {
+        if (!_vulnerable) return;
+        
         if (_currentHealth <= _healthData.MinHealth) return;
 
         _currentHealth -= damageContext.Damage;
@@ -31,5 +35,10 @@ public class Health : MonoBehaviour, IDamageable
 
         HealthChanged?.Invoke(_currentHealth);
         Hit?.Invoke(damageContext);
+    }
+
+    public void SetVulnerability(bool vulnerable)
+    {
+        _vulnerable = vulnerable;
     }
 }
