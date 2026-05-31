@@ -1213,10 +1213,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b35fa32c2864e33b69c4b870833d79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::Gameplay.Boss.AttackDecider
-  _forceAttack1: 0
-  _forceAttack2: 0
-  _forceAttack3: 0
-  _forceAttack4: 1
+  _attackDecisionData:
+  - {fileID: 11400000, guid: ce01b8d35bf9ead4d9495229c6473f24, type: 2}
+  - {fileID: 11400000, guid: 9fc301284d83b684db7da2620812ed8a, type: 2}
+  - {fileID: 11400000, guid: 9bf6f4f8eb9ebc1469ed89404d37ace8, type: 2}
+  - {fileID: 11400000, guid: 0137cc82305e20749871662a16e2aa5a, type: 2}
+  _shouldForceAttack: 0
+  _forceAttack: 3
 --- !u!114 &9197270143952649614
 MonoBehaviour:
   m_ObjectHideFlags: 0
