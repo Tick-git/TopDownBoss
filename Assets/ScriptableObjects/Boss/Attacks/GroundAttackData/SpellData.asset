@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d62a1a3f194c9298b341de3ad62e82, type: 3}
   m_Name: SpellData
   m_EditorClassIdentifier: Scripts::GroundExplodeSpellData
-  _damage: 0
-  _castDelayTime: 0
-  _spellActiveTime: 0
+  _damage: 5
+  _castDelayTime: 0.1
+  _spellActiveTime: 0.2
