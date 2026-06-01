@@ -7,9 +7,10 @@ namespace Gameplay.Boss
     public class AttackDecider : MonoBehaviour
     {
         [SerializeField] private AttackDecisionData[] _attackDecisionData;
-        
-        [Header("Debug Force Attack")]
-        [SerializeField] private bool _shouldForceAttack = false;
+
+        [Header("Debug Force Attack")] [SerializeField]
+        private bool _shouldForceAttack = false;
+
         [SerializeField] private BossAttack _forceAttack = BossAttack.GroundExplode;
 
         private Timer _attackTimer;
@@ -27,18 +28,18 @@ namespace Gameplay.Boss
             {
                 _attackDecisions.Add(new AttackDecision(data.Attack, data.BaseWeight));
             }
-            
+
             IsAttacking = false;
             _attackTimer = new Timer(2);
             _attackTimer.Completed += OnAttackTimerCompleted;
             _attackTimer.Start();
         }
-        
+
         public bool NextAttackIs(BossAttack attack)
         {
             return _nextAttack == attack && !IsAttacking && !_attackTimer.IsRunning;
         }
-        
+
         public void NotifyAttackStarted()
         {
             IsAttacking = true;
@@ -51,7 +52,7 @@ namespace Gameplay.Boss
             _attackTimer.Reset(Random.Range(1, 3));
             _attackTimer.Start();
         }
-        
+
         private void OnAttackTimerCompleted()
         {
             if (_shouldForceAttack)
@@ -69,8 +70,8 @@ namespace Gameplay.Boss
             {
                 totalWeight += decision.Weight;
             }
-            
-            var roll =  Random.Range(0, totalWeight);
+
+            var roll = Random.Range(0, totalWeight);
 
             foreach (var decision in _attackDecisions)
             {
@@ -87,7 +88,7 @@ namespace Gameplay.Boss
             {
                 decision.Modifier += (1 - decision.Modifier) * 0.5f;
             }
-            
+
             nextDecision!.Modifier = 0;
 
             return nextDecision.Type;

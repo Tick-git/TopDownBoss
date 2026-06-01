@@ -22,7 +22,7 @@ public class Health : MonoBehaviour, IDamageable
     public void ApplyDamage(DamageContext damageContext)
     {
         if (!_vulnerable) return;
-        
+
         if (_currentHealth <= _healthData.MinHealth) return;
 
         _currentHealth -= damageContext.Damage;

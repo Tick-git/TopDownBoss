@@ -10,7 +10,7 @@ public class Spells : MonoBehaviour
     {
         _groundExplodeSpellPool = new ObjectPool<GroundExplodeSpell>(
             _groundExplodeSpellPoolData.Prefab,
-            _groundExplodeSpellPoolData.PoolSize, 
+            _groundExplodeSpellPoolData.PoolSize,
             transform);
     }
 

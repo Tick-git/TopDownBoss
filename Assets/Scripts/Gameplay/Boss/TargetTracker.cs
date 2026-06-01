@@ -3,7 +3,7 @@
 public class TargetTracker : MonoBehaviour
 {
     [SerializeField] private BossSceneReferences _bossSceneReferences;
-    
+
     private Transform Target => _bossSceneReferences.Player.transform;
 
     private Movement _movement;

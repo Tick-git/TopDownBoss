@@ -4,7 +4,7 @@ using UnityEngine;
 public class GroundExplodeSpell : MonoBehaviour, IPoolable<GroundExplodeSpell>, IPoolReturner<GroundExplodeSpell>
 {
     [SerializeField] GroundExplodeSpellData _data;
-    
+
     private bool _canDamage;
 
     private Collider2D _collider2D;
@@ -18,29 +18,28 @@ public class GroundExplodeSpell : MonoBehaviour, IPoolable<GroundExplodeSpell>, 
     {
         _groundExplodeParticles = GetComponent<ParticleSystem>();
         _collider2D = GetComponent<Collider2D>();
-        
     }
 
     public void Cast(Vector2 position)
     {
         if (_delayRoutine != null)
             StopCoroutine(_delayRoutine);
-        
+
         _delayRoutine = StartCoroutine(DelayedCastRoutine(position));
     }
 
     private IEnumerator DelayedCastRoutine(Vector2 position)
     {
         yield return new WaitForSeconds(_data.CastDelayTime);
-        
+
         SetSpellInteraction(true);
-        
+
         transform.position = position;
         _groundExplodeParticles.Play();
 
         yield return new WaitForSeconds(_data.SpellActiveTime);
-        
-        SetSpellInteraction(false);        
+
+        SetSpellInteraction(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -50,7 +49,7 @@ public class GroundExplodeSpell : MonoBehaviour, IPoolable<GroundExplodeSpell>, 
         if (other.TryGetComponent(out IDamageable damageable))
         {
             var damageContext = new DamageContext(_data.Damage);
-            
+
             damageable.ApplyDamage(damageContext);
 
             SetSpellInteraction(false);
@@ -60,10 +59,10 @@ public class GroundExplodeSpell : MonoBehaviour, IPoolable<GroundExplodeSpell>, 
     private void OnParticleSystemStopped()
     {
         SetSpellInteraction(false);
-        
+
         _groundExplodeParticles.Stop();
         _groundExplodeParticles.Clear(true);
-        
+
         _pool.Return(this);
     }
 
