@@ -16,6 +16,11 @@ public class GroundAttackFeedback : MonoBehaviour
         _groundAttackAudio.PlayHandFire();
     }
 
+    public void StopHandFire()
+    {
+        _groundAttackVFX.StopHandFireVFX();
+    }
+
     public void PlayGroundImpact()
     {
         _groundAttackVFX.StopHandFireVFX();

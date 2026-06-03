@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BossAnimator : MonoBehaviour
@@ -73,6 +74,18 @@ public class BossAnimator : MonoBehaviour
     public void PlayIdle()
     {
         _animator.Play("Idle");
+    }
+
+    public void PlayPhaseTransition()
+    {
+        _animator.Play("PhaseTransition");
+    }
+
+    public float GetPhaseTransitionTime()
+    {
+        var clip = _animator.runtimeAnimatorController.animationClips.First(c => c.name == "PhaseTransition");
+        
+        return clip.length;
     }
 
     public void ResetAttackSpeedMultiplier()

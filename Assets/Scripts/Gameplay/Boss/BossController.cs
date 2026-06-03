@@ -47,7 +47,7 @@ namespace Gameplay.Boss
             Weapon.Initialize(_health);
             AttackDecider.Initialize();
             Animator.Initialize();
-            _bossPhaseController.Initialize(_health, AttackDecider, this);
+            _bossPhaseController.Initialize(_health, AttackDecider, this, Animator);
 
             InitBossMovementStateMachine();
             InitBossAttackStateMachine();

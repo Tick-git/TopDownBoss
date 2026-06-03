@@ -6,5 +6,7 @@ public class GroundAttackAnimationEvents : MonoBehaviour
 
     public void PlayHandFire() => _groundAttackFeedback.PlayHandFire();
 
+    public void StopHandFire() => _groundAttackFeedback.StopHandFire();
+
     public void PlayGroundImpact() => _groundAttackFeedback.PlayGroundImpact();
 }
