@@ -31,7 +31,7 @@ public class ColorHitFeedback : HitFeedback
         _time = 0;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         _time = Mathf.Clamp01(_time + Time.deltaTime * _speed);
 
@@ -42,7 +42,9 @@ public class ColorHitFeedback : HitFeedback
     {
         foreach (var data in _spriteRendererData)
         {
-            data.SpriteRenderer.color = hitColor;
+            var nextColor = hitColor;
+            nextColor.a = data.SpriteRenderer.color.a;
+            data.SpriteRenderer.color = nextColor;
         }
     }
 
@@ -50,7 +52,9 @@ public class ColorHitFeedback : HitFeedback
     {
         foreach (var data in _spriteRendererData)
         {
-            data.SpriteRenderer.color = Color.Lerp(_hitColor, data.DefaultColor, time);
+            var nextColor = Color.Lerp(_hitColor, data.DefaultColor, time);
+            nextColor.a = data.SpriteRenderer.color.a;
+            data.SpriteRenderer.color = nextColor;
         }
     }
 
