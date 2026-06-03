@@ -9,6 +9,7 @@ namespace Gameplay.Boss
         [SerializeField] private BossAudio _audio;
         [SerializeField] private Hitbox _hitbox;
         [SerializeField] private BossAnimator _animator;
+        [SerializeField] private BossPhaseController _bossPhaseController;
 
         [Header("Data")] [SerializeField] private SpreadShotAttackData _smallSpreadShotAttackData;
         [SerializeField] private SpreadShotAttackData _largeSpreadShotAttackData;
@@ -17,6 +18,8 @@ namespace Gameplay.Boss
 
         private StateMachine _attackSm;
         private StateMachine _movementSm;
+
+        private bool _enabled = true;
 
         public BossAnimator Animator => _animator;
         public BossWeapon Weapon { get; private set; }
@@ -44,10 +47,14 @@ namespace Gameplay.Boss
             Weapon.Initialize(_health);
             AttackDecider.Initialize();
             Animator.Initialize();
+            _bossPhaseController.Initialize(_health, AttackDecider, this);
 
             InitBossMovementStateMachine();
             InitBossAttackStateMachine();
         }
+
+        public void EnableBoss() => _enabled = true;
+        public void DisableBoss() => _enabled = false;
 
         private void OnDestroy()
         {
@@ -104,6 +111,8 @@ namespace Gameplay.Boss
 
         private void Update()
         {
+            if (!_enabled) return;
+
             _visuals.Rotate(TargetTracker.IsRightSideOf(transform.position));
 
             _attackSm.Update();
@@ -112,6 +121,8 @@ namespace Gameplay.Boss
 
         private void FixedUpdate()
         {
+            if (!_enabled) return;
+
             _attackSm.FixedUpdate();
             _movementSm.FixedUpdate();
         }

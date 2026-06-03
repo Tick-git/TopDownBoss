@@ -17,22 +17,32 @@ namespace Gameplay.Boss
         private BossAttack _nextAttack;
 
         private List<AttackDecision> _attackDecisions;
+        private Dictionary<BossAttack, AttackDecision> _attackDecisionLookup;
 
         public bool IsAttacking { get; private set; }
 
         public void Initialize()
         {
             _attackDecisions = new List<AttackDecision>();
+            _attackDecisionLookup = new Dictionary<BossAttack, AttackDecision>();
 
             foreach (var data in _attackDecisionData)
             {
-                _attackDecisions.Add(new AttackDecision(data.Attack, data.BaseWeight));
+                _attackDecisionLookup.Add(data.Attack, new AttackDecision(data.Attack, data.BaseWeight));
             }
 
             IsAttacking = false;
             _attackTimer = new Timer(2);
             _attackTimer.Completed += OnAttackTimerCompleted;
             _attackTimer.Start();
+        }
+
+        public void AddAttack(BossAttack attack)
+        {
+            if (_attackDecisionLookup.TryGetValue(attack, out var data))
+            {
+                _attackDecisions.Add(data);
+            }
         }
 
         public bool NextAttackIs(BossAttack attack)
@@ -49,7 +59,7 @@ namespace Gameplay.Boss
         {
             IsAttacking = false;
 
-            _attackTimer.Reset(Random.Range(1, 3));
+            _attackTimer.Reset(Random.Range(2, 4));
             _attackTimer.Start();
         }
 
