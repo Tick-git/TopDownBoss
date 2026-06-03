@@ -66,7 +66,11 @@ namespace Gameplay.Boss
         private void OnAttackTimerCompleted()
         {
             if (_shouldForceAttack)
+            {
+                AddAttack(_forceAttack);
                 _nextAttack = _forceAttack;
+                return;
+            }
 
             _nextAttack = GetNextAttack();
         }
