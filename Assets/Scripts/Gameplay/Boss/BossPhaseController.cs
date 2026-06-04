@@ -24,7 +24,7 @@ public class BossPhaseController : MonoBehaviour
         
         _health.HealthChanged += OnHealthChanged;
 
-        _phaseSwitchHealth = _health.MaxHealth * 0.99f;
+        _phaseSwitchHealth = _health.MaxHealth * Random.Range(0.5f, 0.55f);
 
         foreach (var attack in _data.Phase1Attacks)
         {
