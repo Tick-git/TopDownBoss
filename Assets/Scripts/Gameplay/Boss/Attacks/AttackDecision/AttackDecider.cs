@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,6 +19,7 @@ namespace Gameplay.Boss
 
         private List<AttackDecision> _attackDecisions;
         private Dictionary<BossAttack, AttackDecision> _attackDecisionLookup;
+        private float _attackTimerModifier;
 
         public bool IsAttacking { get; private set; }
 
@@ -31,10 +33,28 @@ namespace Gameplay.Boss
                 _attackDecisionLookup.Add(data.Attack, new AttackDecision(data.Attack, data.BaseWeight));
             }
 
+            SetAttackInterval(AttackInterval.Slow);
+            
             IsAttacking = false;
             _attackTimer = new Timer(2);
             _attackTimer.Completed += OnAttackTimerCompleted;
             _attackTimer.Start();
+        }
+
+        public void SetAttackInterval(AttackInterval interval)
+        {
+            switch (interval)
+            {
+                case AttackInterval.Slow:
+                    _attackTimerModifier = 1;
+                    break;
+                case AttackInterval.Normal:
+                    _attackTimerModifier = 0.75f;
+                    break;
+                case AttackInterval.Fast:
+                    _attackTimerModifier = 0.5f;
+                    break;
+            }
         }
 
         public void AddAttack(BossAttack attack)
@@ -59,7 +79,7 @@ namespace Gameplay.Boss
         {
             IsAttacking = false;
 
-            _attackTimer.Reset(Random.Range(2, 4));
+            _attackTimer.Reset(Random.Range(2 * _attackTimerModifier, 4 * _attackTimerModifier));
             _attackTimer.Start();
         }
 
@@ -113,6 +133,13 @@ namespace Gameplay.Boss
             _attackTimer.Tick(Time.deltaTime);
         }
     }
+}
+
+public enum AttackInterval
+{
+    Slow,
+    Normal,
+    Fast
 }
 
 public enum BossAttack
