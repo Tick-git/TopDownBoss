@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 495703906240834554}
   - component: {fileID: 5123192042576611767}
   - component: {fileID: 7056431131250872941}
+  - component: {fileID: 5146263900823324180}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -473,6 +474,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!114 &7056431131250872941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363217677073804693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476bce0468d43f04abdba86550b49beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &5146263900823324180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1364,7 +1377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _data: {fileID: 11400000, guid: 8b6629ea387e34f43a66ede5d1b2e411, type: 2}
-  _eyeVisuals: {fileID: 7056431131250872941}
+  _eyeSetter: {fileID: 7056431131250872941}
+  _hornSetter: {fileID: 8680129860439837930}
 --- !u!1 &4162299430198005552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5312736906563925024}
   - component: {fileID: 4197229856664122553}
+  - component: {fileID: 8680129860439837930}
   m_Layer: 0
   m_Name: Horn
   m_TagString: Untagged
@@ -1908,6 +1923,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &8680129860439837930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614858319801438176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476bce0468d43f04abdba86550b49beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::LateUpdateColorForcer
 --- !u!1 &7456859878210154030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,10 +2168,9 @@ MonoBehaviour:
   _spriteRenderers:
   - {fileID: 5976508154088361531}
   - {fileID: 4872500720687999790}
-  - {fileID: 4197229856664122553}
+  - {fileID: 4344504282861173593}
   - {fileID: 7811258104499145676}
   - {fileID: 4030684732884508960}
-  - {fileID: 4344504282861173593}
 --- !u!114 &4824324486204626297
 MonoBehaviour:
   m_ObjectHideFlags: 0

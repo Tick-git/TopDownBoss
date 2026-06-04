@@ -6,7 +6,8 @@ using Random = UnityEngine.Random;
 public class BossPhaseController : MonoBehaviour
 {
     [SerializeField] private BossPhaseAttacksData _data;
-    [SerializeField] private EyeVisuals _eyeVisuals;
+    [SerializeField] private ColorSetter _eyeSetter;
+    [SerializeField] private ColorSetter _hornSetter;
 
     private Health _health;
     private AttackDecider _attackDecider;
@@ -29,8 +30,8 @@ public class BossPhaseController : MonoBehaviour
 
         _health.HealthChanged += OnHealthChanged;
 
-        _phaseTwoHealth = _health.MaxHealth * Random.Range(0.7f, 0.8f);
-        _phaseThreeHealth = _health.MaxHealth * Random.Range(0.4f, 0.5f);
+        _phaseTwoHealth = _health.MaxHealth * 0.9f;
+        _phaseThreeHealth = _health.MaxHealth * 0.7f;
         _currentPhase = 1;
 
         foreach (var attack in _data.Phase1Attacks)
@@ -65,12 +66,12 @@ public class BossPhaseController : MonoBehaviour
 
         _bossController.DisableBoss();
         
-        _bossAnimator.PlayPhaseTransition();
+        _bossAnimator.PlayTransitionToThirdPhase();
         
         AdjustAttacks(_data.Phase2Attacks, AttackInterval.Normal);
 
-        yield return new WaitForSeconds(_bossAnimator.GetPhaseTransitionTime());
-        _eyeVisuals.SetEyeColorToRed();
+        yield return new WaitForSeconds(_bossAnimator.GetThirdPhaseTransitionTime());
+        _hornSetter.SetColor(Color.red);
         
         _bossController.EnableBoss();
     }
@@ -82,13 +83,13 @@ public class BossPhaseController : MonoBehaviour
 
         _bossController.DisableBoss();
         
-        _bossAnimator.PlayPhaseTransition();
+        _bossAnimator.PlayTransitionToSecondPhase();
         
         AdjustAttacks(_data.Phase3Attacks, AttackInterval.Fast);
 
-        yield return new WaitForSeconds(_bossAnimator.GetPhaseTransitionTime());
+        yield return new WaitForSeconds(_bossAnimator.GetSecondPhaseTransitionTime());
         
-        _eyeVisuals.SetEyeColorToRed();
+        _eyeSetter.SetColor(Color.red);
         
         _bossController.EnableBoss();
     }

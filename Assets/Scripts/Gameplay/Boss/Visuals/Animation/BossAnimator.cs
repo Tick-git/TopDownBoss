@@ -76,14 +76,26 @@ public class BossAnimator : MonoBehaviour
         _animator.Play("Idle");
     }
 
-    public void PlayPhaseTransition()
+    public void PlayTransitionToSecondPhase()
     {
-        _animator.Play("PhaseTransition");
+        _animator.Play("PhaseTransitionSecond");
+    }
+    
+    public void PlayTransitionToThirdPhase()
+    {
+        _animator.Play("PhaseTransitionThird");
     }
 
-    public float GetPhaseTransitionTime()
+    public float GetSecondPhaseTransitionTime()
     {
-        var clip = _animator.runtimeAnimatorController.animationClips.First(c => c.name == "PhaseTransition");
+        var clip = _animator.runtimeAnimatorController.animationClips.First(c => c.name == "PhaseTransitionSecond");
+        
+        return clip.length;
+    }
+    
+    public float GetThirdPhaseTransitionTime()
+    {
+        var clip = _animator.runtimeAnimatorController.animationClips.First(c => c.name == "PhaseTransitionThird");
         
         return clip.length;
     }
