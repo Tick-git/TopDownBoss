@@ -265,28 +265,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36760443a5276a64fbb6baf0e5ec1e08, type: 3}
---- !u!1 &1127594245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1363217677073804693, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 1454931504210112939}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1127594247 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5123192042576611767, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 1454931504210112939}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1127594248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127594245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476bce0468d43f04abdba86550b49beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &1198070439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4594669592065292467, guid: ddf1d559243f42c48a4f1998948f775d, type: 3}
@@ -309,23 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a969abfb272626499504cdfcfbba5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::CameraShake
---- !u!1 &1283987271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6614858319801438176, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-  m_PrefabInstance: {fileID: 1454931504210112939}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1283987274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283987271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476bce0468d43f04abdba86550b49beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Scripts::LateUpdateColorForcer
 --- !u!1001 &1454931504210112939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -386,24 +347,10 @@ PrefabInstance:
       propertyPath: _cameraShake
       value: 
       objectReference: {fileID: 1200034109}
-    - target: {fileID: 6070432529124557636, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _eyeVisuals
-      value: 
-      objectReference: {fileID: 1127594248}
-    - target: {fileID: 6070432529124557636, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      propertyPath: _spriteRenderer
-      value: 
-      objectReference: {fileID: 1127594247}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1363217677073804693, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127594248}
-    - targetCorrespondingSourceObject: {fileID: 6614858319801438176, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1283987274}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38991e0d538302a4b95ed3502f8960c6, type: 3}
 --- !u!4 &1454931504210112948 stripped
 Transform:

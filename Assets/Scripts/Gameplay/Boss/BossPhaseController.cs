@@ -71,7 +71,7 @@ public class BossPhaseController : MonoBehaviour
         AdjustAttacks(_data.Phase2Attacks, AttackInterval.Normal);
 
         yield return new WaitForSeconds(_bossAnimator.GetThirdPhaseTransitionTime());
-        _hornSetter.SetColor(Color.red);
+        _hornSetter.SetColor(Color.darkRed);
         
         _bossController.EnableBoss();
     }
@@ -89,7 +89,7 @@ public class BossPhaseController : MonoBehaviour
 
         yield return new WaitForSeconds(_bossAnimator.GetSecondPhaseTransitionTime());
         
-        _eyeSetter.SetColor(Color.red);
+        _eyeSetter.SetColor(Color.darkRed);
         
         _bossController.EnableBoss();
     }
