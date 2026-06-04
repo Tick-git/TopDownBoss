@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BossPhaseAttacks
   m_EditorClassIdentifier: Scripts::BossPhaseAttacksData
   _phase1Attacks: 0000000001000000
-  _phase2Attacks: 0200000003000000
+  _phase2Attacks: 02000000
+  _phase3Attacks: 03000000

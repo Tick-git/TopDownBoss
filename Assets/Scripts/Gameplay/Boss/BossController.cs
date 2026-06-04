@@ -56,6 +56,7 @@ namespace Gameplay.Boss
         public void EnableBoss()
         {
             _enabled = true;
+            _health.SetVulnerability(true);
             _movementSm.Enable();
             _attackSm.Enable();
         }
@@ -63,8 +64,10 @@ namespace Gameplay.Boss
         public void DisableBoss()
         {
             _enabled = false;
+            _health.SetVulnerability(false);
             _movementSm.Disable();
             _attackSm.Disable();
+            Weapon.AimToDefault(TargetTracker.GetTargetPosition(), float.MaxValue);
         }
 
         private void OnDestroy()

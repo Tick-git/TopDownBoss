@@ -52,7 +52,7 @@ namespace Gameplay.Boss
                     _attackTimerModifier = 0.75f;
                     break;
                 case AttackInterval.Fast:
-                    _attackTimerModifier = 0.5f;
+                    _attackTimerModifier = 0.4f;
                     break;
             }
         }

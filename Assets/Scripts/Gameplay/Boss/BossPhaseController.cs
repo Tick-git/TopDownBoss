@@ -7,24 +7,31 @@ public class BossPhaseController : MonoBehaviour
 {
     [SerializeField] private BossPhaseAttacksData _data;
     [SerializeField] private EyeVisuals _eyeVisuals;
-    
+
     private Health _health;
     private AttackDecider _attackDecider;
     private BossAnimator _bossAnimator;
 
-    private float _phaseSwitchHealth;
+    private float _phaseTwoHealth;
+    private float _phaseThreeHealth;
     private BossController _bossController;
 
-    public void Initialize(Health health, AttackDecider attackDecider, BossController bossController, BossAnimator bossAnimator)
+    private int _currentPhase;
+
+    public void Initialize(Health health, AttackDecider attackDecider, BossController bossController,
+        BossAnimator bossAnimator)
     {
         _health = health;
         _attackDecider = attackDecider;
         _bossAnimator = bossAnimator;
-        _bossController = bossController;;
-        
+        _bossController = bossController;
+        ;
+
         _health.HealthChanged += OnHealthChanged;
 
-        _phaseSwitchHealth = _health.MaxHealth * Random.Range(0.5f, 0.55f);
+        _phaseTwoHealth = _health.MaxHealth * Random.Range(0.7f, 0.8f);
+        _phaseThreeHealth = _health.MaxHealth * Random.Range(0.4f, 0.5f);
+        _currentPhase = 1;
 
         foreach (var attack in _data.Phase1Attacks)
         {
@@ -39,31 +46,67 @@ public class BossPhaseController : MonoBehaviour
 
     private void OnHealthChanged(float health)
     {
-        if (health < _phaseSwitchHealth)
+        if (_currentPhase == 1 && health < _phaseTwoHealth)
         {
             StartCoroutine(TransitionToSecondPhase());
-            _health.HealthChanged -= OnHealthChanged;
+            _currentPhase = 2;
+        }
+        else if (_currentPhase == 2 && health < _phaseThreeHealth)
+        {
+            StartCoroutine(TransitionToThirdPhase());
+            _currentPhase = 3;
         }
     }
 
     private IEnumerator TransitionToSecondPhase()
     {
-        while(_attackDecider.IsAttacking)
+        while (_attackDecider.IsAttacking)
             yield return null;
-        
+
         _bossController.DisableBoss();
         
         _bossAnimator.PlayPhaseTransition();
         
-        foreach (var attack in _data.Phase2Attacks)
-        {
-            _attackDecider.AddAttack(attack);
-        }
+        AdjustAttacks(_data.Phase2Attacks, AttackInterval.Normal);
 
         yield return new WaitForSeconds(_bossAnimator.GetPhaseTransitionTime());
-
         _eyeVisuals.SetEyeColorToRed();
         
         _bossController.EnableBoss();
     }
+    
+    private IEnumerator TransitionToThirdPhase()
+    {
+        while (_attackDecider.IsAttacking)
+            yield return null;
+
+        _bossController.DisableBoss();
+        
+        _bossAnimator.PlayPhaseTransition();
+        
+        AdjustAttacks(_data.Phase3Attacks, AttackInterval.Fast);
+
+        yield return new WaitForSeconds(_bossAnimator.GetPhaseTransitionTime());
+        
+        _eyeVisuals.SetEyeColorToRed();
+        
+        _bossController.EnableBoss();
+    }
+
+    private void AdjustAttacks(BossAttack[] attacks, AttackInterval interval)
+    {
+        foreach (var attack in attacks)
+        {
+            _attackDecider.AddAttack(attack);
+        }
+
+        _attackDecider.SetAttackInterval(interval);
+    }
+}
+
+public enum BossPhase
+{
+    One,
+    Two,
+    Three
 }
