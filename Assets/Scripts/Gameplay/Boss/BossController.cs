@@ -53,8 +53,19 @@ namespace Gameplay.Boss
             InitBossAttackStateMachine();
         }
 
-        public void EnableBoss() => _enabled = true;
-        public void DisableBoss() => _enabled = false;
+        public void EnableBoss()
+        {
+            _enabled = true;
+            _movementSm.Enable();
+            _attackSm.Enable();
+        }
+
+        public void DisableBoss()
+        {
+            _enabled = false;
+            _movementSm.Disable();
+            _attackSm.Disable();
+        }
 
         private void OnDestroy()
         {
@@ -74,6 +85,7 @@ namespace Gameplay.Boss
             AddMoveTransition(walkState, idleState, new FuncPredicate(() => AttackDecider.IsAttacking));
 
             _movementSm.SetState(idleState);
+            _movementSm.SetDisabledState(idleState);
         }
 
         private void AddMoveTransition(IState fromState, IState toState, IPredicate condition)
@@ -102,6 +114,7 @@ namespace Gameplay.Boss
             _attackSm.AddTransition(groundAttack, decisionState, new FuncPredicate(() => !groundAttack.IsRunning));
 
             _attackSm.SetState(decisionState);
+            _attackSm.SetDisabledState(decisionState);
         }
 
         private FuncPredicate NextAttackIs(BossAttack bossAttack)

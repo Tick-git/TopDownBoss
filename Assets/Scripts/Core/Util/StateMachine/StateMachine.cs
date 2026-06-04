@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 public class StateMachine
 {
     private StateNode _current;
+    private StateNode _disabledState;
 
     private readonly HashSet<Transition> _anyTransitions = new();
     private readonly Dictionary<IState, StateNode> _nodes = new();
 
+    private bool _enabled = true;
+
     public void Update()
     {
+        if (!_enabled) return;
+        
         if (TryGetTransition(out ITransition transition))
         {
             ChangeState(transition.TargetState);
@@ -20,6 +24,8 @@ public class StateMachine
 
     public void FixedUpdate()
     {
+        if (!_enabled) return;
+        
         _current?.State.FixedUpdate();
     }
 
@@ -37,6 +43,28 @@ public class StateMachine
     {
         _current = GetOrAddNode(state);
         _current.State.Enter();
+    }
+
+    public void SetDisabledState(IState state)
+    {
+        _disabledState = GetOrAddNode(state);
+    }
+
+    public void Enable()
+    {
+        _enabled = true;
+    }
+
+    public void Disable()
+    {
+        _enabled = false;
+        
+        if (_disabledState != null)
+        {
+            _current?.State?.Exit();
+            _current = _disabledState;
+            _current.State.Enter();
+        }
     }
 
     private void ChangeState(IState state)
