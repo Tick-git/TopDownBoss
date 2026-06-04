@@ -33,7 +33,7 @@ public class SmallSpreadShotState : BaseBossAttackState
 
     public override void Update()
     {
-        Context.Weapon.ApplyAim(GetTargetMovePredictionForBullet());
+        Context.Weapon.ApplyAim(GetTargetMovePredictionForBullet(), Time.deltaTime);
     }
 
     protected override void OnAnimationEnter(AttackAnimationType animationType)

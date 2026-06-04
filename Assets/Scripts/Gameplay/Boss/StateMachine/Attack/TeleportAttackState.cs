@@ -1,4 +1,5 @@
 using Gameplay.Boss;
+using UnityEngine;
 
 public class TeleportAttackState : BaseBossAttackState
 {
@@ -25,7 +26,7 @@ public class TeleportAttackState : BaseBossAttackState
 
     public override void Update()
     {
-        Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
+        Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition(), Time.deltaTime);
     }
 
     protected override void OnAnimationEnter(AttackAnimationType animation)

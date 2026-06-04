@@ -1,4 +1,6 @@
-﻿namespace Gameplay.Boss
+﻿using UnityEngine;
+
+namespace Gameplay.Boss
 {
     public class AttackDecisionState : BaseState<BossController>
     {
@@ -8,7 +10,7 @@
 
         public override void Update()
         {
-            Context.Weapon.AimToDefault(Context.TargetTracker.GetTargetPosition());
+            Context.Weapon.AimToDefault(Context.TargetTracker.GetTargetPosition(), Time.deltaTime);
         }
     }
 }

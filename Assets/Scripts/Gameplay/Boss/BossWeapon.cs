@@ -21,7 +21,7 @@ public class BossWeapon : MonoBehaviour
         _owner = owner;
     }
 
-    public void ApplyAim(Vector2 target)
+    public void ApplyAim(Vector2 target, float deltaTime)
     {
         var direction = (target - (Vector2)_weapon.position).normalized;
 
@@ -39,13 +39,13 @@ public class BossWeapon : MonoBehaviour
         if (_lastAimedLeft != aimingLeft)
             _currentAngle = rotationAngle;
         else
-            _currentAngle = Mathf.LerpAngle(_currentAngle, rotationAngle, Time.deltaTime * 20);
+            _currentAngle = Mathf.LerpAngle(_currentAngle, rotationAngle, deltaTime * 20);
 
         _weapon.rotation = Quaternion.Euler(0f, 0f, _currentAngle);
         _lastAimedLeft = aimingLeft;
     }
 
-    public void AimToDefault(Vector2 target)
+    public void AimToDefault(Vector2 target, float deltaTime)
     {
         bool aimingLeft = target.x < transform.position.x;
 
@@ -58,7 +58,7 @@ public class BossWeapon : MonoBehaviour
             target = _weapon.position + Vector3.right;
         }
 
-        ApplyAim(target);
+        ApplyAim(target, deltaTime);
     }
 
     public void ShootSmallSpread(Vector2 target)

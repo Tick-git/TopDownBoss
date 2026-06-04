@@ -1,5 +1,6 @@
 using System;
 using Gameplay.Boss;
+using UnityEngine;
 
 public class LargeSpreadShotState : BaseBossAttackState
 {
@@ -32,7 +33,7 @@ public class LargeSpreadShotState : BaseBossAttackState
 
     public override void Update()
     {
-        Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition());
+        Context.Weapon.ApplyAim(Context.TargetTracker.GetTargetPosition(), Time.deltaTime);
     }
 
     protected override void OnAnimationEnter(AttackAnimationType animationType)
