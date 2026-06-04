@@ -42,6 +42,7 @@ public class RootBootstrap : MonoBehaviour
         SettingsManager = new SettingsManager(AudioManager);
         AudioEmitterUI = new AudioEmitterUI(AudioManager, _uiAudioLibrary);
         VFXManager = Instantiate(_vfxManagerPrefab);
+        InputReader.Initialize();
 
         _mouseVisibilityController = new MouseVisibilityController(ViewStack, InputManager);
         _viewInteractionController = new ViewInteractionController(ViewStack, InputManager);

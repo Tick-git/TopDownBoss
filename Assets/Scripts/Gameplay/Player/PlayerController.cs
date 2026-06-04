@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         _weapon.Initialize(_health);
         _weaponAnimator.Initialize();
         _hitboxScaler.Initialize();
+        _input.Initialize();
 
         _rollBuffer = new RollBuffer(0.125f);
 
