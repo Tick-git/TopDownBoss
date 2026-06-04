@@ -7,13 +7,13 @@ public class InputReader : ScriptableObject
 {
     private InputActions _inputActions;
     private Vector2 _lastAimDirection;
-    
+
     private bool _initialized;
 
     public void Initialize()
     {
         if (_initialized) return;
-        
+
         _inputActions = new InputActions();
 
         _inputActions.Player.Pause.performed += OnPausePerformed;
@@ -22,9 +22,11 @@ public class InputReader : ScriptableObject
 
         EnableGameplayInput();
     }
-    
+
     private void OnDisable()
     {
+        if (!_initialized) return;
+
         _inputActions.Player.Pause.performed -= OnPausePerformed;
         _inputActions.UI.ClosePause.performed -= OnPausePerformed;
         _inputActions.UI.Cancel.performed -= OnCancelPerformed;
