@@ -30,8 +30,8 @@ public class BossPhaseController : MonoBehaviour
 
         _health.HealthChanged += OnHealthChanged;
 
-        _phaseTwoHealth = _health.MaxHealth * 0.9f;
-        _phaseThreeHealth = _health.MaxHealth * 0.7f;
+        _phaseTwoHealth = _health.MaxHealth * 0.7f;
+        _phaseThreeHealth = _health.MaxHealth * 0.5f;
         _currentPhase = 1;
 
         foreach (var attack in _data.Phase1Attacks)
