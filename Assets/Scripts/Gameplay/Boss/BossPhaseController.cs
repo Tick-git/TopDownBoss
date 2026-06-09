@@ -1,7 +1,6 @@
 using System.Collections;
 using Gameplay.Boss;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class BossPhaseController : MonoBehaviour
 {
@@ -30,8 +29,8 @@ public class BossPhaseController : MonoBehaviour
 
         _health.HealthChanged += OnHealthChanged;
 
-        _phaseTwoHealth = _health.MaxHealth * 0.7f;
-        _phaseThreeHealth = _health.MaxHealth * 0.5f;
+        _phaseTwoHealth = _health.MaxHealth * 0.9f;
+        _phaseThreeHealth = _health.MaxHealth * 0.8f;
         _currentPhase = 1;
 
         foreach (var attack in _data.Phase1Attacks)
@@ -65,33 +64,35 @@ public class BossPhaseController : MonoBehaviour
             yield return null;
 
         _bossController.DisableBoss();
-        
+
         _bossAnimator.PlayTransitionToThirdPhase();
-        
+
         AdjustAttacks(_data.Phase2Attacks, AttackInterval.Normal);
 
         yield return new WaitForSeconds(_bossAnimator.GetThirdPhaseTransitionTime());
         _hornSetter.SetColor(Color.darkRed);
-        
+
         _bossController.EnableBoss();
+        _attackDecider.ForceNextAttack(BossAttack.TeleportShot);
     }
-    
+
     private IEnumerator TransitionToThirdPhase()
     {
         while (_attackDecider.IsAttacking)
             yield return null;
 
         _bossController.DisableBoss();
-        
+
         _bossAnimator.PlayTransitionToSecondPhase();
-        
+
         AdjustAttacks(_data.Phase3Attacks, AttackInterval.Fast);
 
         yield return new WaitForSeconds(_bossAnimator.GetSecondPhaseTransitionTime());
-        
+
         _eyeSetter.SetColor(Color.darkRed);
-        
+
         _bossController.EnableBoss();
+        _attackDecider.ForceNextAttack(BossAttack.GroundExplode);
     }
 
     private void AdjustAttacks(BossAttack[] attacks, AttackInterval interval)

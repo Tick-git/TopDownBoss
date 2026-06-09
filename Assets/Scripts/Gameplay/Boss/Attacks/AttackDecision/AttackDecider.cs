@@ -34,7 +34,7 @@ namespace Gameplay.Boss
             }
 
             SetAttackInterval(AttackInterval.Slow);
-            
+
             IsAttacking = false;
             _attackTimer = new Timer(2);
             _attackTimer.Completed += OnAttackTimerCompleted;
@@ -131,6 +131,12 @@ namespace Gameplay.Boss
         private void Update()
         {
             _attackTimer.Tick(Time.deltaTime);
+        }
+
+        public void ForceNextAttack(BossAttack attack)
+        {
+            _nextAttack = attack;
+            _attackTimer.Stop();
         }
     }
 }
