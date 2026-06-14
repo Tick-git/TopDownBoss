@@ -30,6 +30,8 @@ public class PlayerAnimator : MonoBehaviour
         _rollState = _animator.GetBehaviour<RollStateBehaviour>();
         _rollState.RollEnter += OnRollEnter;
         _rollState.RollExit += OnRollExit;
+
+        ResetMoveSpeedMultiplier();
     }
 
     private void OnDestroy()
@@ -63,5 +65,10 @@ public class PlayerAnimator : MonoBehaviour
     public void SetMoveSpeedMultiplier(float value)
     {
         _animator.SetFloat(MoveSpeedMultiplier, value);
+    }
+
+    public void ResetMoveSpeedMultiplier()
+    {
+        _animator.SetFloat(MoveSpeedMultiplier, 1);
     }
 }

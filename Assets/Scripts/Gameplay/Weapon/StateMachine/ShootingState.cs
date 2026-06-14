@@ -7,12 +7,14 @@
     public override void Enter()
     {
         Context.Movement.SetMoveSpeedMultiplicator(0.3f);
+        Context.PlayerAnimator.SetMoveSpeedMultiplier(0.5f);
         Context.PlayerStaminaController.StartShoot();
     }
 
     public override void Exit()
     {
         Context.Movement.ResetMoveSpeedMultiplicator();
+        Context.PlayerAnimator.ResetMoveSpeedMultiplier();
         Context.PlayerStaminaController.StopShoot();
     }
 
