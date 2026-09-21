@@ -1,3 +1,4 @@
+using System;
 using Gameplay.Player;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerAudio _playerAudio;
     [SerializeField] private Invulnerability _invulnerability;
 
+    public event Action PlayerDied;
+    
     private StateMachine _movementSm;
     private StateMachine _weaponSm;
     private RollBuffer _rollBuffer;
@@ -46,6 +49,21 @@ public class PlayerController : MonoBehaviour
         InitWeaponStateMachine();
     }
 
+    private void OnEnable()
+    {
+        _health.Died += OnPlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        _health.Died -= OnPlayerDeath;
+    }
+
+    private void OnPlayerDeath()
+    {
+        PlayerDied?.Invoke();
+    }
+    
     private void Update()
     {
         _playerAnimator.SetAimDirection(Input.AimDirection);

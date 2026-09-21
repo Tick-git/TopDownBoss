@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class GameplayBootstrap : MonoBehaviour
 {
     [SerializeField] HUDManager _hudManager;
+    [SerializeField] private PlayerController _player;
 
     private PauseView _pauseView;
     private PauseManager _pauseManager;
@@ -32,10 +33,17 @@ public class GameplayBootstrap : MonoBehaviour
         _pauseView.MainMenuRequested += gameFlow.LoadMainMenu;
         _pauseView.ExitRequested += Application.Quit;
 
+        _player.PlayerDied += OnPlayerDeath;
+
         inputReader.PausePerformed += OnPausePerformed;
 
         viewStack.Register(_settingsView);
         viewStack.Register(_pauseView);
+    }
+
+    private void OnPlayerDeath()
+    {
+        Root.Instance.GameFlowService.LoadMainMenu();
     }
 
     private void OnActiveViewChanged(ActiveViewChangedArgs args)
@@ -66,6 +74,8 @@ public class GameplayBootstrap : MonoBehaviour
         _pauseView.MainMenuRequested -= gameFlow.LoadMainMenu;
         _pauseView.ExitRequested -= Application.Quit;
 
+        _player.PlayerDied -= OnPlayerDeath;
+        
         uiInputReader.PausePerformed -= OnPausePerformed;
 
         _pauseManager.Dispose();

@@ -13,7 +13,7 @@ public class InputReader : ScriptableObject
     public void Initialize()
     {
         if (_initialized) return;
-
+        
         _inputActions = new InputActions();
 
         _inputActions.Player.Pause.performed += OnPausePerformed;
